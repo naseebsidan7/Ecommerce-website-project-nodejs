@@ -77,7 +77,7 @@ router.get('/getAddress', userController.getAddress);
 
 router.get('/cart',auth.is_login,userController.showCart)
 router.post('/addtocart',auth.is_login,userController.addtocart)
-router.post('/update-cart', userController.updateCart);
+router.post('/update-cart',,auth.is_login,userController.updateCart);
 router.get('/deleteCartProduct',auth.is_login,userController.deleteCartProduct)
  
 router.get('/checkout',auth.is_login,userController.showCheckout)
