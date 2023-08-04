@@ -8,9 +8,9 @@ const nocache = require('nocache')
 const mongoose=require('mongoose')
 const session = require('express-session')
 
-mongoose.connect("mongodb+srv://naseebsidan:jda6cctU0sVMwSNE@cluster0.kongi3m.mongodb.net/");
+mongoose.connect("mongodb+srv://naseebsidan:jda6cctU0sVMwSNE@cluster0.kongi3m.mongodb.net/").then(()=> console.log("MongoDB Connected") );
 // mongodb://127.0.0.1:27017/user_management_system
-
+// mongodb+srv://naseebsidan:jda6cctU0sVMwSNE@cluster0.kongi3m.mongodb.net/
 
 const adminRouter = require('./routes/admin');
 const usersRouter = require('./routes/users');
