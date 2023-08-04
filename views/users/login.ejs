@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign Up Form</title>
+
+    <!-- Font Icon -->
+
+	<link rel="stylesheet" type="text/css" href="/public/homeTemp/css/util.css">
+	<link rel="stylesheet" type="text/css" href="/public/homeTemp/css/main.css">
+
+    <link rel="stylesheet" href="/public/signup-signin/fonts/material-icon/css/material-design-iconic-font.min.css">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="/public/signup-signin/css/style.css">
+
+
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+	<link href="/public/userProfile/main.css"  rel="stylesheet"> 
+	
+	
+
+	<link rel="icon" type="image/png" href="/public/icons/My project.png"/>
+<!--===============================================================================================-->
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/public/homeTemp/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/public/homeTemp/fonts/iconic/css/material-design-iconic-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/public/homeTemp/fonts/linearicons-v1.0.0/icon-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/public/homeTemp/vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="/public/homeTemp/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/public/homeTemp/vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/public/homeTemp/vendor/select2/select2.min.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="/public/homeTemp/vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/public/homeTemp/vendor/slick/slick.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/public/homeTemp/vendor/MagnificPopup/magnific-popup.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/public/homeTemp/vendor/perfect-scrollbar/perfect-scrollbar.css">
+<!--===============================================================================================-->
+	
+<!--===============================================================================================-->
+<style>
+    /* Add this style to the head section of your HTML */
+    #favicon {
+      border-radius: 20px;
+    }
+ 
+ 
+  .signup-image-link {
+    font-size: 15px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-decoration: underline;
+    color: #000;
+  }
+
+  .signup-image-link:hover {
+    color: rgb(75, 75, 234);
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-decoration: underline;
+  }
+</style>
+
+
+
+ 
+
+
+</head>
+<body >
+	
+
+
+	<header >
+		<!-- Header desktop -->
+		<div class="container-menu-desktop">
+			<!-- Topbar -->
+	
+			
+			<div class="wrap-menu-desktop" style="top: 0;">
+				<nav class="limiter-menu-desktop container" style="background-color: rgba(252, 252, 252, 0.956);">
+					
+					<!-- Logo desktop -->		
+					<a href="/home" class="logo ">
+						<img src="/public/images/20230620_111354_0000-removebg-preview(1).png" alt="IMG-LOGO">
+					</a>
+
+					<!-- Menu desktop -->
+					<div class="menu-desktop">
+						<ul class="main-menu">
+							<li class="active-menu">
+								<a href="/home">Home</a>
+								<ul class="sub-menu">
+									<li><a href="/home">Homepage</a></li>
+									<!-- {{!-- <li><a href="home-02.html">Homepage 2</a></li>
+									<li><a href="home-03.html">Homepage 3</a></li> --}} -->
+								</ul>
+							</li>
+
+							<li>
+								<a href="/allProducts">Shop</a>
+							</li>
+
+							<li class="label1" data-label1="top">
+								<a href="">Features</a>
+							</li>
+
+							
+							<li >
+								<a href="/OrderHistory">My Orders</a>
+							</li>
+
+						 
+
+							<li>
+								<a href="/contact">Contact</a>
+							</li>
+						</ul>
+					</div>	
+
+					<!-- Icon header -->
+					<div class="wrap-icon-header flex-w flex-r-m">
+						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
+							<i class="zmdi zmdi-search"></i>
+						</div>
+
+						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="0">
+							<i class="zmdi zmdi-shopping-cart"></i>
+						</div>
+
+						<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="0">
+							<i class="zmdi zmdi-favorite-outline"></i>
+						</a>
+						<a href="/userProfile" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 " data-notify="0">
+							<i class="zmdi zmdi-settings"></i>
+						</a>
+					</div>
+				</nav>
+			</div>	
+		</div>
+
+		<!-- Header Mobile -->
+		<div class="wrap-header-mobile">
+			<!-- Logo moblie -->		
+			<div class="logo-mobile">
+				<a href="/home"><img src="/public/homeTemp/images/icons/logo-01.png" alt="IMG-LOGO"></a>
+			</div>
+
+			<!-- Icon header -->
+			<div class="wrap-icon-header flex-w flex-r-m m-r-15">
+				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 js-show-modal-search">
+					<i class="zmdi zmdi-search"></i>
+				</div>
+
+				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" data-notify="0">
+					<i class="zmdi zmdi-shopping-cart"></i>
+				</div>
+
+				<a href="/userProfile" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 "
+				data-notify="0">
+				<i class="zmdi zmdi-settings"></i>
+			</a>
+			
+			</div>
+
+			<!-- Button show menu -->
+			<div class="btn-show-menu-mobile hamburger hamburger--squeeze">
+				<span class="hamburger-box">
+					<span class="hamburger-inner"></span>
+				</span>
+			</div>
+		</div>
+
+
+		<!-- Menu Mobile -->
+		<div class="menu-mobile">
+			<ul class="topbar-mobile">
+				<li>
+					<div class="left-top-bar">
+						Free shipping for standard order over $100
+					</div>
+				</li>
+
+				<li>
+					<div class="right-top-bar flex-w h-full">
+						<a href="#" class="flex-c-m p-lr-10 trans-04">
+							Help & FAQs
+						</a>
+
+						<a href="#" class="flex-c-m p-lr-10 trans-04">
+							My Account
+						</a>
+
+						<a href="#" class="flex-c-m p-lr-10 trans-04">
+							EN
+						</a>
+
+						<a href="#" class="flex-c-m p-lr-10 trans-04">
+							USD
+						</a>
+					</div>
+				</li>
+			</ul>
+
+			<ul class="main-menu-m">
+				<li>
+					<a href="index.html">Home</a>
+					<ul class="sub-menu-m">
+						<li><a href="index.html">Homepage 1</a></li>
+						<!-- <li><a href="home-02.html">Homepage 2</a></li>
+						<li><a href="home-03.html">Homepage 3</a></li> -->
+					</ul>
+					<span class="arrow-main-menu-m">
+						<i class="fa fa-angle-right" aria-hidden="true"></i>
+					</span>
+				</li>
+
+				<li>
+					<a href="/allProducts">Shop</a>
+				</li>
+
+				<li>
+					<a href=" " class="label1 rs1" data-label1="Top">Features</a>
+				</li>
+
+				<li >
+					<a href="/OrderHistory">My Orders</a>
+				</li>
+
+				<li>
+					<a href="contact.html">Contact</a>
+				</li>
+			</ul>
+		</div>
+
+		<!-- Modal Search -->
+		<div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
+			<div class="container-search-header">
+				<button class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
+					<img src="/public/homeTemp/images/icons/icon-close2.png" alt="CLOSE">
+				</button>
+
+				<form class="wrap-search-header flex-w p-l-15">
+					<button class="flex-c-m trans-04">
+						<i class="zmdi zmdi-search"></i>
+					</button>
+					<input class="plh3" type="text" name="search" placeholder="Search...">
+				</form>
+			</div>
+		</div>
+	</header>
+
+    
+
+    <div class="main" style="padding: 0px; padding-top: 145px;">
+        <!-- Sing in  Form -->
+        <section class="sign-in">
+            <div class="container" style="margin-bottom: 160px;">
+                <div class="signin-content">
+                    <div class="signin-image">
+                        <figure><img src="/public/signup-signin/images/b580af5e73391c00081bbff0da2637b1.jpg"
+                                alt="sing up image" style="height: 330px;width: 300px;"></figure>
+								<a href="/register" class="signup-image-link">Create an account</a>
+								  
+                    </div>
+
+                    <div class="signin-form">
+                        <h3 class="form-title" style="font-size: xx-large; font-weight: bolder; color: #1c271bcc;">Login</h3>
+                        <form method="POST" action="login" class="register-form" id="login-form" >
+                            <div class="form-group">
+                                <label for="email"><i class="zmdi zmdi-email"></i></label>
+                                <input type="email" name="email" id="email" placeholder="Your Email" required style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 17px;" />
+                            </div>
+							<div class="form-group" style="margin-bottom: 0px;">
+								<label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
+								<input type="password" name="password" id="your_pass" placeholder="Password" required style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 17px;" />
+							  </div>
+							  <div class="forget-pass" style="text-align: right;">
+								<a href="/forgetPassword" style="font-size: 14px; font-family: monospace; ">Forgot password?</a>
+							  </div>
+							  
+                            
+                            <div >
+                            <% 
+                            if (typeof message !== 'undefined') { %>
+                                <p style="color: #b44848; font-size: 15px; font-style: italic; font-weight: 500; font-family: monospace; display: block; margin-bottom: 0px;"><%= message %></p>
+                              <% 
+                            } %>                              
+                        </div>
+                            <!-- <div class="form-group">
+                                <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
+                                <label for="remember-me" class="label-agree-term"><span><span></span></span>Remember
+                                    me</label>
+                            </div> - -->
+
+                            <div class="form-group form-button" style="margin-top: 35px;">
+                                <input type="submit" name="signin" id="signin" class="form-submit" value="Log in"
+                                    style=" border-radius: 50px; cursor: pointer;" />
+                            </div>
+                                 
+
+                        </form>
+                         <div class="orLoginWithOtp" >
+                                <div class="separator">
+                                    <span  >OR</span>
+                                </div>
+                                <div class="otp-link"> 
+									<i class="zmdi zmdi-mail-send"></i>
+                                    <a href="/otpPage" style="font-size: 15px;font-family: monospace" >Login with OTP</a>
+                                </div>  
+
+								
+							</div>
+
+
+
+                        <!-- {{!-- <div class="social-login">
+                            <span class="social-label">Or login with</span>
+                            <ul class="socials">
+                                <li><a href="#"><i class="display-flex-center zmdi zmdi-facebook"></i></a></li>
+                                <li><a href="#"><i class="display-flex-center zmdi zmdi-twitter"></i></a></li>
+                                <li><a href="#"><i class="display-flex-center zmdi zmdi-google"></i></a></li>
+                            </ul>
+                        </div> --}} -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+
+	<!-- Footer -->
+	<footer class="bg3 p-t-75 p-b-32">
+		<div class="container" style="background-color: #1b1b1c;">
+			<div class="row">
+				<div class="col-sm-6 col-lg-3 p-b-50">
+					<h4 class="stext-301 cl0 p-b-30">
+						Categories
+					</h4>
+
+					<ul>
+						<li class="p-b-10">
+							<a href="/allProducts" class="stext-107 cl7 hov-cl1 trans-04">
+								Nike Shoes
+							</a>
+						</li>
+
+						<li class="p-b-10">
+							<a href="/allProducts" class="stext-107 cl7 hov-cl1 trans-04">
+								Adidas
+							</a>
+						</li>
+
+						<li class="p-b-10">
+							<a href="/allProducts" class="stext-107 cl7 hov-cl1 trans-04">
+								Casual Shoes
+							</a>
+						</li>
+
+						<li class="p-b-10">
+							<a href="/allProducts" class="stext-107 cl7 hov-cl1 trans-04">
+								Sneakers
+							</a>
+						</li>
+						<li class="p-b-10">
+							<a href="/allProducts" class="stext-107 cl7 hov-cl1 trans-04">
+								Football Boots
+							</a>
+						</li>
+					</ul>
+				</div>
+
+				<div class="col-sm-6 col-lg-3 p-b-50">
+					<h4 class="stext-301 cl0 p-b-30">
+						Help
+					</h4>
+
+					<ul>
+						<li class="p-b-10">
+							<a href="/userProfile" class="stext-107 cl7 hov-cl1 trans-04">
+								 Address
+							</a>
+						</li>
+
+						<li class="p-b-10">
+							<a href="/OrderHistory" class="stext-107 cl7 hov-cl1 trans-04">
+								Your Orders
+							</a>
+						</li>
+
+						<li class="p-b-10">
+							<a href="/OrderHistory" class="stext-107 cl7 hov-cl1 trans-04">
+								Shipping
+							</a>
+						</li>
+
+						<li class="p-b-10">
+							<a href="/cart" class="stext-107 cl7 hov-cl1 trans-04">
+								Cart
+							</a>
+						</li>
+					</ul>
+				</div>
+
+				<div class="col-sm-6 col-lg-3 p-b-50">
+					<h4 class="stext-301 cl0 p-b-30">
+						GET IN TOUCH
+					</h4>
+
+					<p class="stext-107 cl7 size-201">
+						Any questions? Let us know in store at maradu, Kochi , Kerala or call us on (+91) 99 4744 2414
+					</p>
+
+					<div class="p-t-27">
+						<a href="https://github.com/naseebsidan7"  target="_blank" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+							<i class="fa fa-github"></i>
+						</a>
+
+						<a href="https://www.instagram.com/sidan07_/" target="_blank" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+							<i class="fa fa-instagram"></i>
+						  </a>
+						  
+
+						<a href="https://in.pinterest.com/naseebsidan/"  target="_blank" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+							<i class="fa fa-pinterest-p"></i>
+						</a>
+
+						
+						<a href="https://www.linkedin.com/in/naseeb-sidan-16b371267/"  target="_blank" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+							<i class="fa fa-linkedin"></i>
+						</a>
+					</div>
+				</div>
+
+			 
+			</div>
+
+			<div class="p-t-40">
+				<div class="flex-c-m flex-w p-b-18">
+					<a href="#" class="m-all-1">
+					  <span style="font-size: 16px; color: rgba(109, 129, 241, 0.63);font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">&copy; Active Kicks</span>
+	 
+					</a>
+				  </div>
+				  
+
+				
+			</div>
+		</div>
+	</footer>
+    
+
+    <!-- JS -->
+    <script src="/public/signup-signin/vendor/jquery/jquery.min.js"></script>
+    <script src="/public/signup-signin/js/main.js"></script>
+
+    <script src="/public/homeTemp/js/main.js"></script>
+    <script src="/public/homeTemp/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="/public/homeTemp/vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="/public/homeTemp/vendor/bootstrap/js/popper.js"></script>
+	<script src="/public/homeTemp/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="/public/homeTemp/vendor/select2/select2.min.js"></script>
+    
+</body>
+
+</html>

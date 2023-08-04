@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Product</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="/public/homeTemp/images/icons/favicon.png"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/public/homeTemp/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/public/homeTemp/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/public/homeTemp/fonts/iconic/css/material-design-iconic-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/public/homeTemp/fonts/linearicons-v1.0.0/icon-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/public/homeTemp/vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="/public/homeTemp/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/public/homeTemp/vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/public/homeTemp/vendor/select2/select2.min.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="/public/homeTemp/vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/public/homeTemp/vendor/slick/slick.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/public/homeTemp/vendor/MagnificPopup/magnific-popup.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/public/homeTemp/vendor/perfect-scrollbar/perfect-scrollbar.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/public/homeTemp/css/util.css">
+	<link rel="stylesheet" type="text/css" href="/public/homeTemp/css/main.css">
+<!--===============================================================================================-->
+
+
+<style>
+    .order-link {
+    color: #707bf6be;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    /* Add any other styles you want for the element */
+    position: relative;
+    text-decoration: none;
+}
+
+.order-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 1px;
+    background-color: #7270f6be;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease-in-out;
+}
+
+.order-link:hover::after {
+    transform: scaleX(1);
+}
+
+/* Add any other styles you want for the hover effect */
+
+ 
+	/* CSS to align the text and dropdown button horizontally */
+	.filter-container {
+		display: flex;
+		align-items: center;
+	}
+
+	.filter-container h4 {
+		font-weight: 400;
+		font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+		margin: 0;
+		margin-right: 10px; /* Adjust the spacing between the text and dropdown as needed */
+	}
+	
+/* Additional responsive styles for different screen sizes */
+@media only screen and (min-width: 576px) {
+  /* For small devices (screens with width >= 576px) */
+  .card {
+    max-width: 400px;
+    margin: 10px auto;
+  }
+  .OrderDetails{
+	margin-right: 0px;
+  }
+ 
+  
+}
+
+@media only screen and (min-width: 768px) {
+  /* For medium devices (screens with width >= 768px) */
+  .card {
+    max-width: 600px;
+    margin: 10px auto;
+  }
+}
+
+/* Adjust styles for columns on smaller screens */
+@media only screen and (max-width: 767px) {
+  .card-body .media-body.my-auto.text-right {
+    text-align: left;
+  }
+
+  .card-body .row .col {
+    flex-basis: auto !important;
+  }
+
+  .card-body .row.invoice {
+    flex-direction: column;
+  }
+
+  .card-body .row.invoice .col {
+    margin-bottom: 10px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+    .invoice {
+      margin-top: 20px;
+    }
+	.responsivePrice{
+		margin-top: -20px;
+
+	}
+
+  }
+
+/* Additional styles for laptops and larger devices */
+@media only screen and (min-width: 992px) {
+  /* For laptops and larger devices (screens with width >= 992px) */
+  .card {
+    max-width: 1500px;
+    margin: 10px auto;
+  }
+  .invoice{
+	margin-left: 5px;
+	  	
+	margin-top: -90px;
+  }
+}
+
+
+</style>
+
+</head>
+<body class="animsition">
+	
+	<!-- Header -->
+	<header class="header-v4">
+		<!-- Header desktop -->
+		<div class="container-menu-desktop">
+			<!-- Topbar -->
+			<div class="top-bar">
+				<div class="content-topbar flex-sb-m h-full container">
+					<div class="left-top-bar">
+						Free shipping for standard order over $100
+					</div>
+
+					<div class="right-top-bar flex-w h-full">
+						<a href="" class="flex-c-m trans-04 p-lr-25">
+							Help & FAQs
+						</a>
+
+						<a href="" class="flex-c-m trans-04 p-lr-25">
+							My Account
+						</a>
+
+						<a href="" class="flex-c-m trans-04 p-lr-25">
+							EN
+						</a>
+
+						<a href="" class="flex-c-m trans-04 p-lr-25">
+							USD
+						</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="wrap-menu-desktop how-shadow1">
+				<nav class="limiter-menu-desktop container">
+					
+					<!-- Logo desktop -->		
+					<a href="" class="logo">
+						<img src="/public/images/20230620_111354_0000-removebg-preview(1).png" alt="IMG-LOGO">
+					</a>
+
+					<!-- Menu desktop -->
+					<div class="menu-desktop">
+						<ul class="main-menu">
+							<li>
+								<a href="/home">Home</a>
+								 
+							</li>
+
+							<li  >
+								<a href="/allProducts">Shop</a>
+							</li>
+
+							<li class="label1" data-label1="top">
+								<a href="/allProducts">Features</a>
+							</li>
+
+							<li class="active-menu">
+								<a href="/OrderHistory">My Orders</a>
+							</li>
+
+
+							<li>
+								<a href="/contact">Contact</a>
+							</li>
+						</ul>
+					</div>	
+
+					<!-- Icon header -->
+					<div class="wrap-icon-header flex-w flex-r-m">
+						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
+							<i class="zmdi zmdi-search"></i>
+						</div>
+
+						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="<%= cartProducts.length %>">
+							<i class="zmdi zmdi-shopping-cart"></i>
+						</div>
+
+						<a href="/userProfile" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 " data-notify="0">
+							<i class="zmdi zmdi-settings"></i>
+						</a>
+					</div>
+				</nav>
+			</div>	
+		</div>
+
+		<!-- Header Mobile -->
+		<div class="wrap-header-mobile">
+			<!-- Logo moblie -->		
+			<div class="logo-mobile">
+				<a href="/home"><img src="/public/homeTemp/images/icons/logo-01.png" alt="IMG-LOGO"></a>
+			</div>
+
+			<!-- Icon header -->
+			<div class="wrap-icon-header flex-w flex-r-m m-r-15">
+				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 js-show-modal-search">
+					<i class="zmdi zmdi-search"></i>
+				</div>
+
+				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" data-notify="<%= cartProducts.length %>">
+					<i class="zmdi zmdi-shopping-cart"></i>
+				</div>
+
+				<a href="/userProfile" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 "
+				data-notify="0">
+				<i class="zmdi zmdi-settings"></i>
+			</a>
+			
+			</div>
+
+			<!-- Button show menu -->
+			<div class="btn-show-menu-mobile hamburger hamburger--squeeze">
+				<span class="hamburger-box">
+					<span class="hamburger-inner"></span>
+				</span>
+			</div>
+		</div>
+
+
+		<!-- Menu Mobile -->
+		<div class="menu-mobile">
+		 
+
+			<ul class="main-menu-m">
+				<li>
+					<a href="/home">Home</a>
+					 
+					<span class="arrow-main-menu-m">
+						<i class="fa fa-angle-right" aria-hidden="true"></i>
+					</span>
+				</li>
+
+				<li>
+					<a href="/allProducts">Shop</a>
+				</li>
+
+			 
+
+				<li>
+					<a href="/OrderHistory">My orders</a>
+				</li>
+
+			 
+				<li>
+					<a href="/contact">Contact</a>
+				</li>
+			</ul>
+		</div>
+
+		<!-- Modal Search -->
+		<div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
+			<div class="container-search-header">
+				<button class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
+					<img src="/public/homeTemp/images/icons/icon-close2.png" alt="CLOSE">
+				</button>
+
+				<form class="wrap-search-header flex-w p-l-15">
+					<button class="flex-c-m trans-04">
+						<i class="zmdi zmdi-search"></i>
+					</button>
+					<input class="plh3" type="text" name="search" placeholder="Search...">
+				</form>
+			</div>
+		</div>
+	</header>
+
+	<!-- Cart -->
+	<div class="wrap-header-cart js-panel-cart">
+		<div class="s-full js-hide-cart"></div>
+
+		<div class="header-cart flex-col-l p-l-65 p-r-25">
+			<div class="header-cart-title flex-w flex-sb-m p-b-8">
+				<span class="mtext-103 cl2">
+					Your Cart
+				</span>
+
+				<div class="fs-35 lh-10 cl2 p-lr-5 pointer hov-cl1 trans-04 js-hide-cart">
+					<i class="zmdi zmdi-close"></i>
+				</div>
+			</div>
+			
+			<div class="header-cart-content flex-w js-pscroll">
+				<ul class="header-cart-wrapitem w-full">
+				<% for (let i = 0; i < cartProducts.length; i++) { %>
+					<li class="header-cart-item flex-w flex-t m-b-12">
+						<div class="header-cart-item-img">
+							<img src="/public/product-images/<%=cartProducts[i].image%>" alt="IMG">
+						</div>
+
+						<div class="header-cart-item-txt p-t-8">
+							<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
+								<%= cartProducts[i].name %>
+							</a>
+
+							<span class="header-cart-item-info">
+								<%= cartProducts[i].quantity %> x ₹ <%= cartProducts[i].price %>
+							</span>
+						</div>
+					</li>
+				<% } %>
+				
+				</ul>
+				
+				<div class="w-full">
+					<div class="header-cart-total w-full p-tb-40">
+						Total: ₹ <%= finalAmount %>
+					</div>
+
+					<div class="header-cart-buttons flex-w w-full">
+						<a href="/cart" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
+							View Cart
+						</a>
+
+						<a href="" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
+							Check Out
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	
+	<!-- Product -->
+	<div class="bg0 m-t-23 p-b-140">
+		<div class="container">
+			<div class="flex-w flex-sb-m p-b-52">
+				<div class="flex-w flex-l-m filter-tope-group m-tb-10">
+					<a href="/OrderHistory">
+						<h1 class="order-link">Your Orders</h1>
+					</a>
+					
+					<div class="flex-w flex-l-m filter-tope-group m-tb-10" style="margin-left: 50px;">
+
+						
+	
+						 
+						<button  class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5  how-active1 "  data-filter=".Delivered" >
+
+							 Buy Again
+						</button>
+
+						<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 " data-filter=".Shipped">
+							 Shipped
+					   </button>
+
+						<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".NotYetShipped">
+							 Not Yet Shipped
+						</button>
+	
+						<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".Cancelled">
+							 Cancelled
+						</button>
+	
+	
+					</div>
+				
+				</div>
+
+				<div class="flex-w flex-c-m m-tb-10">
+
+					<div class="flex-c-m stext-106 cl6 size-105 bor4 pointer hov-btn3 trans-04 m-tb-4 js-show-search">
+						<i class="icon-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-search"></i>
+						<i class="icon-close-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
+						Search
+					</div>
+				</div>
+				
+				<!-- Search product -->
+				<div class="dis-none panel-search w-full p-t-10 p-b-15">
+					<div class="bor8 dis-flex p-l-15">
+						<form action="/searchOrder" class="w-auto d-flex"   >
+						<button class="size-113 flex-c-m fs-16 cl2 hov-cl1 trans-04"  value="find" type="submit" class="btn btn-success">
+							<i class="zmdi zmdi-search"></i>
+						</button>
+						
+						<input class="mtext-107 cl2 size-114 plh2 p-r-15  " type="text" name="search" placeholder="Search" aria-label="Search">
+					</form>
+					</div>	
+				</div>
+
+				<!-- Filter -->
+				<div class="dis-none panel-filter w-full p-t-10">
+					<div class="wrap-filter flex-w bg6 w-full p-lr-40 p-t-27 p-lr-15-sm">
+						<div class="filter-col1 p-r-15 p-b-27">
+							<div class="mtext-102 cl2 p-b-15">
+								Sort By
+							</div>
+
+							<ul>
+								<li class="p-b-6">
+									<a href="#" class="filter-link stext-106 trans-04">
+										Default
+									</a>
+								</li>
+
+								<li class="p-b-6">
+									<a href="#" class="filter-link stext-106 trans-04">
+										Popularity
+									</a>
+								</li>
+
+								<li class="p-b-6">
+									<a href="#" class="filter-link stext-106 trans-04">
+										Average rating
+									</a>
+								</li>
+
+								<li class="p-b-6">
+									<a href="#" class="filter-link stext-106 trans-04 filter-link-active">
+										Newness
+									</a>
+								</li>
+
+								<li class="p-b-6">
+									<a href="#" class="filter-link stext-106 trans-04">
+										Price: Low to High
+									</a>
+								</li>
+
+								<li class="p-b-6">
+									<a href="#" class="filter-link stext-106 trans-04">
+										Price: High to Low
+									</a>
+								</li>
+							</ul>
+						</div>
+
+						<div class="filter-col2 p-r-15 p-b-27">
+							<div class="mtext-102 cl2 p-b-15">
+								Price
+							</div>
+
+							<ul>
+								<li class="p-b-6">
+									<a href="#" class="filter-link stext-106 trans-04 filter-link-active">
+										All
+									</a>
+								</li>
+
+								<li class="p-b-6">
+									<a href="#" class="filter-link stext-106 trans-04">
+										$0.00 - $50.00
+									</a>
+								</li>
+
+								<li class="p-b-6">
+									<a href="#" class="filter-link stext-106 trans-04">
+										$50.00 - $100.00
+									</a>
+								</li>
+
+								<li class="p-b-6">
+									<a href="#" class="filter-link stext-106 trans-04">
+										$100.00 - $150.00
+									</a>
+								</li>
+
+								<li class="p-b-6">
+									<a href="#" class="filter-link stext-106 trans-04">
+										$150.00 - $200.00
+									</a>
+								</li>
+
+								<li class="p-b-6">
+									<a href="#" class="filter-link stext-106 trans-04">
+										$200.00+
+									</a>
+								</li>
+							</ul>
+						</div>
+
+						<div class="filter-col3 p-r-15 p-b-27">
+							<div class="mtext-102 cl2 p-b-15">
+								Color
+							</div>
+
+							<ul>
+								<li class="p-b-6">
+									<span class="fs-15 lh-12 m-r-6" style="color: #222;">
+										<i class="zmdi zmdi-circle"></i>
+									</span>
+
+									<a href="#" class="filter-link stext-106 trans-04">
+										Black
+									</a>
+								</li>
+
+								<li class="p-b-6">
+									<span class="fs-15 lh-12 m-r-6" style="color: #4272d7;">
+										<i class="zmdi zmdi-circle"></i>
+									</span>
+
+									<a href="#" class="filter-link stext-106 trans-04 filter-link-active">
+										Blue
+									</a>
+								</li>
+
+								<li class="p-b-6">
+									<span class="fs-15 lh-12 m-r-6" style="color: #b3b3b3;">
+										<i class="zmdi zmdi-circle"></i>
+									</span>
+
+									<a href="#" class="filter-link stext-106 trans-04">
+										Grey
+									</a>
+								</li>
+
+								<li class="p-b-6">
+									<span class="fs-15 lh-12 m-r-6" style="color: #00ad5f;">
+										<i class="zmdi zmdi-circle"></i>
+									</span>
+
+									<a href="#" class="filter-link stext-106 trans-04">
+										Green
+									</a>
+								</li>
+
+								<li class="p-b-6">
+									<span class="fs-15 lh-12 m-r-6" style="color: #fa4251;">
+										<i class="zmdi zmdi-circle"></i>
+									</span>
+
+									<a href="#" class="filter-link stext-106 trans-04">
+										Red
+									</a>
+								</li>
+
+								<li class="p-b-6">
+									<span class="fs-15 lh-12 m-r-6" style="color: #aaa;">
+										<i class="zmdi zmdi-circle-o"></i>
+									</span>
+
+									<a href="#" class="filter-link stext-106 trans-04">
+										White
+									</a>
+								</li>
+							</ul>
+						</div>
+
+						<div class="filter-col4 p-b-27">
+							<div class="mtext-102 cl2 p-b-15">
+								Tags
+							</div>
+
+							<div class="flex-w p-t-4 m-r--5">
+								<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
+									Fashion
+								</a>
+
+								<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
+									Lifestyle
+								</a>
+
+								<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
+									Denim
+								</a>
+
+								<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
+									Streetstyle
+								</a>
+
+								<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
+									Crafts
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+ 
+   <hr style="border-color: rgba(0, 0, 0, 0.174); border-width: 1px; margin-bottom: 10px;">
+			 
+   <div style="display: flex; justify-content: flex-end;   margin-top: 40px;">
+    <div class="filter-container">
+        <h5 style="margin-right: 10px; font-size: 18px; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; color: #2b2f39e2;font-size: 16px;"><%= orderDetails.length %> Orders Placed</h5>
+        <select  style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; color: #2b2f39d5" id="order-filter" onchange="handleFilterChange()">
+            <option value="last-30-days">Last 30 Days</option>
+            <option value="past-3-months">Past 3 Months</option>
+            <option value="2023">2023</option>
+        </select>
+    </div>
+    </div>
+	<% if (orderDetails.length > 0) { %>
+		<% orderDetails.forEach((order) => { %>
+
+			<div class="card card-1" style="border: 1px solid rgba(33, 32, 32, 0.342); margin-top: 125px;">
+				<div class="card-header " style="background-color:#cac2c24d">
+					<div class="media flex-sm-row flex-column-reverse justify-content-between">
+						<div class="col  " style="margin-top: 10px;">
+							<h4 class="mb-0">Order Date</h4>
+							<p class="mb-4 pt-0"><%= order.orderdate %></p>
+							 
+						</div>
+
+						 
+						<div class="col-auto text-center  my-auto pl-0 pt-sm-4"> <p class="mb-4 pt-0 Glasses">Order id # <%= order.orderid %></p>  </div>
+
+					</div>
+				</div>
+			
+			
+				<% order.product.forEach((product) => { %>
+				<div class="card-body">
+					<div class="row justify-content-between mb-3">
+						<div > <h4 class=" " style="color: rgb(210, 97, 97); margin-left: 24px;margin-bottom: 18px;margin-top: 10px 	;"> Status of Order <span style="color: rgba(34, 28, 28, 0.658);font-size: 16px;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;"> <%= order.status %> </span></h4> </div>
+						<div class="OrderDetails">	<a href="/productOrderDetails?id=<%= order.orderid %>" class="  flex-c-m stext-103 cl2 size-102 bg0 bor2   p-lr-15 trans-04" style="background-color: transparent;border: 1px rgba(0, 0, 0, 0.489) solid;margin-right: 20px;">
+							 Order Details 
+						</a></div>
+					</div>
+					
+					<div class="row">
+						<div class="col">
+							<div class="card card-2" style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-size: 19px; ">
+								<div class="card-body">
+									<div class="media">
+										<div class="sq align-self-center "> <img class="img-fluid  my-auto align-self-center mr-2 mr-md-4 pl-0 p-0 m-0" src="/public/product-images/<%=product.image%>"alt="IMG-PRODUCT" width="135" height="135" /> </div>
+										<div class="media-body my-auto text-right">
+											<div class="row  my-auto flex-column flex-md-row">
+												 
+												<div class="col-auto my-auto"> <small style="margin-left: 52px;"><%= product.product_name %> </small></div>
+												<div class="col my-auto"> <small>Size : <%= product.size %></small></div>
+												<div class="col my-auto"> <small>Qty : <%= product.quantity %></small></div>
+												<div class="col my-auto"><h6 class="mb-0">&#8377;3,600.00</h6>
+												</div>
+											</div>
+										</div>
+									</div>
+									<hr class="my-3 ">
+									<div class="row">
+										<div class="col-md-3 mb-3"> <small> Track Order <span><i class=" ml-2 fa fa-refresh"  aria-hidden="true"></i></span></small> </div>
+										 
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-auto"><p class="mb-1" style="margin: 0px 10px; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; color: rgba(32, 29, 29, 0.694); font-size: 15px;"><b>Order Details</b></p></div>
+					
+					  
+					<div class="row mt-4" style="margin-bottom: 20px;">
+						<div class="col">
+					  
+						  <div class="row justify-content-between">
+					
+							<div class="flex-sm-col text-right col smallscreen"> <p class="mb-1" style="margin-right: 10px; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; color: rgba(32, 29, 29, 0.694); font-size: 15px;"><b>Total</b></p> </div>
+							<div class="flex-sm-col col-auto"> <p class="mb-1 responsivePrice">&#8377;<%= product.price %></p> </div>
+						  </div>
+					  
+						  <div class="row justify-content-between">
+							<div class="flex-sm-col text-right col smallscreen"><p class="mb-1" style="margin-right: 10px; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; color: rgba(32, 29, 29, 0.694); font-size: 15px;"> <b>Discount</b></p> </div>
+							<div class="flex-sm-col col-auto"><p class="mb-1 responsivePrice">&#8377;150</p></div>
+						  </div>
+					  
+						  <div class="row justify-content-between">
+							<div class="flex-sm-col text-right col smallscreen"><p class="mb-1" style="margin-right: 10px; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; color: rgba(32, 29, 29, 0.694); font-size: 15px;"><b>GST 18%</b></p></div>
+							<div class="flex-sm-col col-auto"><p class="mb-1 responsivePrice">843</p></div>
+						  </div>
+					  
+						  <div class="row justify-content-between">
+							<div class="flex-sm-col text-right col smallscreen"><p class="mb-1" style="margin-right: 10px; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; color: rgba(32, 29, 29, 0.694); font-size: 15px;"><b>Delivery Charges</b></p></div>
+							<div class="flex-sm-col col-auto"><p class="mb-1 responsivePrice">Free</p></div>
+						  </div>
+						  
+					  
+						  <div class="row invoice" >
+							<div class="col-md-6 mb-3 addresslarge">
+							  <p class="mb-1">Invoice Number: 788152</p>
+							  <p class="mb-1">Payment Method: <%= order.payment_method %></p>
+							   
+							</div>
+							<div class="col-md-6">
+							  <p class="mb-1"> Name: <%= order.name %></p>
+							  <p class="mb-1">Invoice Date: 22 Dec, 2019</p>
+							  <p class="mb-1"> Mobile: <%= order.mobile %></p>
+							</div>
+						  </div>
+						</div>
+					  </div>
+					  
+					
+					  <hr style="border-color: rgba(0, 0, 0, 0.333); border-width: 1px;margin-top: 50px; margin-bottom: 60px;">
+				</div>
+				<% }) %> 
+				
+			 </div>
+
+			     <% }) %>
+				<% } else { %>
+					<h4 style="color:rgba(30, 28, 28, 0.443);font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">No orders found.</h4>
+				
+					<hr style="border-color: rgba(0, 0, 0, 0.333); border-width: 1px;margin-top: 100px; margin-bottom: 100px;">
+					<% } %>
+
+		
+
+			
+		</div>
+	</div>
+		
+
+	<!-- Footer -->
+	<footer class="bg3 p-t-75 p-b-32">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-6 col-lg-3 p-b-50">
+					<h4 class="stext-301 cl0 p-b-30">
+						Categories
+					</h4>
+
+					<ul>
+						<li class="p-b-10">
+							<a href="/allProducts" class="stext-107 cl7 hov-cl1 trans-04">
+								Nike Shoes
+							</a>
+						</li>
+
+						<li class="p-b-10">
+							<a href="/allProducts" class="stext-107 cl7 hov-cl1 trans-04">
+								Adidas
+							</a>
+						</li>
+
+						<li class="p-b-10">
+							<a href="/allProducts" class="stext-107 cl7 hov-cl1 trans-04">
+								Casual Shoes
+							</a>
+						</li>
+
+						<li class="p-b-10">
+							<a href="/allProducts" class="stext-107 cl7 hov-cl1 trans-04">
+								Sneakers
+							</a>
+						</li>
+						<li class="p-b-10">
+							<a href="/allProducts" class="stext-107 cl7 hov-cl1 trans-04">
+								Football Boots
+							</a>
+						</li>
+					</ul>
+				</div>
+
+				<div class="col-sm-6 col-lg-3 p-b-50">
+					<h4 class="stext-301 cl0 p-b-30">
+						Help
+					</h4>
+
+					<ul>
+						<li class="p-b-10">
+							<a href="/userProfile" class="stext-107 cl7 hov-cl1 trans-04">
+								 Address
+							</a>
+						</li>
+
+						<li class="p-b-10">
+							<a href="/OrderHistory" class="stext-107 cl7 hov-cl1 trans-04">
+								Your Orders
+							</a>
+						</li>
+
+						<li class="p-b-10">
+							<a href="/OrderHistory" class="stext-107 cl7 hov-cl1 trans-04">
+								Shipping
+							</a>
+						</li>
+
+						<li class="p-b-10">
+							<a href="/cart" class="stext-107 cl7 hov-cl1 trans-04">
+								Cart
+							</a>
+						</li>
+					</ul>
+				</div>
+
+				<div class="col-sm-6 col-lg-3 p-b-50">
+					<h4 class="stext-301 cl0 p-b-30">
+						GET IN TOUCH
+					</h4>
+
+					<p class="stext-107 cl7 size-201">
+						Any questions? Let us know in store at maradu, Kochi , Kerala or call us on (+91) 99 4744 2414
+					</p>
+
+					<div class="p-t-27">
+						<a href="https://github.com/naseebsidan7"  target="_blank" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+							<i class="fa fa-github"></i>
+						</a>
+
+						<a href="https://www.instagram.com/sidan07_/" target="_blank" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+							<i class="fa fa-instagram"></i>
+						  </a>
+						  
+
+						<a href="https://in.pinterest.com/naseebsidan/"  target="_blank" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+							<i class="fa fa-pinterest-p"></i>
+						</a>
+
+						
+						<a href="https://www.linkedin.com/in/naseeb-sidan-16b371267/"  target="_blank" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+							<i class="fa fa-linkedin"></i>
+						</a>
+					</div>
+				</div>
+
+			 
+			</div>
+
+			<div class="p-t-40">
+				<div class="flex-c-m flex-w p-b-18">
+					<a href="#" class="m-all-1">
+					  <span style="font-size: 16px; color: rgba(109, 129, 241, 0.63);font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">&copy; Active Kicks</span>
+	 
+					</a>
+				  </div>
+				  
+
+				
+			</div>
+		</div>
+	</footer>
+
+
+	<!-- Back to top -->
+	<div class="btn-back-to-top" id="myBtn">
+		<span class="symbol-btn-back-to-top">
+			<i class="zmdi zmdi-chevron-up"></i>
+		</span>
+	</div>
+
+  
+
+<!--===============================================================================================-->	
+	<script src="/public/homeTemp/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="/public/homeTemp/vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="/public/homeTemp/vendor/bootstrap/js/popper.js"></script>
+	<script src="/public/homeTemp/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="/public/homeTemp/vendor/select2/select2.min.js"></script>
+	<script>
+		$(".js-select2").each(function(){
+			$(this).select2({
+				minimumResultsForSearch: 20,
+				dropdownParent: $(this).next('.dropDownSelect2')
+			});
+		})
+	</script>
+<!--===============================================================================================-->
+	<script src="/public/homeTemp/vendor/daterangepicker/moment.min.js"></script>
+	<script src="/public/homeTemp/vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="/public/homeTemp/vendor/slick/slick.min.js"></script>
+	<script src="/public/homeTemp/js/slick-custom.js"></script>
+<!--===============================================================================================-->
+	<script src="/public/homeTemp/vendor/parallax100/parallax100.js"></script>
+	<script>
+        $('.parallax100').parallax100();
+	</script>
+<!--===============================================================================================-->
+	<script src="/public/homeTemp/vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
+	<script>
+		$('.gallery-lb').each(function() { // the containers for all your galleries
+			$(this).magnificPopup({
+		        delegate: 'a', // the selector for gallery item
+		        type: 'image',
+		        gallery: {
+		        	enabled:true
+		        },
+		        mainClass: 'mfp-fade'
+		    });
+		});
+	</script>
+<!--===============================================================================================-->
+	<script src="/public/homeTemp/vendor/isotope/isotope.pkgd.min.js"></script>
+<!--===============================================================================================-->
+	<script src="/public/homeTemp/vendor/sweetalert/sweetalert.min.js"></script>
+	<script>
+		$('.js-addwish-b2, .js-addwish-detail').on('click', function(e){
+			e.preventDefault();
+		});
+
+		$('.js-addwish-b2').each(function(){
+			var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
+			$(this).on('click', function(){
+				swal(nameProduct, "is added to wishlist !", "success");
+
+				$(this).addClass('js-addedwish-b2');
+				$(this).off('click');
+			});
+		});
+
+		$('.js-addwish-detail').each(function(){
+			var nameProduct = $(this).parent().parent().parent().find('.js-name-detail').html();
+
+			$(this).on('click', function(){
+				swal(nameProduct, "is added to wishlist !", "success");
+
+				$(this).addClass('js-addedwish-detail');
+				$(this).off('click');
+			});
+		});
+
+		/*---------------------------------------------*/
+
+		$('.js-addcart-detail').each(function(){
+			var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
+			$(this).on('click', function(){
+				swal(nameProduct, "is added to cart !", "success");
+			});
+		});
+	
+	</script>
+<!--===============================================================================================-->
+	<script src="/public/homeTemp/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+	 
+	<script>
+		$('.js-pscroll').each(function(){
+			$(this).css('position','relative');
+			$(this).css('overflow','hidden');
+			var ps = new PerfectScrollbar(this, {
+				wheelSpeed: 1,
+				scrollingThreshold: 1000,
+				wheelPropagation: false,
+			});
+
+			$(window).on('resize', function(){
+				ps.update();
+			})
+		});
+	</script>
+
+    <script>
+        function handleFilterChange() {
+            const selectedValue = document.getElementById("order-filter").value;
+            // Perform actions based on the selected option
+            // You can use JavaScript to filter the orders accordingly
+            // For example, you can make an AJAX request to fetch filtered orders from the server
+            // or manipulate the displayed orders directly in the client-side based on the selected value.
+        }
+    </script>
+  
+
+<!--===============================================================================================-->
+	<script src="/public/homeTemp/js/main.js"></script>
+ 
+
+</body>
+</html>

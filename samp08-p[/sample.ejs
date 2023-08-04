@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table>
+        <tr>
+          <th>Order ID</th>
+          <th>Email</th>
+          <th>Mobile</th>
+          <th>Total Amount</th>
+          <th>Order Status</th>
+          <th>Payment Method</th>
+          <th>Order Date</th>
+          <th>Product</th>
+        </tr>
+        <% orderDetails.forEach(order => { %>
+          <tr>
+            <td><%= order.orderid %></td>
+            <td><%= order.email %></td>
+            <td><%= order.mobile %></td>
+            <td><%= order.grandTotal %></td>
+            <td><%= order.status %></td>
+            <td><%= order.payment_method %></td>
+            <td><%= order.orderdate %></td>
+            <td>
+              <% order.product.forEach(product => { %>
+                <div>
+                  Product ID: <%= product.productid %><br>
+                  Quantity: <%= product.quantity %><br>
+                  Size: <%= product.size %><br>
+                  Total: <%= product.total %><br>
+                  Status: <%= product.status %>
+                </div>
+                <br>
+              <% }) %>
+            </td>
+          </tr>
+        <% }) %>
+      </table>
+      
+    
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<%- include('../layout/adminheader.ejs')%>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+    <!-- <link rel="stylesheet" href="../public/stylesheet/home.css"> -->
+    <style>
+       .nav-link.orders{
+            color: rgb(242, 129, 35);
+     }
+     </style>
+</head>
+<body>
+
+            <!-- breadcrumb-section -->
+            <div class="breadcrumb-section " style="background-image: url(/public/images/appimages/IMG_6926\ \(2\)\ \(1\).JPG)">
+            </div>
+            <!-- end breadcrumb section -->
+
+    <div class="container mt-80" style="position: relative;">
+        <div class="" style="position: absolute;right: 0;">
+            <button class="btn btn-secondary" onclick="history.back()">Go Back</button>
+            </div>
+        </div>
+<div class="container m-4">
+  
+   </div>
+    <section>
+
+        <div class="container mt-150 mb-80 ">
+            <div class="container-fluid">
+            
+            <table id="table1" class="table mt-4" style="color: #000;">
+                <thead>
+                  
+                    <tr style="color: #000;">
+                        <th scope="col">No</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Total Amount</th>
+                        <th scope="col">Payment Methode</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">More View</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if(typeof message!=='undefined'){%>
+                        <p><%=message%></p>
+                    
+                       <% } else{%>
+                    <% if (orderdetails.length> 0)  { let k=1
+                        for(let i=orderdetails.length-1; i>=0; i--) {  %>
+                            <tr>
+                                <th><%- k%></th>
+                                <td>
+                                    <%= orderdetails[i].orderdate %>
+                                  </td>
+                                <td>
+                                    <%= orderdetails[i].name %>
+                                </td>
+                                <td>
+                                    <%= orderdetails[i].phone %>
+                                </td>
+                                <td>
+                                    ₹ <%= orderdetails[i].totalamount %>
+                                </td>
+                                <td>
+                                    <%= orderdetails[i].payment %>
+                                </td>
+                                <td>
+                                    <% if(orderdetails[i].return==false){%>
+                                   <%= orderdetails[i].status%>
+                                   <% }
+                                    else{%>
+                                      <a>Returned</a>  
+                                  <%  }%>
+                                </td>
+                                <td>
+                                    <a href="/admin/orderdetails?orderId=<%=orderdetails[i].orderid%>" class="btn btn-primary" style="width: 70px; border-radius: 7px;font-size: small;">VIEW</a>
+                               </td>
+
+                               </tr>
+                         
+                             <% k++ } } else { %>
+                                <tr>
+                                    <td colspan="5">Products Not Found</td>
+                                </tr>
+                                <% }} %> 
+    
+                            </tbody>
+                          </table>
+                    
+                        </div>
+                    </div>
+    </section>
+    <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap4.min.js"></script>
+    <script src="//cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script>
+
+        $(function () {
+          $('#table1').DataTable();
+        });
+      
+      </script>
+
+</body>
+</html>
+<%- include('../layout/adminfooter.ejs') %>

@@ -1,0 +1,50 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin login</title>
+
+    
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="/public/signup-signin/fonts/material-icon/css/material-design-iconic-font.min.css">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="/public/admin/style.css">
+
+</head>
+<body>
+   
+        <section>
+            <form action="" method="post">
+                <h1>Login</h1>
+                <div class="inputbox">
+                    <ion-icon name="mail-outline"></ion-icon>
+                    <input type="email" name="email" required>
+                    <label for="">Email</label>
+                </div>
+                <div class="inputbox">
+                    <ion-icon name="lock-closed-outline"></ion-icon>
+                    <input name="password" type="password" required>
+                    <label for="">Password</label>
+                    
+                </div>
+                <%
+                if(typeof message !== 'undefined'){
+                  %><p style="color: #b44848; font-size: 15px; font-style: italic; font-weight: 500; font-family: monospace; display: block; margin-top: 0px;"><%= message %></p>
+                  <%
+                }
+            %>
+                <button>Log in</button>
+
+              
+             
+            </form>
+        </section>
+
+    
+</body>
+</html>

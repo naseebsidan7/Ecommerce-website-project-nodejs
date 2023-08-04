@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Product Detail</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="/public/homeTemp/images/icons/favicon.png" />
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/public/homeTemp/vendor/bootstrap/css/bootstrap.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/public/homeTemp/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/public/homeTemp/fonts/iconic/css/material-design-iconic-font.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/public/homeTemp/fonts/linearicons-v1.0.0/icon-font.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/public/homeTemp/vendor/animate/animate.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/public/homeTemp/vendor/css-hamburgers/hamburgers.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/public/homeTemp/vendor/animsition/css/animsition.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/public/homeTemp/vendor/select2/select2.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/public/homeTemp/vendor/daterangepicker/daterangepicker.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/public/homeTemp/vendor/slick/slick.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/public/homeTemp/vendor/MagnificPopup/magnific-popup.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/public/homeTemp/vendor/perfect-scrollbar/perfect-scrollbar.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/public/homeTemp/css/util.css">
+	<link rel="stylesheet" type="text/css" href="/public/homeTemp/css/main.css">
+	<!--===============================================================================================-->
+	<!-- Add these lines in the <head> section -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	
+	<style>
+		  @media (min-width: 992px){
+		.col-lg-7 {
+		-ms-flex: 0 0 58.333333%;
+		flex: 0 0 58.333333%;
+		max-width: 33.333%;
+		}
+		  }
+	</style>
+</head>
+
+<body class="animsition">
+
+	<!-- Header -->
+	<header class="header-v4">
+
+		<!-- Header desktop -->
+		<div class="container-menu-desktop">
+			<!-- Topbar -->
+			<div class="top-bar">
+				<div class="content-topbar flex-sb-m h-full container">
+					<div class="left-top-bar">
+						Free shipping for standard order over $100
+					</div>
+
+					<div class="right-top-bar flex-w h-full">
+						<a href="#" class="flex-c-m trans-04 p-lr-25">
+							Help & FAQs
+						</a>
+
+						<a href="#" class="flex-c-m trans-04 p-lr-25">
+							My Account
+						</a>
+
+						<a href="#" class="flex-c-m trans-04 p-lr-25">
+							EN
+						</a>
+
+						<a href="#" class="flex-c-m trans-04 p-lr-25">
+							USD
+						</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="wrap-menu-desktop how-shadow1">
+				<nav class="limiter-menu-desktop container">
+
+					<!-- Logo desktop -->
+					<a href="/home" class="logo">
+						<img src="/public/images/20230620_111354_0000-removebg-preview(1).png" alt="IMG-LOGO">
+					</a>
+
+					<!-- Menu desktop -->
+					<div class="menu-desktop">
+						<ul class="main-menu">
+							<li>
+								<a href="/home">Home</a>
+						 
+							</li>
+
+							<li>
+								<a href="/allProducts">Shop</a>
+							</li>
+
+							<li class="label1" data-label1="hot">
+								<a href="/allProducts">Features</a>
+							</li>
+
+							<li >
+								<a href="/OrderHistory">My Orders</a>
+							</li>
+			
+						 
+						 
+
+							<li>
+								<a href="/contact">Contact</a>
+							</li>
+						</ul>
+					</div>
+
+					<!-- Icon header -->
+					<div class="wrap-icon-header flex-w flex-r-m">
+						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
+							<i class="zmdi zmdi-search"></i>
+						</div>
+
+						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart"
+							data-notify="<%= cartProducts.length %>">
+							<i class="zmdi zmdi-shopping-cart"></i>
+						</div>
+
+						<a href="/userProfile" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 " data-notify="0">
+							<i class="zmdi zmdi-settings"></i>
+						</a>
+
+					</div>
+				</nav>
+			</div>
+		</div>
+
+		<!-- Header Mobile -->
+		<div class="wrap-header-mobile">
+			<!-- Logo moblie -->
+			<div class="logo-mobile">
+				<a href="/home"><img src="/public/homeTemp/images/icons/logo-01.png" alt="IMG-LOGO"></a>
+			</div>
+
+			<!-- Icon header -->
+			<div class="wrap-icon-header flex-w flex-r-m m-r-15">
+				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 js-show-modal-search">
+					<i class="zmdi zmdi-search"></i>
+				</div>
+
+				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart"
+					data-notify="<%= cartProducts.length %>">
+					<i class="zmdi zmdi-shopping-cart"></i>
+				</div>
+
+				<a href="/userProfile" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 "
+				data-notify="0">
+				<i class="zmdi zmdi-settings"></i>
+			</a>
+			</div>
+
+			<!-- Button show menu -->
+			<div class="btn-show-menu-mobile hamburger hamburger--squeeze">
+				<span class="hamburger-box">
+					<span class="hamburger-inner"></span>
+				</span>
+			</div>
+		</div>
+
+
+		<!-- Menu Mobile -->
+		<div class="menu-mobile">
+		 
+
+			<ul class="main-menu-m">
+				<li>
+					<a href="/home">Home</a>
+				 
+					<span class="arrow-main-menu-m">
+						<i class="fa fa-angle-right" aria-hidden="true"></i>
+					</span>
+				</li>
+
+				<li>
+					<a href="/allProducts">Shop</a>
+				</li>
+
+				<li>
+					<a href="/allProducts" class="label1 rs1" data-label1="top">Features</a>
+				</li>
+				<li >
+					<a href="/OrderHistory">My Orders</a>
+				</li>
+
+			
+				<li>
+					<a href="/contact">Contact</a>
+				</li>
+			</ul>
+		</div>
+
+		<!-- Modal Search -->
+		<div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
+			<div class="container-search-header">
+				<button class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
+					<img src="/public/homeTemp/images/icons/icon-close2.png" alt="CLOSE">
+				</button>
+
+				<form class="wrap-search-header flex-w p-l-15">
+					<button class="flex-c-m trans-04">
+						<i class="zmdi zmdi-search"></i>
+					</button>
+					<input class="plh3" type="text" name="search" placeholder="Search...">
+				</form>
+			</div>
+		</div>
+	</header>
+
+	<!-- Cart -->
+	<div class="wrap-header-cart js-panel-cart">
+		<div class="s-full js-hide-cart"></div>
+
+		<div class="header-cart flex-col-l p-l-65 p-r-25">
+			<div class="header-cart-title flex-w flex-sb-m p-b-8">
+				<span class="mtext-103 cl2">
+					Your Cart
+				</span>
+
+				<div class="fs-35 lh-10 cl2 p-lr-5 pointer hov-cl1 trans-04 js-hide-cart">
+					<i class="zmdi zmdi-close"></i>
+				</div>
+			</div>
+			
+			<div class="header-cart-content flex-w js-pscroll">
+				<ul class="header-cart-wrapitem w-full">
+				<% for (let i = 0; i < cartProducts.length; i++) { %>
+					<li class="header-cart-item flex-w flex-t m-b-12">
+						<div class="header-cart-item-img">
+							<img src="/public/product-images/<%=cartProducts[i].image%>" alt="IMG">
+						</div>
+
+						<div class="header-cart-item-txt p-t-8">
+							<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
+								<%= cartProducts[i].name %>
+							</a>
+
+							<span class="header-cart-item-info">
+								<%= cartProducts[i].quantity %> x ₹ <%= cartProducts[i].price %>
+							</span>
+						</div>
+					</li>
+				<% } %>
+				
+				</ul>
+				
+				<div class="w-full">
+					<div class="header-cart-total w-full p-tb-40">
+						Total: ₹ <%= finalAmount %>
+					</div>
+
+					<div class="header-cart-buttons flex-w w-full">
+						<a href="/cart" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
+							View Cart
+						</a>
+
+						<a href="" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
+							Check Out
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- breadcrumb -->
+	<div class="container">
+		<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
+			<a href="/home" class="stext-109 cl8 hov-cl1 trans-04">
+				Home
+				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+			</a>
+
+			<a href="/OrderHistory" class="stext-109 cl8 hov-cl1 trans-04">
+				 Your Orders
+					<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+			</a>
+
+			<span class="stext-109 cl4">
+				 Order Details 	
+			</span>
+		</div>
+	</div>
+
+	
+	<!-- Product Detail -->
+	<section class="sec-product-detail bg0 p-t-65 p-b-60">
+		
+		<div class="container">
+			<h1>Order Details</h1>
+			<h5 style="text-align: right;"> Order Date: <%= orderDetails.orderdate.toLocaleString('en-US', { weekday: 'short', month: 'short', day: '2-digit', year: 'numeric' })  %></h5>
+			<div class="bor10 m-t-50 p-t-43 p-b-40" style="border: 1px solid rgba(33, 32, 32, 0.342); margin-top: 10px;margin-bottom: 50px;">
+				<!-- Tab01 -->
+				<div class="tab01" >
+				 
+						 
+							
+				
+
+							
+							 
+							
+				 
+
+					<div class="row" style="margin-left: 50px;">
+						<div class="col-md-4" style="font-size: 15px;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+						  <h3 style="color: rgb(97, 131, 210);">Address:</h3>
+						  <ul>
+							<% orderDetails.address.forEach(function(addr) { %>
+							  <li>State: <%= addr.state %></li>
+							  <li>Location: <%= addr.location %></li>
+							  <li>Landmark: <%= addr.landmark %></li>
+							  <li>City: <%= addr.city %></li>
+							  <li>Pincode: <%= addr.pincode %></li>
+							  <li>Country: <%= addr.country %></li>
+							  <li>Mobile: <%= addr.mobile %></li>
+							  <br>
+							<% }); %>
+						  </ul>
+						</div>
+					  
+						<div class="col-md-4" style="font-size: 15px;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+							<h3 style="color: rgb(97, 131, 210);">Order Summery </h3>
+							<ul>
+								<% for (let i = 0; i < orderDetails.product.length; i++) { %>
+								  <li><%= i + 1 %> item total: <span style="margin-left: 50px; color: rgb(239, 64, 64);"> ₹ <%= orderDetails.product[i].total %> </span> </li>
+								<% } %>
+							  
+								<li>Shipping: <span style=" margin-left: 71px; color: rgb(239, 64, 64);">₹ 0</span></li>
+								<li>Discount: <span style=" margin-left: 71px;  color: rgb(239, 64, 64);"> <%= orderDetails.discoundAmount %> </span></li>
+								<li><strong>Grand Total: <span style="margin-left: 45px;"> ₹ <%= orderProductTotal %> </span></strong></li>
+								<br>
+							  </ul>
+							  
+							  
+						  </div>
+
+						<div class="col-md-4" style="font-size: 15px;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+						  <h3 style="color: rgb(97, 131, 210);">Payment Method</h3>
+						  <ul >
+							<% if(orderDetails.payment_method !== "Razorpay"){ %>
+								<li> Pay on Delivery ( Cash/Card ). Cash On Delivery(COD) Available. Card/Net banking acceptnace subject to device availability </li>
+								<%} else { %>
+									<li> Pay on Razorpay ( Bank/Card ). Card/Net banking acceptnace subject to device availability </li>
+								<%}%>
+							<li></li>
+						  </ul>
+						</div>
+					  
+					
+						<div class="row">
+							<div class="flex-w flex-sb">
+								<a href="/orderHistory"  style="margin-left: auto; border: rgba(0, 0, 0, 0.587) 1px solid; border-radius: 50px;margin-right: 20px;">
+									<div class="flex-c-m stext-101 cl2 size-115  p-lr-15 trans-04 pointer">
+										Your orders
+									</div>
+								</a>
+							</div>
+							
+							<% if (orderDetails.status !== "Delivered" && orderDetails.status !== "Cancelled"   ) { %>
+								<div class="flex-w flex-sb">
+								  <!-- Button to trigger the modal -->
+								  <a href="" data-toggle="modal" data-target="#cancelProductModal" style="margin-left: auto; border: rgba(0, 0, 0, 0.587) 1px solid; border-radius: 50px;">
+									<div class="flex-c-m stext-101 cl2 size-115 p-lr-15 trans-04 pointer">
+									  Cancel Product
+									</div>
+								  </a>
+								</div>
+							  <% } %>
+								
+						
+					</div>
+					  </div>
+					  
+					  
+			 
+
+			 
+				</div>
+				
+			</div>
+
+			 
+			<% orderDetails.product.forEach((product) => { %>
+		
+			<div class="row">
+				
+				<div class="col-md-6 col-lg-7 p-b-30">
+					<div class="p-l-25 p-r-30 p-lr-0-lg">
+						<div class="wrap-slick3 flex-sb flex-w">
+							 
+					 
+							<h6>Order ID: <%= orderDetails.orderid %> </h6>
+							<div class="slick3 gallery-lb">
+ 
+									 
+
+
+											<!-- <img src="/public/homeTemp/images/product-detail-01.jpg" alt="IMG-PRODUCT"> -->
+
+											<div class="sq align-self-center "> <img class="img-fluid  my-auto align-self-center mr-2 mr-md-4 pl-0 p-0 m-0" src="/public/product-images/<%= product.image %>"alt="IMG-PRODUCT" width="285" height="285" /> </div>
+											 
+
+										 
+									 
+							 
+
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-6 col-lg-5 p-b-30">
+					<div class="p-r-50 p-t-5 p-lr-0-lg">
+						<h3 style="color: rgb(210, 97, 97);">Status: <span style="color: rgba(55, 43, 43, 0.833);font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;font-size: 18px;"><%= orderDetails.status %> </span> </h3>
+						
+						<h4 class="mtext-105 cl2 js-name-detail p-b-14">
+							<%= product.product_name %>
+						</h4>
+
+						<span class="mtext-106 cl2" >
+							₹ <%= product.price %>.00
+						</span>
+                        <h5>Quantity: <%= product.quantity %></h5>
+						<p><strong>Size:</strong> <%= product.size %></p>
+						<p><strong>Total:</strong> <%= product.total %></p>
+					 
+						<h3 style="color: rgb(97, 131, 210); font-size: 20px;">Payment Method: <span style="color: rgba(55, 43, 43, 0.833);font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;font-size: 18px;"> <%= orderDetails.payment_method %> </span> </h3>
+							
+							
+				 
+
+						 
+
+						<!--  -->
+						 
+					 
+						 
+							
+							 
+
+				 
+					</div>
+				</div>
+			</div>
+
+
+			<hr style="border-color: rgba(0, 0, 0, 0.333); border-width: 1px;margin-top: 50px; margin-bottom: 60px;">	
+			<% }) %>
+
+			
+		</div>
+
+		<div class="bg6 flex-c-m flex-w size-302 m-t-73 p-tb-15">
+			<span class="stext-107 cl6 p-lr-25">
+				 
+			</span>
+
+			<span class="stext-107 cl6 p-lr-25">
+				 
+			</span>
+		</div>
+	</section>
+
+
+	<!-- Related Products -->
+
+
+
+	<section class="sec-relate-product bg0 p-t-45 p-b-105">
+		<div class="container">
+			<div class="p-b-45">
+				<a href="/allProducts">
+				<h3 class="ltext-106 cl5 txt-center">
+					Shop More
+				</h3>
+			</a>
+			</div>
+
+			<!-- Slide2 -->
+		 
+		</div>
+	</section>
+
+	<!-- Footer -->
+	<footer class="bg3 p-t-75 p-b-32">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-6 col-lg-3 p-b-50">
+					<h4 class="stext-301 cl0 p-b-30">
+						Categories
+					</h4>
+
+					<ul>
+						<li class="p-b-10">
+							<a href="/allProducts" class="stext-107 cl7 hov-cl1 trans-04">
+								Nike Shoes
+							</a>
+						</li>
+
+						<li class="p-b-10">
+							<a href="/allProducts" class="stext-107 cl7 hov-cl1 trans-04">
+								Adidas
+							</a>
+						</li>
+
+						<li class="p-b-10">
+							<a href="/allProducts" class="stext-107 cl7 hov-cl1 trans-04">
+								Casual Shoes
+							</a>
+						</li>
+
+						<li class="p-b-10">
+							<a href="/allProducts" class="stext-107 cl7 hov-cl1 trans-04">
+								Sneakers
+							</a>
+						</li>
+						<li class="p-b-10">
+							<a href="/allProducts" class="stext-107 cl7 hov-cl1 trans-04">
+								Football Boots
+							</a>
+						</li>
+					</ul>
+				</div>
+
+				<div class="col-sm-6 col-lg-3 p-b-50">
+					<h4 class="stext-301 cl0 p-b-30">
+						Help
+					</h4>
+
+					<ul>
+						<li class="p-b-10">
+							<a href="/userProfile" class="stext-107 cl7 hov-cl1 trans-04">
+								 Address
+							</a>
+						</li>
+
+						<li class="p-b-10">
+							<a href="/OrderHistory" class="stext-107 cl7 hov-cl1 trans-04">
+								Your Orders
+							</a>
+						</li>
+
+						<li class="p-b-10">
+							<a href="/OrderHistory" class="stext-107 cl7 hov-cl1 trans-04">
+								Shipping
+							</a>
+						</li>
+
+						<li class="p-b-10">
+							<a href="/cart" class="stext-107 cl7 hov-cl1 trans-04">
+								Cart
+							</a>
+						</li>
+					</ul>
+				</div>
+
+				<div class="col-sm-6 col-lg-3 p-b-50">
+					<h4 class="stext-301 cl0 p-b-30">
+						GET IN TOUCH
+					</h4>
+
+					<p class="stext-107 cl7 size-201">
+						Any questions? Let us know in store at maradu, Kochi , Kerala or call us on (+91) 99 4744 2414
+					</p>
+
+					<div class="p-t-27">
+						<a href="https://github.com/naseebsidan7"  target="_blank" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+							<i class="fa fa-github"></i>
+						</a>
+
+						<a href="https://www.instagram.com/sidan07_/" target="_blank" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+							<i class="fa fa-instagram"></i>
+						  </a>
+						  
+
+						<a href="https://in.pinterest.com/naseebsidan/"  target="_blank" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+							<i class="fa fa-pinterest-p"></i>
+						</a>
+
+						
+						<a href="https://www.linkedin.com/in/naseeb-sidan-16b371267/"  target="_blank" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+							<i class="fa fa-linkedin"></i>
+						</a>
+					</div>
+				</div>
+
+			 
+			</div>
+
+			<div class="p-t-40">
+				<div class="flex-c-m flex-w p-b-18">
+					<a href="#" class="m-all-1">
+					  <span style="font-size: 16px; color: rgba(109, 129, 241, 0.63);font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">&copy; Active Kicks</span>
+	 
+					</a>
+				  </div>
+				  
+
+				
+			</div>
+		</div>
+	</footer>
+
+
+	<!-- Back to top -->
+	<div class="btn-back-to-top" id="myBtn">
+		<span class="symbol-btn-back-to-top">
+			<i class="zmdi zmdi-chevron-up"></i>
+		</span>
+	</div>
+
+ 
+	  
+	<!-- The Modal -->
+<div class="modal fade" id="cancelProductModal" tabindex="-1" role="dialog" aria-labelledby="cancelProductModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+	  <div class="modal-content" style="background-color: white;">
+		<div class="modal-header">
+		  <h5 class="modal-title" id="cancelProductModalLabel">Reason for Canceling Product</h5>
+		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		  </button>
+		</div>
+		<form id="cancelProductForm" method="POST" action="/cancelProduct?orderId=<%= orderDetails.orderid %>&userId=<%= orderDetails.userid %>&grandTotal=  <%= orderProductTotal %>&PaymentMethod=<%=orderDetails.payment_method%>">
+		 
+		   <!-- Replace "/cancelProduct" with the URL to your controller endpoint -->
+		  <div class="modal-body">
+			<!-- Add your form or input elements here to get the reason from the user -->
+			<div class="form-group">
+			  <input type="text" class="form-control" name="cancelReason" placeholder="Enter reason for canceling..." required>
+			</div>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			<button type="submit" class="btn btn-primary">Confirm Cancel</button>
+		  </div>
+		</form>
+	  </div>
+	</div>
+  </div>
+  
+
+
+
+	
+
+	<!--===============================================================================================-->
+	<script src="/public/homeTemp/vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="/public/homeTemp/vendor/animsition/js/animsition.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="/public/homeTemp/vendor/bootstrap/js/popper.js"></script>
+	<script src="/public/homeTemp/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="/public/homeTemp/vendor/select2/select2.min.js"></script>
+	<script>
+		$(".js-select2").each(function () {
+			$(this).select2({
+				minimumResultsForSearch: 20,
+				dropdownParent: $(this).next('.dropDownSelect2')
+			});
+		})
+	</script>
+	<!--===============================================================================================-->
+	<script src="/public/homeTemp/vendor/daterangepicker/moment.min.js"></script>
+	<script src="/public/homeTemp/vendor/daterangepicker/daterangepicker.js"></script>
+	<!--===============================================================================================-->
+	<script src="/public/homeTemp/vendor/slick/slick.min.js"></script>
+	<script src="/public/homeTemp/js/slick-custom.js"></script>
+	<!--===============================================================================================-->
+	<script src="/public/homeTemp/vendor/parallax100/parallax100.js"></script>
+	<script>
+		$('.parallax100').parallax100();
+	</script>
+	<!--===============================================================================================-->
+	<script src="/public/homeTemp/vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
+	<script>
+		$('.gallery-lb').each(function () { // the containers for all your galleries
+			$(this).magnificPopup({
+				delegate: 'a', // the selector for gallery item
+				type: 'image',
+				gallery: {
+					enabled: true
+				},
+				mainClass: 'mfp-fade'
+			});
+		});
+	</script>
+	<!--===============================================================================================-->
+	<script src="/public/homeTemp/vendor/isotope/isotope.pkgd.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="/public/homeTemp/vendor/sweetalert/sweetalert.min.js"></script>
+	<script>
+		$('.js-addwish-b2, .js-addwish-detail').on('click', function (e) {
+			e.preventDefault();
+		});
+
+		$('.js-addwish-b2').each(function () {
+			var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
+			$(this).on('click', function () {
+				swal(nameProduct, "is added to wishlist !", "success");
+
+				$(this).addClass('js-addedwish-b2');
+				$(this).off('click');
+			});
+		});
+
+		$('.js-addwish-detail').each(function () {
+			var nameProduct = $(this).parent().parent().parent().find('.js-name-detail').html();
+
+			$(this).on('click', function () {
+				swal(nameProduct, "is added to wishlist !", "success");
+
+				$(this).addClass('js-addedwish-detail');
+				$(this).off('click');
+			});
+		});
+
+		/*---------------------------------------------*/
+
+		// $('.js-addcart-detail').each(function(){
+		// 	var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
+		// 	$(this).on('click', function(){
+		// 		swal(nameProduct, "is added to cart !", "success");
+		// 	});
+		// });
+
+	</script>
+	<!--===============================================================================================-->
+	<script src="/public/homeTemp/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+	<script>
+		$('.js-pscroll').each(function () {
+			$(this).css('position', 'relative');
+			$(this).css('overflow', 'hidden');
+			var ps = new PerfectScrollbar(this, {
+				wheelSpeed: 1,
+				scrollingThreshold: 1000,
+				wheelPropagation: false,
+			});
+
+			$(window).on('resize', function () {
+				ps.update();
+			})
+		});
+	</script>
+	<!--===============================================================================================-->
+	<script src="/public/homeTemp/js/main.js"></script>
+
+ 
+
+</body>
+
+</html>

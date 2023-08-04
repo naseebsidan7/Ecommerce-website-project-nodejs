@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>otp page</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="/public/signup-signin/fonts/material-icon/css/material-design-iconic-font.min.css">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="/public/signup-signin/css/style.css">
+   
+</head>
+
+<body>
+
+    <div class="main" style="padding: 100px;">
+        
+        <section class="sign-in" id="otp-page" >
+            <div class="container">
+                <div class="signin-content">
+                    <div class="signin-image">
+                        <figure><img src="/public/signup-signin/images/968d0300d9095e0e9692ae5adc3718d4.jpg"
+                                alt="sing up image"></figure>
+                                <a href="/login" class="signup-image-link">Back Login Page</a>
+
+                    </div>
+
+                    <div class="signin-form">
+                        <h2 class="form-title">Enter OTP</h2>
+                        <p>Please enter the 6-digit verification code that was sent.</p>
+                        
+                        <form method="POST" action="verifyOtpforgot" class="register-form" id="otp-login-form">
+                            <div class="form-group-otp">
+                                <label for="otp"><i class="zmdi zmdi-email"></i></label>
+                                <input type="text" name="otp" id="otp" pattern="\d{6}" maxlength="6" placeholder="Enter OTP" required />
+                            </div>
+                            <div style="position: fixed">
+                                <% if ( typeof message !== 'undefined') { %>
+                                    <p style="color: #b44848; font-size: 15px; font-style: italic; font-weight: 500; font-family: monospace;"> <%= message %> </p>
+                                  <% } %>   
+                            </div> 
+                            <div class="form-group-otp form-button" style="margin-top: 50px;">
+                                <input type="submit" name="#" id="otp-signin" class="form-submit"  value="Verify OTP"
+                                    style="border-radius: 50px; cursor: pointer; background-color: black;" />
+                            </div>
+                            <div>
+                                <p style="margin-left: 30px;margin-top: 55px; color: #db4c4c8d;">Entered Email</p>
+                                <input type="email" id="email" name="email" value="<%= email %>" readonly style="color: #3b3232c1;" >
+                              </div>
+                        </form>
+                      
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- JS -->
+    <script src="/public/signup-signin/vendor/jquery/jquery.min.js"></script>
+    <script src="/public/signup-signin/js/main.js"></script>
+</body>
+
+</html>

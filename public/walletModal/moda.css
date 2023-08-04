@@ -1,0 +1,141 @@
+ 
+p {
+  margin-bottom:1em;
+}
+
+a.modal-open {
+  display:block;
+  padding:20px;
+  color:#424242;
+  font-weight:bold;
+  margin:50px auto;
+  width:200px;
+  background:#e0e0e0;
+  border-radius:2px;
+  text-align:center;
+  text-decoration:none;
+}
+.modal {
+  background:rgba(0,0,0,0.7);
+  position:fixed;
+  width:100%;
+  height:100%;
+  top:0px;
+  left:0px;
+  bottom:0px;
+  transition:all .5s ease-in-out;
+  opacity:0;
+  z-index:-1;
+}
+.modal:target {
+  opacity:1;
+  transition:all .5s ease-in-out;
+  z-index:+1;
+}
+.modal-content {
+  position:fixed;
+  top:50%;
+  left:50%;
+  width:500px;
+  background:#fff;
+  border-radius:4px;
+  transform:translate(-50%, -200%);
+  transition:all .5s ease-in-out;
+  perspective: 1000;
+  outline:1px solid transparent;
+  opacity:0;
+}
+.modal:target .modal-content {
+  transform:translate(-50%, -50%);
+  transition:all .5s ease-in-out;
+  transition-delay:.5s;
+  z-index:9999;
+  opacity:1;
+}
+.modal-close {
+  float:right;
+  text-decoration:none;
+  padding:22px 22px;
+  color:#424242;
+  font-weight:800;
+  transition:all .5s ease-in-out;
+  z-index:+1;
+  background:rgba(0,0,0,0.1);
+  text-align:center;
+  border-radius:0 4px 0 0;
+}
+.modal-close:hover {
+  color:#fff;
+  background:rgba(0,0,0,0.5);
+}
+.modal-content h3 {
+  padding:20px;
+  display:block;
+  text-align:center;
+  border-bottom:1px solid #e0e0e0;
+  text-transform:uppercase;
+  
+  color:#fff;
+  border-radius:4px 4px 0 0;
+}
+.modal-area {
+  padding:20px;
+}
+
+.modal-area input[type="radio"] {
+  display:none;
+}
+.modal-area label {
+  float:left;
+  display:block;
+  padding:10px 20px;
+  font-weight:700;
+  cursor:pointer;
+  z-index:+2;
+  background:rgba(0,0,0,.3);
+  color:#fff;
+  transition:all .5s ease-in-out;
+}
+.modal-area input[type="radio"]:checked + label {
+  background:#fff;
+  color:#424242;
+}
+.tab-list {
+  display:block;
+  padding:0;
+  margin:0;
+  list-style-type:none;
+  width:100%;
+  overflow:hidden;
+  height:150px;
+}
+.tab-list:before {
+  content:"";
+  display:block;
+  height:0;
+  clear:both;
+}
+.modal-tab {
+  display:inline-block;
+  width:100%;
+  padding-top:20px;
+  transform:translateX(-150%);
+  transition:all 300ms cubic-bezier(0, 0, .40, 1);
+  opacity:0;
+  top:0px;
+  position:absolute;
+  height:150px;
+  perspective:1000;
+}
+#opentab1:checked ~ .tab-list .tab1 {
+  transform:translateX(0%);
+  opacity:1;
+}
+#opentab2:checked ~ .tab-list .tab2 {
+  transform:translateX(0%);
+  opacity:1;
+}
+#opentab3:checked ~ .tab-list .tab3 {
+  transform:translateX(0%);
+  opacity:1;
+}

@@ -1,0 +1,39 @@
+<!-- users/confirmation.ejs -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Confirmation Page</title>
+</head>
+<body>
+  <h1>Order Confirmation</h1>
+  <h2>Order Details</h2>
+  <p>Order ID: <%= order._id %></p>
+  <p>Name: <%= order.name %></p>
+  <p>Email: <%= order.email %></p>
+  <p>Payment Method: <%= order.payment_method %></p>
+  <p>Order Date: <%= order.date.toDateString() %></p>
+  <h3>Address</h3>
+  <% order.address.forEach(function(address) { %>
+    <p>Location: <%= address.location %></p>
+    <p>Landmark: <%= address.landmark %></p>
+    <p>Country: <%= address.country %></p>
+    <p>City: <%= address.city %></p>
+    <p>Pincode: <%= address.pincode %></p>
+    <p>Mobile: <%= address.mobile %></p>
+    <hr>
+  <% }) %>
+  <h3>Products</h3>
+  <% order.product.forEach(function(product) { %>
+    <p>Product Name: <%= product.productid.product_name %></p>
+    <p>Brand: <%= product.productid.brand %></p>
+    <p>Image: <%= product.productid.image[0] %></p>
+    <p>Category: <%= product.productid.Category %></p>
+    <p>Size: <%= product.size %></p>
+    <p>Quantity: <%= product.quantity %></p>
+    <p>Total: <%= product.total %></p>
+    <p>Status: <%= product.status %></p>
+    <hr>
+  <% }) %>
+  <p>Grand Total: <%= order.grandTotal %></p>
+</body>
+</html>

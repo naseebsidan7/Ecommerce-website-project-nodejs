@@ -1,0 +1,55 @@
+<!-- views/users/orders/order.ejs -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Order Details</title>
+</head>
+<body>
+  <h1>Order Details</h1>
+  <p><strong>Order ID:</strong> <%= orderDetails.orderid %></p>
+  <p><strong>Name:</strong> <%= orderDetails.name %></p>
+  <p><strong>Mobile:</strong> <%= orderDetails.mobile %></p>
+  <p><strong>Grand Total:</strong> <%= orderDetails.grandTotal %></p>
+  <p><strong>Status:</strong> <%= orderDetails.status %></p>
+  <p><strong>Payment Method:</strong> <%= orderDetails.payment_method %></p>
+  <p><strong>Order Date:</strong> <%= orderDetails.orderdate %></p>
+  <p><strong>Delivery Date:</strong> <%= orderDetails.delivery_date %></p>
+  <p><strong>Return Status:</strong> <%= orderDetails.return %></p>
+  
+  <h2>Delivery Address</h2>
+  <p><strong>Street:</strong> <%= orderDetails.address[0].street %></p>
+  <p><strong>City:</strong> <%= orderDetails.address[0].city %></p>
+  <p><strong>Country:</strong> <%= orderDetails.address[0].country %></p>
+  
+  <h2>Ordered Products</h2>
+  <% orderDetails.product.forEach((product) => { %>
+    <div>
+      <p><strong>Product ID:</strong> <%= product.productid %></p>
+      <p><strong>Product Name:</strong> <%= product.product_name %></p>
+      <p><strong>Price:</strong> <%= product.price %></p>
+      <p><strong>Quantity:</strong> <%= product.quantity %></p>
+      <p><strong>Size:</strong> <%= product.size %></p>
+      <p><strong>Total:</strong> <%= product.total %></p>
+      <img src="<%= product.image %>" alt="Product Image" width="100" height="100">
+    </div>
+    <hr>
+  <% }); %>
+  
+  <h2>Cart Summary</h2>
+  <% cartProducts.forEach((cartProduct) => { %>
+    <div>
+      <p><strong>Product ID:</strong> <%= cartProduct._id %></p>
+      <p><strong>Product Name:</strong> <%= cartProduct.name %></p>
+      <p><strong>Price:</strong> <%= cartProduct.price %></p>
+      <p><strong>Quantity:</strong> <%= cartProduct.quantity %></p>
+      <p><strong>Size:</strong> <%= cartProduct.size %></p>
+      <p><strong>Total:</strong> <%= cartProduct.total %></p>
+      <img src="<%= cartProduct.image %>" alt="Product Image" width="100" height="100">
+    </div>
+    <hr>
+  <% }); %>
+
+  <p><strong>Final Amount:</strong> <%= finalAmount %></p>
+</body>
+</html>

@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="description" content="Male_Fashion Template">
+	<meta name="keywords" content="Male_Fashion, unica, creative, html">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Checkout </title>
+
+	<!-- Google Font -->
+	<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap"
+		rel="stylesheet">
+
+	<!-- Css Styles -->
+	<link rel="stylesheet" href="/public/checkout/css/bootstrap.min.css" type="text/css">
+	<link rel="stylesheet" href="/public/checkout/css/font-awesome.min.css" type="text/css">
+	<link rel="stylesheet" href="/public/checkout/css/elegant-icons.css" type="text/css">
+	<link rel="stylesheet" href="/public/checkout/css/magnific-popup.css" type="text/css">
+	<link rel="stylesheet" href="/public/checkout/css/nice-select.css" type="text/css">
+	<link rel="stylesheet" href="/public/checkout/css/owl.carousel.min.css" type="text/css">
+	<link rel="stylesheet" href="/public/checkout/css/slicknav.min.css" type="text/css">
+	<link rel="stylesheet" href="/public/checkout/css/style.css" type="text/css">
+
+
+
+	<!-- header and navbar links  -->
+
+	<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="/public/icons/My project.png" />
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/public/homeTemp/vendor/bootstrap/css/bootstrap.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/public/homeTemp/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/public/homeTemp/fonts/iconic/css/material-design-iconic-font.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/public/homeTemp/fonts/linearicons-v1.0.0/icon-font.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/public/homeTemp/vendor/animate/animate.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/public/homeTemp/vendor/css-hamburgers/hamburgers.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/public/homeTemp/vendor/animsition/css/animsition.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/public/homeTemp/vendor/select2/select2.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/public/homeTemp/vendor/perfect-scrollbar/perfect-scrollbar.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/public/homeTemp/css/util.css">
+	<link rel="stylesheet" type="text/css" href="/public/homeTemp/css/main.css">
+	<!--===============================================================================================-->
+
+ 
+
+</head>
+
+<body>
+	
+	<!-- Page Preloder -->
+	<div id="preloder">
+		<div class="loader"></div>
+	</div>
+
+
+	<!-- Header -->
+	<header class="header-v4">
+		<!-- Header desktop -->
+		<div class="container-menu-desktop">
+
+
+			<div class="wrap-menu-desktop how-shadow1" style="top: 0px;">
+				<nav class="limiter-menu-desktop container">
+
+					<!-- Logo desktop -->
+					<a href="/home" class="logo ">
+						<img src="/public/images/20230620_111354_0000-removebg-preview(1).png" alt="IMG-LOGO">
+					</a>
+
+					<!-- Menu desktop -->
+					<div class="menu-desktop">
+						<ul class="main-menu">
+							<li>
+								<a href="/home">Home</a>
+								<ul class="sub-menu">
+									<li><a href="/home">Homepage 1</a></li>
+								</ul>
+							</li>
+
+							<li>
+								<a href="/allProducts">Shop</a>
+							</li>
+
+							<li class="label1" data-label1="hot">
+								<a href="/allProducts">Features</a>
+							</li>
+
+							<li >
+								<a href="/OrderHistory">My Orders</a>
+							</li>
+
+						 
+
+							<li>
+								<a href="/contact">Contact</a>
+							</li>
+						</ul>
+					</div>
+
+					<!-- Icon header -->
+					<div class="wrap-icon-header flex-w flex-r-m">
+						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
+							<i class="zmdi zmdi-search"></i>
+						</div>
+
+						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart"
+							data-notify="<%= cartProducts.length %>">
+							<i class="zmdi zmdi-shopping-cart"></i>
+						</div>
+
+						<a href="/userProfile" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 " data-notify="0">
+							<i class="zmdi zmdi-settings"></i>
+						</a>
+					</div>
+				</nav>
+			</div>
+		</div>
+
+		<!-- Header Mobile -->
+		<div class="wrap-header-mobile">
+			<!-- Logo moblie -->
+			<div class="logo-mobile">
+				<a href="/home"><img src="images/icons/logo-01.png" alt="IMG-LOGO"></a>
+			</div>
+
+			<!-- Icon header -->
+			<div class="wrap-icon-header flex-w flex-r-m m-r-15">
+				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 js-show-modal-search">
+					<i class="zmdi zmdi-search"></i>
+				</div>
+
+				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart"
+					data-notify="<%= cartProducts.length %>">
+					<i class="zmdi zmdi-shopping-cart"></i>
+				</div>
+
+			 
+				<a href="/userProfile" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 "
+					data-notify="0">
+					<i class="zmdi zmdi-settings"></i>
+				</a>
+			</div>
+
+			<!-- Button show menu -->
+			<div class="btn-show-menu-mobile hamburger hamburger--squeeze">
+				<span class="hamburger-box">
+					<span class="hamburger-inner"></span>
+				</span>
+			</div>
+		</div>
+
+
+		<!-- Menu Mobile -->
+		<div class="menu-mobile">
+		 
+
+			<ul class="main-menu-m">
+				<li>
+					<a href="/home">Home</a>
+				 
+					<span class="arrow-main-menu-m">
+						<i class="fa fa-angle-right" aria-hidden="true"></i>
+					</span>
+				</li>
+
+				<li>
+					<a href="/allProducts">Shop</a>
+				</li>
+
+				<li>
+					<a href="/allProducts" class="label1 rs1" data-label1="hot">Features</a>
+				</li>
+
+				<li >
+					<a href="/OrderHistory">My Orders</a>
+				</li>
+
+				<li>
+					<a href="/contact">Contact</a>
+				</li>
+			</ul>
+		</div>
+
+		<!-- Modal Search -->
+		<div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
+			<div class="container-search-header">
+				<button class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
+					<img src="/public/homeTemp/images/icons/icon-close2.png" alt="CLOSE">
+				</button>
+
+				<form class="wrap-search-header flex-w p-l-15">
+					<button class="flex-c-m trans-04">
+						<i class="zmdi zmdi-search"></i>
+					</button>
+					<input class="plh3" type="text" name="search" placeholder="Search...">
+				</form>
+			</div>
+		</div>
+	</header>
+
+	<!-- Cart -->
+	<div class="wrap-header-cart js-panel-cart">
+		<div class="s-full js-hide-cart"></div>
+
+		<div class="header-cart flex-col-l p-l-65 p-r-25">
+			<div class="header-cart-title flex-w flex-sb-m p-b-8">
+				<span class="mtext-103 cl2">
+					Your Cart
+				</span>
+
+				<div class="fs-35 lh-10 cl2 p-lr-5 pointer hov-cl1 trans-04 js-hide-cart">
+					<i class="zmdi zmdi-close"></i>
+				</div>
+			</div>
+
+			<div class="header-cart-content flex-w js-pscroll">
+				<ul class="header-cart-wrapitem w-full">
+					<% for (let i=0; i < cartProducts.length; i++) { %>
+						<li class="header-cart-item flex-w flex-t m-b-12">
+							<div class="header-cart-item-img">
+								<img src="/public/product-images/<%=cartProducts[i].image%>" alt="IMG">
+							</div>
+
+							<div class="header-cart-item-txt p-t-8">
+								<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
+									<%= cartProducts[i].name %>
+								</a>
+
+								<span class="header-cart-item-info">
+									<%= cartProducts[i].quantity %> x ₹ <%= cartProducts[i].price %>
+								</span>
+							</div>
+						</li>
+						<% } %>
+
+				</ul>
+
+				<div class="w-full">
+					<div class="header-cart-total w-full p-tb-40">
+						Total: ₹ <%= finalAmount %>
+					</div>
+
+					<div class="header-cart-buttons flex-w w-full">
+						<a href="/cart"
+							class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
+							View Cart
+						</a>
+
+						<a href="" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
+							Check Out
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- breadcrumb -->
+	<div class="container">
+		<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
+			<a href="/home" class="stext-109 cl8 hov-cl1 trans-04">
+				Home
+				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+			</a>
+
+			<a href="/cart" class="stext-109 cl8 hov-cl1 trans-04">
+				Shoping Cart
+				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+			</a>
+
+			<span class="stext-109 cl4">
+				Checkout
+			</span>
+		</div>
+	</div>
+
+
+
+
+
+	<!-- Checkout Section Begin -->
+	<section class="checkout spad">
+		<div class="container">
+			<div class="checkout__form">
+				<form action="checkoutOrder" method="post" class="Order_form" id="orderForm" onsubmit="return handleFormSubmit()">
+
+					<div class="row">
+						<div class="col-lg-8 col-md-6" style="margin-left: -50px;">
+							<h6 class="coupon__code"><span class="icon_tag_alt"></span> Have a coupon? <a href="#">Click
+									here</a> to enter your code</h6>
+							<h6 class="checkout__title" style="font-family: Nunito Sans, sans-serif">Billing Details</h6>
+							<div class="row">
+								<div class="col-lg-6">
+									<div class="checkout__input">
+										<p>Fist Name<span>*</span></p>
+										<input type="text" name="name" value="<%= userData.name %>"
+											style="font-size: 18px; color: rgba(55, 84, 153, 0.664);font-family:  Verdana, Geneva, Tahoma, sans-serif;  border: 1px solid rgba(0, 0, 0, 0.288);"
+											required>
+									</div>
+								</div>
+								<div class="col-lg-6">
+									<div class="checkout__input">
+										<p>State<span>*</span></p>
+										<input type="text" name="state"
+											style="font-size: 18px; color: rgba(55, 84, 153, 0.664);font-family: Verdana, Geneva, Tahoma, sans-serif; border: 1px solid rgba(0, 0, 0, 0.288);"
+											value="<%= address.state %>" required>
+									</div>
+								</div>
+							</div>
+							<div class="checkout__input">
+								<p>Country<span>*</span></p>
+								<input type="text" name="country"
+									style="font-size: 18px; color: rgba(55, 84, 153, 0.664);font-family: Verdana, Geneva, Tahoma, sans-serif; border: 1px solid rgba(0, 0, 0, 0.288);"
+									value="<%= address.country %>" required>
+							</div>
+							<div class="checkout__input">
+								<p>Address<span>*</span></p>
+								<input type="text" name="location" placeholder="Street Address"
+									class="checkout__input__add"
+									style="font-size: 18px; color: rgba(55, 84, 153, 0.664);font-family: Verdana, Geneva, Tahoma, sans-serif;; border: 1px solid rgba(0, 0, 0, 0.288);"
+									value="<%= address.location %>" required>
+								<p>LandMark<span></span></p>
+								<input type="text" name="landmark" placeholder="Apartment, suite, unite ect (optinal)"
+									style="font-size: 18px; color: rgba(55, 84, 153, 0.664);font-family:  Verdana, Geneva, Tahoma, sans-serif;  border: 1px solid rgba(0, 0, 0, 0.288);"
+									value="<%= address.landmark %>" required>
+							</div>
+							<div class="checkout__input">
+								<p>Town/City<span>*</span></p>
+								<input type="text" name="city"
+									style="font-size: 18px; color: rgba(55, 84, 153, 0.664);font-family:  Verdana, Geneva, Tahoma, sans-serif;  border: 1px solid rgba(0, 0, 0, 0.288);"
+									value="<%= address.city %>" required>
+							</div>
+
+							<div class="checkout__input">
+								<p>Pincode / ZIP<span>*</span></p>
+								<input type="text" pattern="[0-9]{6}" name="pincode"
+									style="font-size: 18px; color: rgba(55, 84, 153, 0.664);font-family:  Verdana, Geneva, Tahoma, sans-serif;  border: 1px solid rgba(0, 0, 0, 0.288);"
+									value="<%= address.pincode %>" required>
+							</div>
+							<div class="row">
+								<div class="col-lg-6">
+									<div class="checkout__input">
+										<p>Phone<span>*</span></p>
+										<input type="tel" name="mobile"
+											style="font-size: 18px; color: rgba(55, 84, 153, 0.664);font-family:  Verdana, Geneva, Tahoma, sans-serif;  border: 1px solid rgba(0, 0, 0, 0.288);"
+											value="<%= address.mobile %>" required>
+									</div>
+								</div>
+								<div class="col-lg-6">
+									<div class="checkout__input">
+										<p>Email<span>*</span></p>
+										<input type="text" name="email"
+											style="font-size: 18px; color: rgba(55, 84, 153, 0.664);font-family:  Verdana, Geneva, Tahoma, sans-serif;  border: 1px solid rgba(0, 0, 0, 0.288);"
+											value="<%= userData.email %>" required>
+									</div>
+								</div>
+							</div>
+							<!-- <div class="checkout__input__checkbox">
+                                <label for="acc">
+                                    Create an account?
+                                    <input type="checkbox" id="acc">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <p>Create an account by entering the information below. If you are a returning customer
+                                please login at the top of the page</p>
+                            </div> -->
+							<!-- <div class="checkout__input">
+                                <p>Account Password<span>*</span></p>
+                                <input type="password"   name="password" style="font-size: 18px; color: rgba(55, 84, 153, 0.664);font-family: monospace; border: 1px solid rgba(0, 0, 0, 0.288);"  >
+                            </div> -->
+
+
+							<!-- <div class="checkout__input__checkbox">
+                                <label for="diff-acc">
+                                    Note about your order, e.g, special noe for delivery
+                                    <input type="checkbox" id="diff-acc">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div> -->
+							<!-- <div class="checkout__input">
+                                <p>Order notes<span>*</span></p>
+                                <input type="text"
+                                placeholder="Notes about your order, e.g. special notes for delivery.">
+                            </div> -->
+						</div>
+
+						<div>
+
+						</div>
+						<div class="col-lg-4 col-md-6">
+							<div class="checkout__order"
+								style="background-color: rgba(239, 243, 250, 0.968);border: 1px solid rgba(0, 0, 0, 0.137); margin-right: -105px; ">
+								<h4 class="order__title">Your order</h4>
+								<div class="checkout__order__products" style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Product <span>Total</span></div>
+								<ul class="checkout__total__products">
+									<% for (let i=0; i < cartProducts.length; i++) { %>
+
+										<input type="text" hidden name="ProductName"
+											style="font-size: 18px; color: rgba(55, 84, 153, 0.664);font-family:  Verdana, Geneva, Tahoma, sans-serif;  border: 1px solid rgba(0, 0, 0, 0.288);"
+											value="<%= cartProducts[i].name %> ">
+										<input type="text" hidden name="Productprice"
+											style="font-size: 18px; color: rgba(55, 84, 153, 0.664);font-family:  Verdana, Geneva, Tahoma, sans-serif;  border: 1px solid rgba(0, 0, 0, 0.288);"
+											value="<%= cartProducts[i].price %> ">
+										<input type="text" hidden name="ProductQnty"
+											style="font-size: 18px; color: rgba(55, 84, 153, 0.664);font-family:  Verdana, Geneva, Tahoma, sans-serif;  border: 1px solid rgba(0, 0, 0, 0.288);"
+											value="<%= cartProducts[i].quantity %>">
+										<input type="text" hidden name="finalAmount"  
+											style="font-size: 18px; color: rgba(55, 84, 153, 0.664);font-family:  Verdana, Geneva, Tahoma, sans-serif;  border: 1px solid rgba(0, 0, 0, 0.288);"
+											value="<%= finalAmount %>">
+
+
+
+										<li style="color: rgba(255, 0, 0, 0.772);"> x <%= cartProducts[i].quantity %> 
+											<span style="margin-left: 25px">₹ <%= cartProducts[i].price %></span>	<span style="color: rgba(71, 70, 70, 0.874);">	<%= cartProducts[i].name %> </span>
+										</li>
+
+										<% } %>
+								</ul>
+								<ul class="checkout__total__all">
+
+									<li style="margin-top: 30px; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Subtotal <span id="subTotalAmount" style="color: rgba(67, 72, 147, 0.817); font-family: monospace;">₹ <%= finalAmount %>.00</span></li>
+									<p class="stext-111 cl6 p-t-2" style="font-size: 12px; color: rgba(106, 113, 113, 0.769);">Includes GST and shipping charge</p>
+
+									<li style="margin-top: 30px; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Discount <span id="couponAmount" style="color: rgba(67, 72, 147, 0.817); font-family: monospace;">₹ 0</span></li>
+									
+									<li style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Total <span id="finalTotalAmount">₹ <%= finalAmount %>.00</span></li>
+									<!-- Add this hidden input field after the "Total" line -->
+                                    <li style="display: none;"><input type="hidden" id="discountedAmountInput" name="discountedAmount" value=""></li>
+									<input type="text" hidden id="couponAppliedamount" name="couponAppliedamount" value="">
+
+								  </ul>
+								  
+								  
+																<!-- Add an ID to the button for easier selection -->
+								<div class="flex-w flex-sb-m bor15 p-t-18 p-b-15 p-lr-40 p-lr-15-sm">
+									<div class="flex-w flex-m m-r-20 m-tb-5">
+									<input class="stext-104 cl2 plh4 size-117 bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="coupon" id="couponInput" placeholder="Coupon Code" style="border: rgba(0, 0, 0, 0.514) 1px solid; color: rgba(0, 0, 0, 0.792);margin-left: -21px;width: 179px; font-size: 18px; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+									<div class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5" style="min-width: 143px; border: rgba(0, 0, 0, 0.514) 1px solid;" id="applyCouponBtn" onclick="handleCouponValidation()">
+										Apply coupon
+									</div>
+									</div>
+								</div>
+  
+ 
+  
+								  
+								<!-- <div class="checkout__input__checkbox">
+                                    <label for="acc-or">
+                                        Create an account?
+                                        <input type="checkbox" id="acc-or">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div> -->
+
+								<h4
+									style="color: rgba(0, 0, 0, 0.863); font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; margin-top: 55px; margin-bottom: 30px; margin-left: 20px;">
+									Payment Method</h4>
+								<hr style="height: 0.1px; background-color: rgba(0, 0, 0, 0.107);">
+
+								<div class="checkout__input__checkbox" style="margin-bottom: 20px;margin-top: 40px;">
+									<label for="payment" >
+										Check Payment
+										<input type="radio" id="payment" name="payment" value="check"
+											onchange="handleCheckboxChange('payment')">
+										<span class="checkmark"></span>
+									</label>
+								</div>
+
+								<div class="checkout__input__checkbox" style="margin-bottom: 20px; margin-top: 30px;">
+									<label for="paypal">
+										Razorpay
+										<input type="radio" id="paypal" name="payment" value="Razorpay"
+											onchange="handleCheckboxChange('paypal')">
+										<span class="checkmark"></span>
+									</label>
+								</div>
+
+								<div class="checkout__input__checkbox" style="margin-bottom: 50px; margin-top: 30px;">
+									<label for="cod">
+										Cash on Delivery
+										<input type="radio" id="cod" name="payment" value="cod"
+											onchange="handleCheckboxChange('cod')">
+										<span class="checkmark"></span>
+									</label>
+								</div>
+
+								<button type="submit" class="site-btn">PLACE ORDER</button>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</section>
+	<!-- Checkout Section End -->
+
+	<!-- Footer -->
+	<footer class="bg3 p-t-75 p-b-32">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-6 col-lg-3 p-b-50">
+					<h4 class="stext-301 cl0 p-b-30">
+						Categories
+					</h4>
+
+					<ul>
+						<li class="p-b-10">
+							<a href="/allProducts" class="stext-107 cl7 hov-cl1 trans-04">
+								Nike Shoes
+							</a>
+						</li>
+
+						<li class="p-b-10">
+							<a href="/allProducts" class="stext-107 cl7 hov-cl1 trans-04">
+								Adidas
+							</a>
+						</li>
+
+						<li class="p-b-10">
+							<a href="/allProducts" class="stext-107 cl7 hov-cl1 trans-04">
+								Casual Shoes
+							</a>
+						</li>
+
+						<li class="p-b-10">
+							<a href="/allProducts" class="stext-107 cl7 hov-cl1 trans-04">
+								Sneakers
+							</a>
+						</li>
+						<li class="p-b-10">
+							<a href="/allProducts" class="stext-107 cl7 hov-cl1 trans-04">
+								Football Boots
+							</a>
+						</li>
+					</ul>
+				</div>
+
+				<div class="col-sm-6 col-lg-3 p-b-50">
+					<h4 class="stext-301 cl0 p-b-30">
+						Help
+					</h4>
+
+					<ul>
+						<li class="p-b-10">
+							<a href="/userProfile" class="stext-107 cl7 hov-cl1 trans-04">
+								 Address
+							</a>
+						</li>
+
+						<li class="p-b-10">
+							<a href="/OrderHistory" class="stext-107 cl7 hov-cl1 trans-04">
+								Your Orders
+							</a>
+						</li>
+
+						<li class="p-b-10">
+							<a href="/OrderHistory" class="stext-107 cl7 hov-cl1 trans-04">
+								Shipping
+							</a>
+						</li>
+
+						<li class="p-b-10">
+							<a href="/cart" class="stext-107 cl7 hov-cl1 trans-04">
+								Cart
+							</a>
+						</li>
+					</ul>
+				</div>
+
+				<div class="col-sm-6 col-lg-3 p-b-50">
+					<h4 class="stext-301 cl0 p-b-30">
+						GET IN TOUCH
+					</h4>
+
+					<p class="stext-107 cl7 size-201">
+						Any questions? Let us know in store at maradu, Kochi , Kerala or call us on (+91) 99 4744 2414
+					</p>
+
+					<div class="p-t-27">
+						<a href="https://github.com/naseebsidan7"  target="_blank" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+							<i class="fa fa-github"></i>
+						</a>
+
+						<a href="https://www.instagram.com/sidan07_/" target="_blank" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+							<i class="fa fa-instagram"></i>
+						  </a>
+						  
+
+						<a href="https://in.pinterest.com/naseebsidan/"  target="_blank" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+							<i class="fa fa-pinterest-p"></i>
+						</a>
+
+						
+						<a href="https://www.linkedin.com/in/naseeb-sidan-16b371267/"  target="_blank" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+							<i class="fa fa-linkedin"></i>
+						</a>
+					</div>
+				</div>
+
+			 
+			</div>
+
+			<div class="p-t-40">
+				<div class="flex-c-m flex-w p-b-18">
+					<a href="#" class="m-all-1">
+					  <span style="font-size: 16px; color: rgba(109, 129, 241, 0.63);font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">&copy; Active Kicks</span>
+	 
+					</a>
+				  </div>
+				  
+
+				
+			</div>
+		</div>
+	</footer>
+
+	<!-- Back to top -->
+	<div class="btn-back-to-top" id="myBtn">
+		<span class="symbol-btn-back-to-top">
+			<i class="zmdi zmdi-chevron-up"></i>
+		</span>
+	</div>
+
+	<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+	
+	
+
+	<!--===============================================================================================-->
+	<script src="/public/homeTemp/vendor/jquery/jquery-3.2.1.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="/public/homeTemp/vendor/animsition/js/animsition.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="/public/homeTemp/vendor/bootstrap/js/popper.js"></script>
+	<script src="/public/homeTemp/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="/public/homeTemp/vendor/select2/select2.min.js"></script>
+	<script>
+		$(".js-select2").each(function () {
+			$(this).select2({
+				minimumResultsForSearch: 20,
+				dropdownParent: $(this).next('.dropDownSelect2')
+			});
+		})
+	</script>
+	<!--===============================================================================================-->
+	<script src="/public/homeTemp/vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="/public/homeTemp/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+	<script>
+		$('.js-pscroll').each(function () {
+			$(this).css('position', 'relative');
+			$(this).css('overflow', 'hidden');
+			var ps = new PerfectScrollbar(this, {
+				wheelSpeed: 1,
+				scrollingThreshold: 1000,
+				wheelPropagation: false,
+			});
+
+			$(window).on('resize', function () {
+				ps.update();
+			})
+		});
+	</script>
+	<script src="/public/homeTemp/js/main.js"></script>
+	<!--===============================================================================================-->
+
+
+	<!-- Js Plugins -->
+	<script src="/public/checkout/js/jquery-3.3.1.min.js"></script>
+	<script src="/public/checkout/js/bootstrap.min.js"></script>
+	<script src="/public/checkout/js/jquery.nice-select.min.js"></script>
+	<script src="/public/checkout/js/jquery.nicescroll.min.js"></script>
+	<script src="/public/checkout/js/jquery.magnific-popup.min.js"></script>
+	<script src="/public/checkout/js/jquery.countdown.min.js"></script>
+	<script src="/public/checkout/js/jquery.slicknav.js"></script>
+	<script src="/public/checkout/js/mixitup.min.js"></script>
+	<script src="/public/checkout/js/owl.carousel.min.js"></script>
+	<script src="/public/checkout/js/main.js"></script>
+	<script src="/public/homeTemp/js/main.js"></script>
+
+<!-- Your other HTML code -->
+
+<script>
+	// Access the finalAmount value from the server-side directly
+	 
+
+	// Rest of your JavaScript code here
+	// Function to handle coupon validation and update the final amount
+	function handleCouponValidation() {
+		var couponCode = $('#couponInput').val();
+		var subtotal = parseFloat($('#subTotalAmount').text().replace('₹', '').trim());
+
+	 
+	  // Make an AJAX call to the coupon validation route
+	  $.ajax({
+		url: "/validateCoupon",
+		type: "post",
+		data: { coupon: couponCode, subtotal: subtotal }, // Pass the subtotal to the server
+		success: function (res) {
+		  if (res.msg==="1" ) {
+			 
+			var couponAmount = res.couponAmount;
+			console.log(couponAmount+"couponAmount");	
+			var discountedAmount = subtotal - couponAmount;
+  
+			// Update the displayed values
+			$("#finalTotalAmount").text("₹" + discountedAmount.toFixed(2));
+			$("#couponAmount").text("-₹" + couponAmount.toFixed(2));
+			$("#discountedAmountInput").val(discountedAmount.toFixed(2));
+  
+			Swal.fire({
+			  icon: 'success',
+			  title: 'Coupon applied successfully',
+			  text: 'Discounted amount: ₹' + discountedAmount.toFixed(2)
+			});
+		  } else {
+			// Reset the displayed values if the coupon is invalid
+			$("#finalTotalAmount").text("₹ " + subtotal.toFixed(2)); // Use the original subtotal
+			$("#couponAmount").text("₹ 0");
+  
+			Swal.fire({
+			icon: 'error',
+			title: 'Coupon validation error',
+			 html: '<span style="color: #FF0000;">' + res.message + '</span>'
+			});
+
+		  }
+		},
+		error: function (error) {
+		  console.log(error.responseText);
+		  // Reset the displayed values in case of an error
+		  $("#finalTotalAmount").text("₹" + subtotal.toFixed(2)); // Use the original subtotal
+		  $("#discountAmount").text("₹ 0");
+  
+		  Swal.fire({
+			icon: 'error',
+			title: 'Coupon validation error',
+			text: 'Something went wrong during coupon validation' 
+		  });
+		}
+	  });
+	}
+</script>
+  
+  <!-- Rest of your HTML code -->
+  
+
+    <script>
+	function handleFormSubmit() {
+	  var paymentMethod = $('input[name="payment"]:checked').val();
+		if (paymentMethod === 'cod') {
+                 
+			 // For Cash on Delivery (COD) payment method, we need to update the form with the discounted amount
+			  var discountedAmount = $("#discountedAmountInput").val();
+			  var couponAmountElement = document.getElementById("couponAmount");
+			  
+			  var couponAmountValue = couponAmountElement.textContent;
+			// For Cash on Delivery (COD) payment method, we need to update the displayed final amount with the discounted amount
+			$("#finalTotalAmount").text("₹ " + discountedAmount); // Update the displayed final amount in the <span> element
+			// Update the finalAmount input field in the form with the discounted amount
+			$("input[name='finalAmount']").val(discountedAmount);
+
+			$("input[name='couponAppliedamount']").val(couponAmountValue);
+
+			return true; // Allow form submission for Cash on Delivery (cod) payment method
+			
+
+	} else if (paymentMethod === 'Razorpay') {
+		// Handle Razorpay payment method
+		var formData = $('#orderForm').serialize();
+		var discountedAmount = $("#discountedAmountInput").val();
+		var couponAmountElement = document.getElementById("couponAmount");
+			  var couponAmountValue = couponAmountElement.textContent;
+			// For Cash on Delivery (COD) payment method, we need to update the displayed final amount with the discounted amount
+			$("#finalTotalAmount").text("₹ " + discountedAmount); // Update the displayed final amount in the <span> element
+			// Update the finalAmount input field in the form with the discounted amount
+			$("input[name='finalAmount']").val(discountedAmount);
+
+			$("input[name='couponAppliedamount']").val(couponAmountValue);
+			
+        formData += "&amount=" + discountedAmount;
+		$.ajax({
+		  url: "/checkoutOnline", 
+		  type: "post",
+		  data: formData,
+		  success: function (res) {
+			if (res.success) {
+			  var options = {
+				"key": "" + res.key_id + "",
+				"amount": "" + res.amount + "",
+				"currency": "INR",
+				"name": "My Store",
+				"description": "Test Transaction",
+				"image": "/public/icons/My project.png",
+				"order_id": "" + res.order_id + "",
+				"handler": function (response) {
+				  Swal.fire({
+					icon: 'success',
+					title: 'Payment success',
+					showConfirmButton: false,
+					timer: 1500
+				  }).then(function() {
+					// Submit the form after successful payment
+					document.getElementById('orderForm').submit();
+				  });
+				},
+				"prefill": {
+				  "contact": "" + res.contact + "",
+				  "name": "" + res.name + "",
+				  "email": "" + res.email + ""
+				},
+				"theme": {
+				  "color": "#404fc2"
+				}
+			  };
+			  var razorpayObject = new Razorpay(options);
+			  razorpayObject.on('payment.failed', function (response) {
+				Swal.fire({
+				  icon: 'error',
+				  title: 'Payment failed',
+				  showConfirmButton: false,
+				  timer: 1500
+				});
+			  });
+			  razorpayObject.open();
+			} else {
+			  Swal.fire({
+				icon: 'error',
+				title: 'Error',
+				text: res.message
+			  });
+			}
+		  }
+		});
+		return false; // Prevent form submission
+	  } else {
+		return false; // Prevent form submission for other payment methods
+	  }
+	}
+    </script>
+  
+	
+	  
+  
+	  
+</body>
+
+</html>

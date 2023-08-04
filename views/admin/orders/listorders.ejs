@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Admin Panel</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="/public/admin/assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="/public/admin/assets/vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="/public/admin/assets/vendors/jvectormap/jquery-jvectormap.css">
+    <link rel="stylesheet" href="/public/admin/assets/vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="/public/admin/assets/vendors/owl-carousel-2/owl.carousel.min.css">
+    <link rel="stylesheet" href="/public/admin/assets/vendors/owl-carousel-2/owl.theme.default.min.css">
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="/public/admin/assets/css/style.css">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="/public/admin/assets/images/favicon.png" />
+
+     <!-- Icons. Uncomment required icon fonts -->
+     <link rel="stylesheet" href="/public/listUsers/assets/vendor/fonts/boxicons.css" />
+
+     <style>
+      
+   
+      .confirmBox {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 9999;
+      }
+  
+      .confirmContent {
+        max-width: 400px;
+        margin: 20% auto;
+        background-color: #171a1a;
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        text-align: center;
+       
+      }
+  
+      .confirmContent h3 {
+        color: #dc7272;
+        margin-top: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+      }
+  
+      .confirmContent p {
+        color: #c8c2c2;
+        margin-bottom: 20px;
+        font-family: 'Courier New', Courier, monospace
+        ;font-size: 18px;
+      }
+  
+      .confirmActions {
+        margin-top: 20px;
+    
+      }
+  
+      .confirmActions button {
+        margin: 0 15px;
+        padding: 8px 16px;
+        background-color: #e1cdbff1;
+        color: #000000;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+        font-family: 'Courier New', Courier, monospace;
+        
+      }
+    </style>
+    
+  </head>
+  <body>
+    <div class="container-scroller">
+      <!-- partial:partials/_sidebar.html -->
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
+          <a class="sidebar-brand brand-logo" href="/admin/home"><img src="/public/userProfile/Active Admin final.png" alt="logo" /></a>
+          <a class="sidebar-brand brand-logo-mini" href="/admin/home"><img src="/public/admin/assets/images/logo-mini.svg" alt="logo" /></a>
+        </div>
+        <ul class="nav">
+          <li class="nav-item profile">
+            <div class="profile-desc">
+              <div class="profile-pic">
+                <div class="count-indicator">
+                  <img class="img-xs rounded-circle " src="/public/userProfile/IMG_20230613_211956.jpg" alt="">
+                  <span class="count bg-success"></span>
+                </div>
+                <div class="profile-name">
+                  <h5 class="mb-0 font-weight-normal">Naseeb Sidan</h5>
+                  <span>Gold Member</span>
+                </div>
+              </div>
+              <a href="#" id="profile-dropdown" data-toggle="dropdown"><i class="mdi mdi-dots-vertical"></i></a>
+              <div class="dropdown-menu dropdown-menu-right sidebar-dropdown preview-list" aria-labelledby="profile-dropdown">
+                <a href="#" class="dropdown-item preview-item">
+                  <div class="preview-thumbnail">
+                    <div class="preview-icon bg-dark rounded-circle">
+                      <i class="mdi mdi-settings text-primary"></i>
+                    </div>
+                  </div>
+                  <div class="preview-item-content">
+                    <p class="preview-subject ellipsis mb-1 text-small">Account settings</p>
+                  </div>
+                </a>
+                <div class="dropdown-divider"></div>
+                <a href="#" class="dropdown-item preview-item">
+                  <div class="preview-thumbnail">
+                    <div class="preview-icon bg-dark rounded-circle">
+                      <i class="mdi mdi-onepassword  text-info"></i>
+                    </div>
+                  </div>
+                  <div class="preview-item-content">
+                    <p class="preview-subject ellipsis mb-1 text-small">Change Password</p>
+                  </div>
+                </a>
+                <div class="dropdown-divider"></div>
+                <a href="#" class="dropdown-item preview-item">
+                  <div class="preview-thumbnail">
+                    <div class="preview-icon bg-dark rounded-circle">
+                      <i class="mdi mdi-calendar-today text-success"></i>
+                    </div>
+                  </div>
+                  <div class="preview-item-content">
+                    <p class="preview-subject ellipsis mb-1 text-small">To-do list</p>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </li>
+          <li class="nav-item nav-category">
+            <span class="nav-link">Navigation</span>
+          </li>
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="/admin/home">
+              <span class="menu-icon">
+                <i class="mdi mdi-speedometer"></i>
+              </span>
+              <span class="menu-title">Dashboard</span>
+            </a>
+          </li>
+          
+          <li class="nav-item menu-items">
+            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+              <span class="menu-icon">
+                <i class="mdi mdi-laptop"></i>
+              </span>
+              <span class="menu-title">Products</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="ui-basic">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="/admin/listCategory">Category Management</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/admin/addProduct">Add Products</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/admin/allProduct">All Products</a></li>
+              </ul>
+            </div>
+          </li>
+          <!-- <li class="nav-item menu-items">
+            <a class="nav-link" href="/public/admin/pages/forms/basic_elements.html">
+              <span class="menu-icon">
+                <i class="mdi mdi-playlist-play"></i>
+              </span>
+              <span class="menu-title">Users</span>
+            </a>
+          </li> -->
+       
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="/admin/listUser">
+              <span class="menu-icon">
+                <i class="mdi mdi-playlist-play"></i>
+              </span>
+              <span class="menu-title">User List</span>
+            </a>
+          </li>
+
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="/admin/listOrder">
+              <span class="menu-icon">
+                <i class="mdi mdi-playlist-play"></i>
+              </span>
+              <span class="menu-title">Order List</span>
+            </a>
+          </li>
+
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="/admin/couponPage">
+              <span class="menu-icon">
+                <i class="mdi mdi-format-list-checks"></i>
+              </span>
+              <span class="menu-title">Coupons</span>
+            </a>
+          </li>
+
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="/admin/salesReport">
+              <span class="menu-icon">
+                <i class="mdi mdi-file-document"></i>
+              </span>
+              <span class="menu-title">Sales Report</span>
+            </a>
+          </li>
+
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="/admin/Banner">
+              <span class="menu-icon">
+                <i class="mdi mdi-image-multiple"></i>
+              </span>
+              <span class="menu-title">Banner Management</span>
+            </a>
+          </li>
+          
+          <!-- <li class="nav-item menu-items">
+            <a class="nav-link" href="/public/admin/pages/tables/basic-table.html">
+              <span class="menu-icon">
+                <i class="mdi mdi-table-large"></i>
+              </span>
+              <span class="menu-title">Tables</span>
+            </a>
+          </li> -->
+
+
+<!-- Chart list -->
+
+
+          <!-- <li class="nav-item menu-items">
+            <a class="nav-link" href="/public/admin/pages/charts/chartjs.html">
+              <span class="menu-icon">
+                <i class="mdi mdi-chart-bar"></i>
+              </span>
+              <span class="menu-title">Charts</span>
+            </a>
+          </li> -->
+
+
+          
+<!-- Icons -->
+
+
+          <!-- <li class="nav-item menu-items">
+            <a class="nav-link" href="/public/admin/pages/icons/mdi.html">
+              <span class="menu-icon">
+                <i class="mdi mdi-contacts"></i>
+              </span>
+              <span class="menu-title">Icons</span>
+            </a>
+          </li> -->
+
+
+<!-- User Pages         -->
+
+
+          <!-- <li class="nav-item menu-items">
+            <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+              <span class="menu-icon">
+                <i class="mdi mdi-security"></i>
+              </span>
+              <span class="menu-title">User Pages</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="auth">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="/public/admin/pages/samples/blank-page.html"> Blank Page </a></li>
+                <li class="nav-item"> <a class="nav-link" href="/public/admin/pages/samples/error-404.html"> 404 </a></li>
+                <li class="nav-item"> <a class="nav-link" href="/public/admin/pages/samples/error-500.html"> 500 </a></li>
+                <li class="nav-item"> <a class="nav-link" href="/public/admin/pages/samples/login.html"> Login </a></li>
+                <li class="nav-item"> <a class="nav-link" href="/public/admin/pages/samples/register.html"> Register </a></li>
+              </ul>
+            </div>
+          </li> -->
+        
+        </ul>
+      </nav>
+
+        <!-- partial -->
+        <div class="container-fluid page-body-wrapper">
+            <!-- partial:partials/_navbar.html -->
+            <nav class="navbar p-0 fixed-top d-flex flex-row">
+                <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
+                    <a class="navbar-brand brand-logo-mini" href="index.html"><img
+                            src="/public/admin/assets/images/logo-mini.svg" alt="logo" /></a>
+                </div>
+                <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
+                    <button class="navbar-toggler navbar-toggler align-self-center" type="button"
+                        data-toggle="minimize">
+                        <span class="mdi mdi-menu"></span>
+                    </button>
+                    <ul class="navbar-nav w-100">
+                        <li class="nav-item w-100">
+                            <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
+                                <input type="text" class="form-control" placeholder="Search products">
+                            </form>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav navbar-nav-right">
+                        <li class="nav-item dropdown d-none d-lg-block">
+                            <a class="nav-link btn btn-success create-new-button" id="createbuttonDropdown"
+                                data-toggle="dropdown" aria-expanded="false" href="#">+ Create New Project</a>
+                            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
+                                aria-labelledby="createbuttonDropdown">
+                                <h6 class="p-3 mb-0">Projects</h6>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item preview-item">
+                                    <div class="preview-thumbnail">
+                                        <div class="preview-icon bg-dark rounded-circle">
+                                            <i class="mdi mdi-file-outline text-primary"></i>
+                                        </div>
+                                    </div>
+                                    <div class="preview-item-content">
+                                        <p class="preview-subject ellipsis mb-1">Software Development</p>
+                                    </div>
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item preview-item">
+                                    <div class="preview-thumbnail">
+                                        <div class="preview-icon bg-dark rounded-circle">
+                                            <i class="mdi mdi-web text-info"></i>
+                                        </div>
+                                    </div>
+                                    <div class="preview-item-content">
+                                        <p class="preview-subject ellipsis mb-1">UI Development</p>
+                                    </div>
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item preview-item">
+                                    <div class="preview-thumbnail">
+                                        <div class="preview-icon bg-dark rounded-circle">
+                                            <i class="mdi mdi-layers text-danger"></i>
+                                        </div>
+                                    </div>
+                                    <div class="preview-item-content">
+                                        <p class="preview-subject ellipsis mb-1">Software Testing</p>
+                                    </div>
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <p class="p-3 mb-0 text-center">See all projects</p>
+                            </div>
+                        </li>
+                        <li class="nav-item nav-settings d-none d-lg-block">
+                            <a class="nav-link" href="#">
+                                <i class="mdi mdi-view-grid"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown border-left">
+                            <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#"
+                                data-toggle="dropdown" aria-expanded="false">
+                                <i class="mdi mdi-email"></i>
+                                <span class="count bg-success"></span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
+                                aria-labelledby="messageDropdown">
+                                <h6 class="p-3 mb-0">Messages</h6>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item preview-item">
+                                    <div class="preview-thumbnail">
+                                        <img src="/public/admin/assets/images/faces/face4.jpg" alt="image"
+                                            class="rounded-circle profile-pic">
+                                    </div>
+                                    <div class="preview-item-content">
+                                        <p class="preview-subject ellipsis mb-1">Mark send you a message</p>
+                                        <p class="text-muted mb-0"> 1 Minutes ago </p>
+                                    </div>
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item preview-item">
+                                    <div class="preview-thumbnail">
+                                        <img src="/public/admin/assets/images/faces/face2.jpg" alt="image"
+                                            class="rounded-circle profile-pic">
+                                    </div>
+                                    <div class="preview-item-content">
+                                        <p class="preview-subject ellipsis mb-1">Cregh send you a message</p>
+                                        <p class="text-muted mb-0"> 15 Minutes ago </p>
+                                    </div>
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item preview-item">
+                                    <div class="preview-thumbnail">
+                                        <img src="/public/admin/assets/images/faces/face3.jpg" alt="image"
+                                            class="rounded-circle profile-pic">
+                                    </div>
+                                    <div class="preview-item-content">
+                                        <p class="preview-subject ellipsis mb-1">Profile picture updated</p>
+                                        <p class="text-muted mb-0"> 18 Minutes ago </p>
+                                    </div>
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <p class="p-3 mb-0 text-center">4 new messages</p>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown border-left">
+                            <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#"
+                                data-toggle="dropdown">
+                                <i class="mdi mdi-bell"></i>
+                                <span class="count bg-danger"></span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
+                                aria-labelledby="notificationDropdown">
+                                <h6 class="p-3 mb-0">Notifications</h6>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item preview-item">
+                                    <div class="preview-thumbnail">
+                                        <div class="preview-icon bg-dark rounded-circle">
+                                            <i class="mdi mdi-calendar text-success"></i>
+                                        </div>
+                                    </div>
+                                    <div class="preview-item-content">
+                                        <p class="preview-subject mb-1">Event today</p>
+                                        <p class="text-muted ellipsis mb-0"> Just a reminder that you have an event
+                                            today </p>
+                                    </div>
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item preview-item">
+                                    <div class="preview-thumbnail">
+                                        <div class="preview-icon bg-dark rounded-circle">
+                                            <i class="mdi mdi-settings text-danger"></i>
+                                        </div>
+                                    </div>
+                                    <div class="preview-item-content">
+                                        <p class="preview-subject mb-1">Settings</p>
+                                        <p class="text-muted ellipsis mb-0"> Update dashboard </p>
+                                    </div>
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item preview-item">
+                                    <div class="preview-thumbnail">
+                                        <div class="preview-icon bg-dark rounded-circle">
+                                            <i class="mdi mdi-link-variant text-warning"></i>
+                                        </div>
+                                    </div>
+                                    <div class="preview-item-content">
+                                        <p class="preview-subject mb-1">Launch Admin</p>
+                                        <p class="text-muted ellipsis mb-0"> New admin wow! </p>
+                                    </div>
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <p class="p-3 mb-0 text-center">See all notifications</p>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown">
+                                <div class="navbar-profile">
+                                    <img class="img-xs rounded-circle"
+                                        src="/public/userProfile/IMG_20230613_211956.jpg" alt="">
+                                    <p class="mb-0 d-none d-sm-block navbar-profile-name">Naseeb Sidan</p>
+                                    <i class="mdi mdi-menu-down d-none d-sm-block"></i>
+                                </div>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
+                                aria-labelledby="profileDropdown">
+                                <h6 class="p-3 mb-0">Profile</h6>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item preview-item">
+                                    <div class="preview-thumbnail">
+                                        <div class="preview-icon bg-dark rounded-circle">
+                                            <i class="mdi mdi-settings text-success"></i>
+                                        </div>
+                                    </div>
+                                    <div class="preview-item-content">
+                                        <p class="preview-subject mb-1">Settings</p>
+                                    </div>
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item preview-item" href="/admin/logout">
+                                    <div class="preview-thumbnail">
+                                        <div class="preview-icon bg-dark rounded-circle">
+                                            <i class="mdi mdi-logout text-danger"></i>
+                                        </div>
+                                    </div>
+                                    <div class="preview-item-content">
+                                        <p class="preview-subject mb-1">Log out</p>
+                                    </div>
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <p class="p-3 mb-0 text-center">Advanced settings</p>
+                            </div>
+                        </li>
+                    </ul>
+                    <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
+                        data-toggle="offcanvas">
+                        <span class="mdi mdi-format-line-spacing"></span>
+                    </button>
+                </div>
+            </nav>
+            <!-- partial -->
+
+            <div class="main-panel">
+                <!-- Content wrapper -->
+                <div class="content-wrapper">
+                    <!-- Content -->
+
+                    <div class="container-xxl flex-grow-1 container-p-y">
+                        <h2 style="margin-bottom: 5%; color: rgba(240, 248, 255, 0.811);">Product Details</h2>
+
+                        <hr style="border: none; height: 1px; background-color: rgba(255, 255, 255, 0.208);  margin-bottom: -3%;">
+                        <!-- Basic Bootstrap Table -->
+
+
+                        <div class="confirmBox" id="confirmBox">
+                          <div class="confirmContent">
+                            <h3>Confirmation</h3>
+                            <p>Are you sure you want to cancel this Product</p>
+                            <div class="confirmActions">
+                              <button onclick="confirmAction(true)">Yes</button>
+                              <button onclick="confirmAction(false)">No</button>
+          
+                            </div>
+                          </div>
+                        </div>
+                        
+                       
+
+                        <hr class="my-5" />
+
+                        <!-- Bootstrap Dark Table -->
+                        <div class="card">
+                            <h5 class="card-header">Table Dark</h5>
+                            <div class="table-responsive text-nowrap">
+                              <table class="table table-dark">
+                                <thead>
+                                  <tr>
+                                    <th style="color: rgb(197, 147, 122);">Customer_name</th>
+                                    <th style="color: rgb(197, 147, 122);">Mobile</th>
+                                    <th style="color: rgb(197, 147, 122);">Total Amount</th>
+                                    <th style="color: rgb(197, 147, 122);">Order Status</th>
+                                    <th style="color: rgb(197, 147, 122);">Payment Method</th>
+                                    <th style="color: rgb(197, 147, 122);">Order Date</th>
+                                    <th style="color: rgb(197, 147, 122);">NO. of Product</th>
+                                    <th style="color: rgb(216, 111, 111);">Actions</th>
+                                  </tr>
+                                </thead>
+                   
+                                <tbody class="table-border-bottom-0">
+                                  <% for (let i = 0; i < orderDetails.length; i++) { %>
+                                    <% const order = orderDetails[i]; %>
+                                    <input  hidden id="order_id" value="<%= order.orderid %>">
+                                    <tr>
+                                      <td><%= order.name %></td>
+                                      <td><%= order.mobile %></td>
+                                      <td><%= order.grandTotal %></td>
+
+                                      <% if ( order.status === 'Cancelled' ) { %>
+                                      <td>
+                                        <input type="text" id="statusText" value="<%= order.status %>" disabled style="background-color: #121010ab; color: #c8c2c2ab; border-color: #cd3939b6; border-radius: 10px; width: 160px; height: 35px; text-align: center;">
+                                      </td>
+                                      <% } else { %>
+                                        <td>
+                                          <input type="text" id="statusText" value="<%= order.status %>" disabled style="background-color: #121010ab; color: #c8c2c2ab; border-color: #55cf768a; border-radius: 10px; width: 160px; height: 35px; text-align: center;">
+                                        </td>
+                                        <% } %>
+
+                                      <td><%= order.payment_method %></td>
+                                      <td><%= order.orderdate %></td>
+                                      <td><%= order.product.length %></td>
+                                      <td>
+                                        <div class="dropdown ml-3">
+                                          <button type="button" class="btn p-0 hide-arrow" data-bs-toggle="dropdown">
+                                            <i class="bx bx-dots-vertical-rounded"></i>
+                                          </button>
+                              
+                                          <div class="dropdown-menu">
+                                            <a class="dropdown-item" onclick="showConfirm('/admin/cancelOrder?id=<%= order.orderid %>')" style="cursor: pointer;">
+                                              <i class="bx bxs-trash me-1"></i> Cancel Order
+                                            </a>
+                                                                                        <a class="dropdown-item" href="/admin/viewOrder?index=<%= i %>"><i class="bx bx-show-alt me-1"></i> View Order</a>
+                                            <a class="dropdown-item" href="#" onclick="showOrderStatusBox('<%= order.orderid %>')"><i class="bx bxs-edit-alt me-1"></i> Change Order Status</a>
+                                          </div>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                  <% } %>
+                                </tbody>
+                              </table>
+                              
+                         
+                              
+                            </div>
+                        </div>
+                        <!--/ Bootstrap Dark Table -->
+
+                        <hr class="my-5" />
+                    </div>
+                </div>
+                
+                                <!-- content-wrapper ends -->
+                <!-- partial:partials/_footer.html -->
+
+                <!-- partial -->
+            </div>
+            <!-- main-panel ends -->
+        </div>
+        <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+
+         <!-- Order Status Modal -->
+         <div class="modal fade" id="orderStatusModal" tabindex="-1" aria-labelledby="orderStatusModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="orderStatusModalLabel">Change Order Status</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="statusOption" value="Shipped" id="statusOption4">
+                  <label class="form-check-label" for="statusOption4">Shipped</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="statusOption" value="Pending" id="statusOption1" checked>
+                  <label class="form-check-label" for="statusOption1">Pending</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="statusOption" value="Not yet dispatched" id="statusOption2">
+                  <label class="form-check-label" for="statusOption2">Not yet dispatched</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="statusOption" value="Delivered" id="statusOption3">
+                  <label class="form-check-label" for="statusOption3">Delivered</label>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <input type="hidden" id="idForServer" value="">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="updateOrderStatus()">Save changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+       
+    <script src="/public/admin/assets/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="/public/admin/assets/vendors/chart.js/Chart.min.js"></script>
+    <script src="/public/admin/assets/vendors/progressbar.js/progressbar.min.js"></script>
+    <script src="/public/admin/assets/vendors/jvectormap/jquery-jvectormap.min.js"></script>
+    <script src="/public/admin/assets/vendors/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+    <script src="/public/admin/assets/vendors/owl-carousel-2/owl.carousel.min.js"></script>
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="/public/admin/assets/js/off-canvas.js"></script>
+    <script src="/public/admin/assets/js/hoverable-collapse.js"></script>
+    <script src="/public/admin/assets/js/misc.js"></script>
+    <script src="/public/admin/assets/js/settings.js"></script>
+    <script src="/public/admin/assets/js/todolist.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <script src="/public/admin/assets/js/dashboard.js"></script>
+    <!-- End custom js for this page -->
+
+
+        <!-- Core JS -->
+    <!-- build:js assets/vendor/js/core.js -->
+    <script src="/public/listUsers/assets/vendor/libs/jquery/jquery.js"></script>
+    <script src="/public/listUsers/assets/vendor/libs/popper/popper.js"></script>
+    <script src="/public/listUsers/assets/vendor/js/bootstrap.js"></script>
+    <script src="/public/listUsers/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+
+    <script src="/public/listUsers/assets/vendor/js/menu.js"></script>
+    <!-- endbuild -->
+
+    <!-- Vendors JS -->
+    <script>
+
+      function showOrderStatusBox(orderId) {
+        // Set the order ID and index for updating
+        $('#idForServer').val(orderId);
+        
+    
+        // Show the order status box/modal
+        $('#orderStatusModal').modal('show');
+      }
+    
+      function updateOrderStatus() {
+        var selectedStatus = $('input[name="statusOption"]:checked').val();
+        var  order_id = $('#idForServer').val();
+       
+    
+        console.log(order_id+"order id.......");
+
+        $.ajax({
+          url: '/admin/update-Order-Status',
+          method: 'POST',
+          data: { status: selectedStatus, orderid: order_id },
+          success: function(response) {
+            console.log('Order status updated successfully.');
+    
+            // Update the page content dynamically
+            $('#statusText').val(selectedStatus);
+    
+            // Perform any further actions upon successful update
+            swal('Product status is changed', 'success');
+            console.log('Data sent successfully!');
+          },
+          error: function(error) {
+            // Handle the error response
+            console.log('Error:', error);
+          }
+        });
+    
+        $('#orderStatusModal').modal('hide');
+      }
+</script>
+
+<script>
+
+ let deleteUrl = '';
+
+function showConfirm(url) {
+  deleteUrl = url;
+  document.getElementById("confirmBox").style.display = "block";
+}
+
+function confirmAction(choice) {
+  if (choice) {
+    console.log("Item deleted!");
+    // Perform the delete operation or any desired action
+    window.location.href = deleteUrl; // Redirect to the delete URL
+
+    // Show the alert message
+    const alertMessage = document.getElementById("alertMessage");
+    alertMessage.style.opacity = 1;
+    alertMessage.style.display = "block";
+    setTimeout(function() {
+      // Fade out the alert message
+      alertMessage.style.opacity = 0;
+      setTimeout(function() {
+        alertMessage.style.display = "none";
+      }, 1000); // Set the timeout to match the CSS animation duration
+    }, 2000); // Set the timeout to control how long the alert message is displayed
+  } else {
+    console.log("Deletion canceled.");
+    // Cancel the operation or take appropriate action
+  }
+  document.getElementById("confirmBox").style.display = "none";
+}
+
+</script>
+
+    <!-- Main JS -->
+    <script src="/public/listUsers/assets/js/main.js"></script>
+    
+
+</body>
+
+</html>

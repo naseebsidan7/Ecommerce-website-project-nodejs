@@ -1,0 +1,79 @@
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const finalAmount = document.getElementById('finalAmount');
+        const cardDataArray = Array.from(document.getElementsByClassName('cardDataClass'));
+
+        cardDataArray.map(cardData => {
+            const quantityInput = cardData.querySelector('.quantityInput');
+            const originalPrice = cardData.querySelector('.originalPriceClass');
+            const totalPriceEl = cardData.querySelector('.totalPriceClass');
+
+            quantityInput.addEventListener('change', () => {
+                const totalPrice = quantityInput.value * originalPrice.value;
+                totalPriceEl.innerText = totalPrice.toString();
+                totalPriceEl.dispatchEvent(new CustomEvent('change'));
+                updateCart();
+            })
+            totalPriceEl.addEventListener('change', () => {
+                const sum = cardDataArray.reduce((sum, cardData) => {
+                    return sum + Number(cardData.querySelector('.totalPriceClass').innerText);
+                }, 0);
+                finalAmount.innerText = sum.toString();
+            });
+
+            totalPriceEl.dispatchEvent(new CustomEvent('change'));
+        });
+        var iddd
+        async function updateCart() {
+            const products = cardDataArray.map(cardData => {
+                const prod_id = cardData.querySelector('.prod_id_class').value;
+                iddd = prod_id
+                const quantity = Number(cardData.querySelector('.quantity_class').value);
+                return ({
+                    prod_id,
+                    quantity,
+                    finalAmount: Number(finalAmount.innerText)
+                })
+            })
+            const updatedCartData = { products };
+            try {
+                const response = await fetch('/cart/updatecart', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(updatedCartData), iddd
+                });
+
+                const resBody = await response.json();
+                console.log(resBody);
+                if (resBody == 'exceeded') {
+                    document.getElementById('errorMessage').style.display = "block"
+                }
+                
+            } catch (err) {
+                console.err(err);
+            }
+        }
+
+    });
+
+</script>
+
+
+
+<div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+    <button class="btn btn-link px-2"
+        onclick="this.parentNode.querySelector('input[type=number]').stepDown();this.parentNode.querySelector('.quantityInput').dispatchEvent(new CustomEvent('change'));">
+        <i class="fas fa-minus"></i>
+    </button>
+
+    <input id="form1"
+        class="quantity_class quantityInput form-control form-control-sm"
+        min="1" name="quantity" max="<%= cartData[i].stock%>"
+        value="<%= cartData[i].quantity %>" type="number" />
+    <button class="btn btn-link px-2"
+        onclick="this.parentNode.querySelector('input[type=number]').stepUp();this.parentNode.querySelector('.quantityInput').dispatchEvent(new CustomEvent('change'));">
+        <i class="fas fa-plus"></i>
+    </button>
+</div>
