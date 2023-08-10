@@ -300,14 +300,14 @@
 
 				<div class="flex-w flex-c-m m-tb-10">
 					<div class="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4 js-show-filter">
-						<i class="icon-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-filter-list"></i>
-						<i class="icon-close-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
+					    <i class="icon-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-filter-list"></i>
+					<a href=" " ><i class="icon-close-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i></a>
 						 Filter
 					</div>
 
 					<div class="flex-c-m stext-106 cl6 size-105 bor4 pointer hov-btn3 trans-04 m-tb-4 js-show-search">
 						<i class="icon-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-search"></i>
-						<i class="icon-close-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
+						<a href=" " ><i class="icon-close-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i></a>
 						Search
 					</div>
 				</div>
@@ -334,35 +334,30 @@
 								Sort By
 							</div>
 
+							 <!-- Inside your EJS template -->
 							<ul>
 								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04 filter-link-sort" data-filter="default">
-									  Default
-									</a>
-								  </li>
-								  <li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04 filter-link-sort" data-filter="popularity">
-									  Popularity
-									</a>
-								  </li>
-								  <!-- Add class "filter-link-active" to the default active filter link -->
-								  <li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04 filter-link-sort filter-link-active" data-filter="newness">
-									  Newness
-									</a>
-								  </li>
-								  <li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04 filter-link-sort" data-filter="low-high">
-									  Price: Low to High
-									</a>
-								  </li>
-								  <li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04 filter-link-sort" data-filter="high-low">
-									  Price: High to Low
-									</a>
-								  </li>
-								  
+								<a href="#" class="filter-link stext-106 trans-04   <% if (activeFilterClass === 'defaultFilter') { %>filter-link-active<% } %>" data-filter="default" id="defaultFilter">
+									Default
+								</a>
+								</li>
+								<li class="p-b-6">
+								<a href="/allProducts?filter=newness" class="filter-link stext-106 trans-04   <% if (activeFilterClass === 'newnessFilter') { %>filter-link-active<% } %>" data-filter="newness" id="newnessFilter">
+									Newness
+								</a>
+								</li>
+								<li class="p-b-6">
+								<a href="/allProducts?filter=low-high" class="filter-link stext-106 trans-04 <% if (activeFilterClass === 'lowHighFilter') { %>filter-link-active<% } %>" data-filter="low-high" id="lowHighFilter">
+									Price: Low to High
+								</a>
+								</li>
+								<li class="p-b-6">
+								<a href="/allProducts?filter=high-low" class="filter-link stext-106 trans-04 <% if (activeFilterClass === 'highLowFilter') { %>filter-link-active<% } %>" data-filter="high-low" id="highLowFilter">
+									Price: High to Low
+								</a>
+								</li>
 							</ul>
+  
 						</div>
 
 						<div class="filter-col2 p-r-15 p-b-27">
@@ -492,27 +487,31 @@
 								Tags
 							</div>
 
-							<div class="flex-w p-t-4 m-r--5">
-								<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5" >
+							<div class="flex-w p-t-4 m-r--5 filter-tope-group">
+							 
+								<button class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5" data-filter=".Sneakers" >
 									Sneakers
-								</a>
+								</button>
+							 
 
-								<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
+
+								<button href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5" data-filter=".Casual-Shoe" >
 									Lifestyle
-								</a>
+								</button>
 
-								<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
+								<button href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5" data-filter=".Running-shoes">
 									 Running
-								</a>
+								</button>
 
-								<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
+								<button href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5" data-filter=".Casual-Shoes">
 									Streetstyle
-								</a>
+								</button>
 
-								<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
+								<button href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5" data-filter=".football-Boots">
 									Sport 
-								</a>
+								</button>
 							</div>
+							
 						</div>
 					</div>
 				</div>
@@ -521,7 +520,9 @@
 			<div class="row isotope-grid">
 
 
-
+			 
+			
+			
 				<!-- //  Nike shoes -->
 
 				<% for (let i = 0; i < ProductData.length; i++) { %>
@@ -546,7 +547,7 @@
 										</a>
 		
 										<span class="stext-105 cl3">
-										<span style="font-weight: 600;font-size: 15px;margin-right: 15px;">₹ <%= ProductData[i].price %>.00</span> <del>₹ <%= ProductData[i].price %>.00</del> (20% off)
+										<span style="font-weight: 600;font-size: 15px;margin-right: 15px;">₹ <%= ProductData[i].price %>.00</span> <del>₹ <%= (ProductData[i].price * 1.20).toFixed(2) %></del> (20% off)
 										  </span>
 										  
 									</div>
@@ -592,7 +593,7 @@
 										</a>
 		
 										<span class="stext-105 cl3">
-											<span style="font-weight: 600;font-size: 15px;margin-right: 15px;">₹ <%= ProductData[i].price %>.00</span> <del>₹ <%= ProductData[i].price %>.00</del> (20% off)
+											<span style="font-weight: 600;font-size: 15px;margin-right: 15px;">₹ <%= ProductData[i].price %>.00</span> <del>₹ <%= (ProductData[i].price * 1.20).toFixed(2) %></del> (20% off)
 										</span>
 									</div>
 		
@@ -638,7 +639,7 @@
 					</a>
 
 					<span class="stext-105 cl3">
-						<span style="font-weight: 600;font-size: 15px;margin-right: 15px;">₹ <%= ProductData[i].price %>.00</span> <del>₹ <%= ProductData[i].price %>.00</del> (20% off)
+						<span style="font-weight: 600;font-size: 15px;margin-right: 15px;">₹ <%= ProductData[i].price %>.00</span> <del>₹ <%= (ProductData[i].price * 1.20).toFixed(2) %></del> (20% off)
 					</span>
 				</div>
 
@@ -685,7 +686,7 @@
 						</a>
 
 						<span class="stext-105 cl3">
-							<span style="font-weight: 600;font-size: 15px;margin-right: 15px;">₹ <%= ProductData[i].price %>.00</span> <del>₹ <%= ProductData[i].price %>.00</del> (20% off)
+							<span style="font-weight: 600;font-size: 15px;margin-right: 15px;">₹ <%= ProductData[i].price %>.00</span> <del>₹ <%= (ProductData[i].price * 1.20).toFixed(2) %></del> (20% off)
 						 </span>
 					</div>
 
@@ -732,7 +733,7 @@
 					</a>
 
 					<span class="stext-105 cl3">
-						<span style="font-weight: 600;font-size: 15px;margin-right: 15px;">₹ <%= ProductData[i].price %>.00</span> <del>₹ <%= ProductData[i].price %>.00</del> (20% off)
+						<span style="font-weight: 600;font-size: 15px;margin-right: 15px;">₹ <%= ProductData[i].price %>.00</span> <del>₹ <%= (ProductData[i].price * 1.20).toFixed(2) %></del> (20% off)
 					</span>
 				</div>
 
@@ -779,7 +780,7 @@
 					</a>
 
 					<span class="stext-105 cl3">
-						<span style="font-weight: 600;font-size: 15px;margin-right: 15px;">₹ <%= ProductData[i].price %>.00</span> <del>₹ <%= ProductData[i].price %>.00</del> (20% off)
+						<span style="font-weight: 600;font-size: 15px;margin-right: 15px;">₹ <%= ProductData[i].price %>.00</span> <del>₹ <%= (ProductData[i].price * 1.20).toFixed(2) %> </del> (20% off)
 					 </span>
 				</div>
 
@@ -826,7 +827,7 @@
 					</a>
 
 					<span class="stext-105 cl3">
-						<span style="font-weight: 600;font-size: 15px;margin-right: 15px;">₹ <%= ProductData[i].price %>.00</span> <del>₹ <%= ProductData[i].price %>.00</del> (20% off)
+						<span style="font-weight: 600;font-size: 15px;margin-right: 15px;">₹ <%= ProductData[i].price %>.00</span> <del>₹ <%= (ProductData[i].price * 1.20).toFixed(2) %></del> (20% off)
 						  </span>
 				</div>
 
@@ -845,21 +846,36 @@
 <% } %>
 <% } %>
 
+
+ 
+
 				
 			</div>
 
 			<!-- Load more -->
-		  
+		 
+
 			
-				<div class="center">
+				<!-- <div class="center">
 					<div class="pagination">
 						<a href="#">&laquo;</a>
 						<a href="" class="active">1</a>
-						<a href="/ProductPagination?pageNO=2">2</a>
-						<a href="/ProductPagination?pageNO=3">3</a>
-						<a href="#">&raquo;</a>
+						<a href="/allProducts?pageNO=2">2</a>
+						<a href="/allProducts?pageNO=3">3</a>
+						<a href="/allProducts?pageNO=4">&raquo;</a>
 					</div>
-				</div>
+				</div> -->
+
+				<div class="center" style="margin-top: 5%;margin-bottom: -2%;">
+					<div class="pagination">
+					  <a href="#">&laquo;</a>
+					  <% for (let i = 1; i <= totalPages; i++) { %>
+						<a href="/allProducts?pageNO=<%= i %>" class="<%= (i === currentPage) ? 'active' : '' %>"><%= i %></a>
+					  <% } %>
+					  <a href="/allProducts?pageNO=<%= totalPages %>">&raquo;</a>
+					</div>
+				  </div>
+				  
 		 
 		</div>
 	</div>
@@ -1096,58 +1112,7 @@
 	<script src="/public/pagination/pagination.js"></script>
 
 
-	<script>// Get all the filter links
-		const filterLinks = document.querySelectorAll('.filter-link-sort');
-		
-		// Add event listeners to each filter link
-		filterLinks.forEach(function (link) {
-		  link.addEventListener('click', function (event) {
-			event.preventDefault();
-		
-			// Remove the "filter-link-active" class from all filter links
-			filterLinks.forEach(function (filterLink) {
-			  filterLink.classList.remove('filter-link-active');
-			});
-		
-			// Add the "filter-link-active" class to the clicked filter link
-			link.classList.add('filter-link-active');
-		
-			// Get the selected filter from the data-filter attribute
-			const selectedFilter = link.getAttribute('data-filter');
-		
-			// Call the filterProducts function with the selected filter
-			filterProducts(selectedFilter);
-		  });
-		});
-		
-		// Function to filter the products based on the selected filter
-		function filterProducts(filter) {
-		  const products = document.getElementsByClassName('isotope-item');
-		
-		  for (let i = 0; i < products.length; i++) {
-			const product = products[i];
-		
-			// Show or hide the product based on the selected filter
-			if (filter === 'default') {
-			  // Show all products
-			  product.style.display = 'block';
-			} else if (filter === 'popularity') {
-			  // Add your logic to filter by popularity
-			  // Example: Show popular products and hide others
-			} else if (filter === 'newness') {
-			  // Add your logic to filter by newness
-			  // Example: Show new products and hide others
-			} else if (filter === 'low-high') {
-			  // Add your logic to filter by price: low to high
-			  // Example: Sort products by price and show them accordingly
-			} else if (filter === 'high-low') {
-			  // Add your logic to filter by price: high to low
-			  // Example: Sort products by price in reverse order and show them accordingly
-			}
-		  }
-		}
-	</script>
-
+ 
 	
 </body>
 </html>

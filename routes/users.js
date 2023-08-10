@@ -45,7 +45,7 @@ router.get('/home',userController.loadHome)
 router.get('/verify',userController.verifymail)
 router.get('/allProducts',userController.loadAllProduct)
 router.get('/contact',userController.loadcontact) 
-router.get('/ProductPagination',userController.loadAllProductPagination)
+ 
 
 
 router.get('/forgetPassword',auth.is_logout,userController.forgotPassword )
@@ -84,14 +84,14 @@ router.get('/checkout',auth.is_login,userController.showCheckout)
 router.post('/checkoutOrder',userController.checkoutOrder)
 router.post('/checkoutOnline',paymentController.OnlinePaymentOrder)
 
-router.post('/validateCoupon',paymentController.validateCoupon)
-
 router.get('/confirmation',auth.is_login,userController.showConfirmationPage)
 
 router.get('/OrderHistory',auth.is_login,userController.loadOrderHistory)
 router.get('/productOrderDetails' ,userController.productOrderDetails)
 
 router.get('/searchProduct',userController.searchProduct)
+router.post('/sendEmailContact',userController.sendEmailContact)
+router.post('/validateCoupon',paymentController.validateCoupon)
 
 
  

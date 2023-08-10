@@ -9,6 +9,7 @@ const nodemailer=require('nodemailer')
 const session = require('express-session')
 
 const Cart = require('../models/cart_model');
+const { render } = require('ejs')
  
 
 
@@ -30,8 +31,8 @@ const loadRegister = async(req,res)=>{
 // storing signup data 
 const insertUser= async(req,res)=>{
   try {
-       const strongPasswordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$/;
-
+      const strongPasswordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$/;
+      
       const userData= await User.findOne({email:req.body.email})
       if(userData){
           res.render('users/signup',{message:"Email is already Registered"});
@@ -44,7 +45,7 @@ const insertUser= async(req,res)=>{
         if (!strongPasswordRegex.test(req.body.password)) {
           return res.render("users/signup", {
             message:
-              "Your Password must contain at Least 8 characters, including Uppercase and lowercase letters, Numbers",
+              "Your Password must contain at Least 8 characters, including Letters, Numbers",
           });
         }
 
@@ -161,6 +162,15 @@ const sendVerifyMail = async (name,email,id)=>{
     }
 }
 
+//getMonthName
+
+function getMonthName(month) {
+  const months = [
+    "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+  ];
+  return months[month - 1];
+}
 
 // verifing mail
 
@@ -302,7 +312,7 @@ const loadHome = async (req, res) => {
       finalAmount = total;
     }
 
-    const ProductData = await Products.find({});
+    const ProductData = await Products.find({ is_delete: false });
     const BannerDetails = await Banner.find({status:"Active"})
 
     res.render('users/home', {
@@ -373,73 +383,41 @@ const loadcontact = async (req, res) => {
 
 const loadAllProduct = async (req, res) => {
   try {
-    const pageNumber = 1; // Page number (starts from 1)
+    const pageNo = parseInt(req.query.pageNO) || 1;
     const pageSize = 12;   // Number of products per page
-
-    const ProductData = await Products.find({ is_delete: false }).limit(pageSize);
-
-
-
-    const CategoryData = await Category.find({ is_Delete: false });
-
-    const userId = req.session.user_id;
-    console.log("edaaa user id" + userId);
-    const cart = await Cart.findOne({ userid: userId })
-      .populate('product.productid')
-      .lean()
-      .exec();
-
-    let cartProducts = [];
-    let finalAmount = 0;
-
-    if (cart && cart.product) {
-      cartProducts = cart.product.map((item) => {
-        const total = Number(item.quantity) * Number(item.productid.price);
-
-        return {
-          _id: item.productid._id.toString(),
-          name: item.productid.product_name,
-          price: item.productid.price,
-          image: item.productid.image[0],
-          quantity: item.quantity,
-          size: item.size,
-          total: total,
-        };
-      });
-
-      finalAmount = cartProducts.reduce(
-        (sum, product) => sum + Number(product.total),
-        0
-      );
-    }
-
-
-    res.render('users/allProducts', {
-      cartProducts: cartProducts,
-      finalAmount: finalAmount,
-      ProductData: ProductData,
-      Category: CategoryData,
-    });
-
-  } catch (error) {
-    console.log(error.message);
-    // Handle the error appropriately (e.g., show an error page)
-    res.render('error', { error: 'An error occurred while loading the products.' });
-  }
-};
-
-//load all Product Pagination
-
-const loadAllProductPagination = async (req, res) => {
-  try {
-    const pageNo=req.query.pageNO;
+    const filterData = req.query.filter || 'default';;
     const pageNumber = pageNo;  
-    const pageSize = 10;    
-    
-    const ProductData = await Products.find({ is_delete: false })
-                                     .skip((pageNumber - 1) * pageSize)
-                                     .limit(pageSize);
-    
+  
+    const filterClassMap = {
+      'default': 'defaultFilter',
+      'newness': 'newnessFilter',
+      'low-high': 'lowHighFilter',
+      'high-low': 'highLowFilter',
+    };
+    const activeFilterClass = filterClassMap[filterData];
+
+    console.log(filterData+"<----filterData");
+    let  sort ={};
+     
+
+    if(filterData === "high-low"){
+        sort= { price : -1 }
+        console.log("sort is changed to", JSON.stringify(sort));
+    }else if(filterData === "low-high"){
+        sort= { price : 1 }
+        console.log("sort is changed to", JSON.stringify(sort));
+    }else if(filterData === "newness"){
+        sort= { _id : -1 }
+    }
+
+    console.log(JSON.stringify(sort) +"sort current situation");
+
+    const ProductData = await Products.find({ is_delete: false }).skip((pageNumber - 1) * pageSize)
+    .limit(pageSize)
+    .sort(sort)
+
+
+
     const CategoryData = await Category.find({ is_Delete: false });
 
     const userId = req.session.user_id;
@@ -448,6 +426,8 @@ const loadAllProductPagination = async (req, res) => {
       .populate('product.productid')
       .lean()
       .exec();
+
+
 
     let cartProducts = [];
     let finalAmount = 0;
@@ -473,19 +453,27 @@ const loadAllProductPagination = async (req, res) => {
       );
     }
 
+    const totalProducts = await Products.countDocuments({ is_delete: false });
+    const totalPages = Math.ceil(totalProducts / pageSize);
+
     res.render('users/allProducts', {
       cartProducts: cartProducts,
       finalAmount: finalAmount,
       ProductData: ProductData,
       Category: CategoryData,
+      activeFilterClass: activeFilterClass,
+      currentPage: pageNo,
+      totalPages: totalPages,
     });
+
   } catch (error) {
     console.log(error.message);
-    // Handle the error appropriately (e.g., show an error page)
+    
     res.render('error', { error: 'An error occurred while loading the products.' });
   }
 };
 
+ 
 
 
 
@@ -573,6 +561,59 @@ const otpVerifyMail= async(username, email, otp)=>{
         }
 }
 
+//user sending Email to  company (Contact page form)
+
+const sendEmailContact = async(req,res)=>{
+  try {
+
+    const userEmail = req.body.userEmail;
+    const message = req.body.msg;
+
+    console.log(userEmail+" <== user Email id ");
+    console.log(message+" <== user message ")
+
+
+
+    const transporter = nodemailer.createTransport({
+      host:'smtp.gmail.com',
+      port:587,
+      secure:false,
+      requireTLS:false,
+      
+      auth:{
+        user:'naseebsidan6@gmail.com',
+        pass:'iitzubytvlydinzu',
+        
+      }
+    });
+
+    const mailInfo = {
+      from:userEmail,
+      to:'naseebsidan6@gmail.com',
+      subject: 'New message From Active Kicks User',
+     
+      html: `<h4>User Email id : ${userEmail}, <br><br>The message : <br>
+      <span style="color: #d9414e; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;font-size: 13px;">${message}</span>
+    </h4>`    };
+
+
+    transporter.sendMail(mailInfo,function (error, success) {
+      if (error) {
+        console.log('SMTP Connection Error: ', error);
+      } else {
+        console.log(" Message From User is sented Active Kicks Successfully !!");
+        console.log(success.response);
+      }
+    })
+   
+
+    res.redirect('/contact')
+    
+  } catch (error) {
+    console.log(error.message);
+    res.render('error-404')
+  }
+}
 
 // sending otp for login
 
@@ -1002,50 +1043,99 @@ const deleteAddress = async (req, res) => {
 const searchProduct = async(req,res)=>{
    try {
 
-    // const ProductData = await Products.find({is_delete:false})
-    let search=req.query.search
-    let searchRegex = new RegExp(search,'i')
-    
-    const searchedProduct = await Products.find({
-      product_name: { $regex: searchRegex },
-      is_delete: false
-    }).lean();
-    
-    const CategoryData = await Category.find({is_Delete:false})
+          // const ProductData = await Products.find({is_delete:false})
+          let search=req.query.search
+          let searchRegex = new RegExp(search,'i')
+          
+          const searchedProduct = await Products.find({
+            product_name: { $regex: searchRegex },
+            is_delete: false
+          }).lean();
 
     
-    const userId = req.session.user_id;
-    console.log("edaaa user id" + userId);
-    const cart = await Cart.findOne({ userid: userId })
-      .populate('product.productid')
-      .lean()
-      .exec();
-
-    let cartProducts = [];
-    let finalAmount = 0;
-
-    if (cart && cart.product) {
-      cartProducts = cart.product.map((item) => {
-        const total = Number(item.quantity) * Number(item.productid.price);
-
-        return {
-          _id: item.productid._id.toString(),
-          name: item.productid.product_name,
-          price: item.productid.price,
-          image: item.productid.image[0],
-          quantity: item.quantity,
-          size: item.size,
-          total: total,
+        const pageNo = parseInt(req.query.pageNO) || 1;
+        const pageSize = 12;   // Number of products per page
+        const filterData = req.query.filter || 'default';;
+        const pageNumber = pageNo;  
+      
+        const filterClassMap = {
+          'default': 'defaultFilter',
+          'newness': 'newnessFilter',
+          'low-high': 'lowHighFilter',
+          'high-low': 'highLowFilter',
         };
-      });
-
-      finalAmount = cartProducts.reduce(
-        (sum, product) => sum + Number(product.total),
-        0
-      );
-    }
-    res.render('users/allProducts',{cartProducts:cartProducts,finalAmount:finalAmount,ProductData:searchedProduct,Category:CategoryData})
-
+        const activeFilterClass = filterClassMap[filterData];
+    
+        console.log(filterData+"<----filterData");
+        let  sort ={};
+         
+    
+        if(filterData === "high-low"){
+            sort= { price : -1 }
+            console.log("sort is changed to", JSON.stringify(sort));
+        }else if(filterData === "low-high"){
+            sort= { price : 1 }
+            console.log("sort is changed to", JSON.stringify(sort));
+        }else if(filterData === "newness"){
+            sort= { _id : -1 }
+        }
+    
+        console.log(JSON.stringify(sort) +"sort current situation");
+    
+        const ProductData = await Products.find({ is_delete: false }).skip((pageNumber - 1) * pageSize)
+        .limit(pageSize)
+        .sort(sort)
+    
+    
+    
+        const CategoryData = await Category.find({ is_Delete: false });
+    
+        const userId = req.session.user_id;
+        console.log("edaaa user id" + userId);
+        const cart = await Cart.findOne({ userid: userId })
+          .populate('product.productid')
+          .lean()
+          .exec();
+    
+    
+    
+        let cartProducts = [];
+        let finalAmount = 0;
+    
+        if (cart && cart.product) {
+          cartProducts = cart.product.map((item) => {
+            const total = Number(item.quantity) * Number(item.productid.price);
+    
+            return {
+              _id: item.productid._id.toString(),
+              name: item.productid.product_name,
+              price: item.productid.price,
+              image: item.productid.image[0],
+              quantity: item.quantity,
+              size: item.size,
+              total: total,
+            };
+          });
+    
+          finalAmount = cartProducts.reduce(
+            (sum, product) => sum + Number(product.total),
+            0
+          );
+        }
+    
+        const totalProducts = await Products.countDocuments({ is_delete: false });
+        const totalPages = Math.ceil(totalProducts / pageSize);
+    
+        res.render('users/allProducts', {
+          cartProducts: cartProducts,
+          finalAmount: finalAmount,
+          ProductData: ProductData,
+          Category: CategoryData,
+          activeFilterClass: activeFilterClass,
+          currentPage: pageNo,
+          totalPages: totalPages,
+          ProductData:searchedProduct
+        });
 
 
    } catch (error) {
@@ -1055,6 +1145,7 @@ const searchProduct = async(req,res)=>{
 }
 
 
+ 
 
 // // Display the cart page
 const showCart = async (req, res) => {
@@ -1116,8 +1207,17 @@ const showCart = async (req, res) => {
 
 const addtocart = async (req, res) => {
     try {
+    
       console.log("ivideee ethi............");
-      const userId = req.session.user_id;
+      const userId = await req.session.user_id;
+
+      if (userId === undefined ) {
+        res.send({ ok: false });
+        console.log("User not logged in, Add to cart button clicked");
+        
+
+      } else {
+
       const proid = req.body.id;
       const prosize = req.body.size;
       const productPrice = req.body.price;
@@ -1169,6 +1269,8 @@ const addtocart = async (req, res) => {
       await cart.save();
   
       res.send({ ok: true });
+    }
+
     } catch (error) {
       console.log(error.message);
       res.render('error');
@@ -1386,21 +1488,19 @@ const checkoutOrder = async (req,res)=>{
   
       await OrderDetails.save()
     
-    console.log("Order Details ----------------------------->"+OrderDetails+"<----------------OrderDetails");
-
+    
     const productTotal = OrderDetails.product.reduce((total, item) => {
       return total + parseFloat(item.total);
     }, 0);
 
-    console.log("productTotal.....>"+productTotal);
+ 
     const couponAppliedamount = req.body.couponAppliedamount;
-    console.log(couponAppliedamount+"<<couponAppliedamount...................................");
   
    const numericCouponAmount = parseFloat(couponAppliedamount.replace(/[^\d.-]/g, ''));
  
     console.log("Numeric Value:", numericCouponAmount);
 
-    console.log("{    numericCouponAmount: "+couponAppliedamount+"numericCouponAmount: " +numericCouponAmount +"    } ");
+  
     const grandTotal = productTotal-numericCouponAmount  ; // Add the delivery charge (90) to the product total
 
   console.log("{grandTotal-------------->"+grandTotal+"<--------------grandTotal}");
@@ -1413,26 +1513,15 @@ const checkoutOrder = async (req,res)=>{
       console.log("cart item is deleted.........")
     }
 
-
     console.log(OrderDetails+"OrderDetails.............");
-    console.log(OrderDetails.userid+"userid.............");
-
-   
- 
-    console.log(OrderDetails+"OrderDetails.............");
-
-    console.log("..........order id........."+ OrderDetails._id);
-    console.log("..........order id........."+ OrderDetails.id);
     
-  
 
     res.redirect('/confirmation?orderId=' + OrderDetails._id);
 
-
-   
     
   } catch (error) {
     
+
     console.log(error.message);
   }
 }
@@ -1475,13 +1564,17 @@ const loadOrderHistory = async (req, res) => {
       );
     }
 
-    const orderData = await Order.find({ userid: userId }).populate('product.productid');
+    const orderData = await Order.find({ userid: userId })
+    .sort({ date: -1 }) // Sort by date field in descending order
+    .populate('product.productid');
+  
 
     const orderDetails = orderData.map((ord) => {
       const orderDate = new Date(ord.date);
       const year = orderDate.getFullYear();
-      const month = orderDate.getMonth() + 1;
+      const month = getMonthName(orderDate.getMonth() + 1);
       const date = orderDate.getDate();
+      const formattedDate = `${date} ${month} ${year}`  ;
 
       return {
         orderid: ord._id,
@@ -1489,8 +1582,9 @@ const loadOrderHistory = async (req, res) => {
         mobile: ord.address[0].mobile,
         grandTotal: ord.grandTotal,
         status: ord.status,
+        discoundAmount:ord.discoundAmount,
         payment_method: ord.payment_method,
-        orderdate: `${date}/${month}/${year}`,
+        orderdate: formattedDate,
         delivery_date: ord.delivery_date,
         return: ord.return.status,
        
@@ -1569,8 +1663,9 @@ const productOrderDetails = async (req, res) => {
 
     const orderDate = new Date(orderData.date);
     const year = orderDate.getFullYear();
-    const month = orderDate.getMonth() + 1;
+    const month = getMonthName(orderDate.getMonth() + 1);
     const date = orderDate.getDate();
+    const formattedDate = `${date} ${month} ${year}`;
 
     const orderDetails = {
       orderid: orderData._id,
@@ -1581,7 +1676,7 @@ const productOrderDetails = async (req, res) => {
       discoundAmount:orderData.discoundAmount,
       status: orderData.status,
       payment_method: orderData.payment_method,
-      orderdate: `${date}/${month}/${year}`,
+      orderdate: formattedDate,
       delivery_date: orderData.delivery_date,
       return: orderData.return.status,
       address: orderData.address ,
@@ -1645,12 +1740,13 @@ const cancelProduct = async (req, res) => {
       const walletUpdation = await User.findOneAndUpdate(
         { _id: userId },
         {
-          $set: {
+          $inc: {
             wallet: PriceOfOrder
           }
         },
         { new: true }
       );
+      
       console.log("Wallet is Added ₹ " + PriceOfOrder);
     } else {
       console.log("Nothing Added to Wallet ");
@@ -1708,6 +1804,7 @@ const uploadProfileImage = async (req, res) => {
 
 
  module.exports={
+
     loadRegister,
     insertUser,
     verifymail,
@@ -1743,8 +1840,8 @@ const uploadProfileImage = async (req, res) => {
     newPassword,
     productOrderDetails,
     loadcontact,
-    loadAllProductPagination,
     cancelProduct,
-    uploadProfileImage
+    uploadProfileImage,
+    sendEmailContact
    
  }

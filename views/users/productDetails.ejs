@@ -1005,6 +1005,9 @@
 				price: '<%= Product.price %>'
 			  },
 			  success: function (response) {
+
+				if (response.ok) {
+
 				var nameProduct = clickedElement.parent().parent().parent().parent().find('.js-name-detail').html();
 				swal(nameProduct, "is added to cart!", "success");
 	  
@@ -1013,6 +1016,17 @@
 				setTimeout(function () {
 					window.location.reload();
 				}, 1000);
+               
+			} else {
+
+				swal({
+				title: "Error",
+				text: "Please login / Signup",
+				icon: "error"
+		     	});
+				
+			  }
+
 			  },
 			  error: function (error) {
 				// Handle the error response

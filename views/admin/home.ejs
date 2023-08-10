@@ -526,12 +526,14 @@
                 </div>
               </div>
             </div>
+
             <div class="row">
               <div class="col-md-4 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title">Transaction History</h4>
                     <canvas id="transaction-history" class="transaction-chart"></canvas>
+
                     <div class="bg-gray-dark d-flex d-md-block d-xl-flex flex-row py-3 px-4 px-md-3 px-xl-4 rounded mt-3">
                       <div class="text-md-center text-xl-left">
                         <h6 class="mb-1">Transfer to Razorpay</h6>
@@ -543,7 +545,37 @@
                     </div>
                     <div class="bg-gray-dark d-flex d-md-block d-xl-flex flex-row py-3 px-4 px-md-3 px-xl-4 rounded mt-3">
                       <div class="text-md-center text-xl-left">
-                        <h6 class="mb-1">Tranfer to Cash</h6>
+                        <h6 class="mb-1">Transfer to Cash</h6>
+                        <p class="text-muted mb-0"><%=currentDate %>, <%= currentTime %></p>
+                      </div>
+                      <div class="align-self-center flex-grow text-right text-md-center text-xl-right py-md-2 py-xl-0">
+                        <h6 class="font-weight-bold mb-0">₹ <%= totalAmountCOD %></h6>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            
+              <!-- Second Graph -->
+              <div class="col-md-4 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Second Graph</h4>
+                    <canvas id="second-graph" class="transaction-chart"></canvas>
+                    <!-- Rest of your content -->
+                    <div class="bg-gray-dark d-flex d-md-block d-xl-flex flex-row py-3 px-4 px-md-3 px-xl-4 rounded mt-3">
+                      <div class="text-md-center text-xl-left">
+                        <h6 class="mb-1">Transfer to Razorpay</h6>
+                        <p class="text-muted mb-0"><%=currentDate %>, <%= currentTime %></p>
+                      </div>
+                      <div class="align-self-center flex-grow text-right text-md-center text-xl-right py-md-2 py-xl-0">
+                        <h6 class="font-weight-bold mb-0">₹ <%= totalAmountRazor %></h6>
+                      </div>
+                    </div>
+                    <div class="bg-gray-dark d-flex d-md-block d-xl-flex flex-row py-3 px-4 px-md-3 px-xl-4 rounded mt-3">
+                      <div class="text-md-center text-xl-left">
+                        <h6 class="mb-1">Transfer to Cash</h6>
                         <p class="text-muted mb-0"><%=currentDate %>, <%= currentTime %></p>
                       </div>
                       <div class="align-self-center flex-grow text-right text-md-center text-xl-right py-md-2 py-xl-0">
@@ -553,65 +585,41 @@
                   </div>
                 </div>
               </div>
-             <div class="col-md-8 grid-margin stretch-card">
-                <div class="card">
-                  <div class="card-body">
-                    <h4 class="card-title">Order Status</h4>
-                    <div class="table-responsive">
-                      <table class="table">
-                        <thead>
-                          <tr>
-                            
-                            <th> Client Name </th>
-                            <th> Order No </th>
-                            <th> Product Cost </th>
-                           
-                            <th> Payment Mode </th>
-                            <th> Order Date </th>
-                            <th> Return Request </th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                             
-                            <td>
-                              <img src="/public/userProfile/IMG_20230613_211956.jpg" alt="image" />
-                              <span class="pl-2">Naseeb Sidan</span>
-                            </td>
-                            <td> 02312 </td>
-                            <td> $14,500 </td>
-                     
-                            <td> Credit card </td>
-                            <td> 04 Dec 2019 </td>
-                            <td>
-                              <div class="badge badge-outline-success">Approve</div>
-                            </td>
-                          </tr>
-                           
-                          <tr>
-                             
-                            <td>
-                              <img src="/public/admin/assets/images/faces/face5.jpg" alt="image" />
-                              <span class="pl-2">Lucy Abbott</span>
-                            </td>
-                            <td> 02312 </td>
-                            <td> $14,500 </td>
-                  
-                            <td> Credit card </td>
-                            <td> 04 Dec 2019 </td>
-                            <td>
-                              <div class="badge badge-outline-danger">Reject</div>
-                            </td>
-                          </tr>
-                      
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
+            
+           
+     
+    <div class="col-md-4 grid-margin stretch-card">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Second Graph</h4>
+          <canvas id="circle-graph" class="transaction-chart"></canvas>
+          <!-- Rest of your content -->
+          <div class="bg-gray-dark d-flex d-md-block d-xl-flex flex-row py-3 px-4 px-md-3 px-xl-4 rounded mt-3">
+            <div class="text-md-center text-xl-left">
+              <h6 class="mb-1">Transfer to Razorpay</h6>
+              <p class="text-muted mb-0"><%=currentDate %>, <%= currentTime %></p>
             </div>
+            <div class="align-self-center flex-grow text-right text-md-center text-xl-right py-md-2 py-xl-0">
+              <h6 class="font-weight-bold mb-0">₹ <%= totalAmountRazor %></h6>
+            </div>
+          </div>
+          <div class="bg-gray-dark d-flex d-md-block d-xl-flex flex-row py-3 px-4 px-md-3 px-xl-4 rounded mt-3">
+            <div class="text-md-center text-xl-left">
+              <h6 class="mb-1">Transfer to Cash</h6>
+              <p class="text-muted mb-0"><%=currentDate %>, <%= currentTime %></p>
+            </div>
+            <div class="align-self-center flex-grow text-right text-md-center text-xl-right py-md-2 py-xl-0">
+              <h6 class="font-weight-bold mb-0">₹ <%= totalAmountCOD %></h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+ 
+            </div>
+            
+
             <div class="row">
               <div class="col-sm-4 grid-margin">
                 <div class="card">
@@ -705,5 +713,75 @@
     <!-- Custom js for this page -->
     <script src="/public/admin/assets/js/dashboard.js"></script>
     <!-- End custom js for this page -->
+    <canvas id="transaction-history" class="transaction-chart" data-chartdata="<%= JSON.stringify(chartData) %>"></canvas>
+
+    <script>
+      $(document).ready(function() {
+        var canvas = document.getElementById("transaction-history");
+        var chartData = JSON.parse(canvas.getAttribute("data-chartdata"));
+    
+        var transactionhistoryChartCanvas = canvas.getContext("2d");
+        var transactionhistoryChart = new Chart(transactionhistoryChartCanvas, {
+          type: 'doughnut',
+          data: {
+            labels: chartData.labels,
+            datasets: [{
+              data: chartData.data,
+              backgroundColor: ['#111111', '#00d25b', '#ffab00'], // Customize as needed
+            }],
+          },
+          // Other chart options...
+        });
+      });
+    </script>
+
+        <!-- Add this code after the existing JavaScript code -->
+    <script>
+      // Second Graph Data
+      var secondChartData = {
+        labels: ['Label 1', 'Label 2', 'Label 3'],
+        data: [30, 45, 25] // Customize the data values
+      };
+
+      var secondGraphCanvas = $("#second-graph").get(0).getContext("2d");
+      var secondGraph = new Chart(secondGraphCanvas, {
+        type: 'bar', // Choose the desired chart type (e.g., bar, line, pie, etc.)
+        data: {
+          labels: secondChartData.labels,
+          datasets: [{
+            data: secondChartData.data,
+            backgroundColor: ['#00d25b', '#ffab00', '#111111'], // Customize colors
+          }],
+        },
+        // Other chart options...
+      });
+
+      
+    </script>
+        <!-- Add this code after the existing JavaScript code -->
+    <script>
+      // Circle Graph Data
+      var circleChartData = {
+        labels: ['Label A', 'Label B', 'Label C'],
+        data: [40, 30, 30] // Customize the data values
+      };
+
+      var circleGraphCanvas = $("#circle-graph").get(0).getContext("2d");
+      var circleGraph = new Chart(circleGraphCanvas, {
+        type: 'doughnut',
+        data: {
+          labels: circleChartData.labels,
+          datasets: [{
+            data: circleChartData.data,
+            backgroundColor: ['#ffab00', '#111111', '#00d25b'], // Customize colors
+            borderWidth: 0,
+          }],
+        },
+        // Other chart options...
+      });
+    </script>
+
+
+    
   </body>
 </html>

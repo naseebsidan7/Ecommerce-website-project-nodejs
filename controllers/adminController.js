@@ -180,16 +180,39 @@ const loadAdminHome = async (req, res) => {
         },
       },
     ]);
-    console.log("total amount: ", JSON.stringify(totalAmount));
+ 
 
     
     const formattedDate = currentDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
     const formattedTime = currentDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric' });
+
+    // Fetch transaction data for the chart
+    const transactions = await Order.aggregate([
+      {
+        $match: {
+          status: { $nin: ["Cancelled"] },
+        },
+      },
+      {
+        $group: {
+          _id: '$payment_method',
+          totalAmount: { $sum: '$grandTotal' },
+        },
+      },
+    ]);
+
+    const chartData = {
+      labels: transactions.map(transaction => transaction._id || 'Unknown'),
+      data: transactions.map(transaction => transaction.totalAmount),
+    };
+
   
-    console.log(formattedDate + formattedTime +"formattedDate");
+     
  
-    res.render('admin/home', {validOrderCount:validOrderCount,
-      totalAmount: totalAmount[0]?.totalAmount || 0,
+    res.render('admin/home', 
+      {validOrderCount:validOrderCount,
+        chartData: JSON.stringify(chartData),
+       totalAmount: totalAmount[0]?.totalAmount || 0,
        totalAmountToday: totalAmountToday[0]?.totalAmount || 0 ,
        totalAmountCOD:totalAmountCOD[0]?.totalAmount || 0,
        totalAmountRazor:totalAmountRazor[0]?.totalAmount || 0,
@@ -898,7 +921,7 @@ function getMonthName(month) {
 // loading salesReport page 
 const loadSaleReport = async (req, res) => {
   try {
-    const orderData = await Order.find({ status: { $ne: "Cancelled" } });
+    const orderData = await Order.find({ status: { $in: "Delivered" } });
 
     // Get all unique product IDs from all orders
     const productIds = Array.from(new Set(orderData.flatMap((order) => order.product.map((product) => product.productid))));
@@ -956,7 +979,7 @@ const getSalesReportData = async (req, res) => {
             $gte: new Date(new Date(fromDate).setHours(0, 0, 0)), // Start of the day
             $lte: new Date(new Date(toDate).setHours(23, 59, 59)), // End of the day
           },
-          status: { $ne: "Cancelled" }, // Exclude orders with status "Cancelled"
+          status: { $in: "Delivered" }, // Exclude orders with status "Cancelled"
         },
       },
     ]);
@@ -1021,7 +1044,7 @@ const downloadSalesReport = async (req, res) => {
         bolditalics: "Helvetica-BoldOblique",
       },
     });
-    const order = await Order.find({ status: { $ne: "Cancelled" } })
+    const order = await Order.find({ status: { $in: "Delivered" } })
       .lean()
       .exec();
 
@@ -1155,7 +1178,7 @@ const downloadSalesReport = async (req, res) => {
  
 const downloadSalesReportinExcel = async (req, res) => {
   try {
-    const order = await Order.find({ status: { $ne: 'Cancelled' } }).lean().exec();
+    const order = await Order.find({ status: { $in: "Delivered" } }).lean().exec();
 
     // Get all unique product IDs from all orders
     const productIds = Array.from(new Set(order.flatMap(orderdata => orderdata.product.map(product => product.productid))));

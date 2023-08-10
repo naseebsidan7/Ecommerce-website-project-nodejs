@@ -671,7 +671,7 @@
 												<div class="col-auto my-auto"> <small style="margin-left: 52px;"><%= product.product_name %> </small></div>
 												<div class="col my-auto"> <small>Size : <%= product.size %></small></div>
 												<div class="col my-auto"> <small>Qty : <%= product.quantity %></small></div>
-												<div class="col my-auto"><h6 class="mb-0">&#8377;3,600.00</h6>
+												<div class="col my-auto"><h6 class="mb-0">&#8377;<%= product.price %>.00</h6>
 												</div>
 											</div>
 										</div>
@@ -699,13 +699,9 @@
 					  
 						  <div class="row justify-content-between">
 							<div class="flex-sm-col text-right col smallscreen"><p class="mb-1" style="margin-right: 10px; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; color: rgba(32, 29, 29, 0.694); font-size: 15px;"> <b>Discount</b></p> </div>
-							<div class="flex-sm-col col-auto"><p class="mb-1 responsivePrice">&#8377;150</p></div>
+							<div class="flex-sm-col col-auto"><p class="mb-1 responsivePrice">&#8377;<%= order.discoundAmount %>.00</p></div>
 						  </div>
-					  
-						  <div class="row justify-content-between">
-							<div class="flex-sm-col text-right col smallscreen"><p class="mb-1" style="margin-right: 10px; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; color: rgba(32, 29, 29, 0.694); font-size: 15px;"><b>GST 18%</b></p></div>
-							<div class="flex-sm-col col-auto"><p class="mb-1 responsivePrice">843</p></div>
-						  </div>
+					 
 					  
 						  <div class="row justify-content-between">
 							<div class="flex-sm-col text-right col smallscreen"><p class="mb-1" style="margin-right: 10px; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; color: rgba(32, 29, 29, 0.694); font-size: 15px;"><b>Delivery Charges</b></p></div>
@@ -721,7 +717,7 @@
 							</div>
 							<div class="col-md-6">
 							  <p class="mb-1"> Name: <%= order.name %></p>
-							  <p class="mb-1">Invoice Date: 22 Dec, 2019</p>
+							  <p class="mb-1">Invoice Date: <%= order.orderdate %></p>
 							  <p class="mb-1"> Mobile: <%= order.mobile %></p>
 							</div>
 						  </div>
