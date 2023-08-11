@@ -10,10 +10,16 @@ const OnlinePaymentOrder = async (req, res) => {
   try {
     const originalAmount = req.body.finalAmount * 100;
     const discountedAmount = req.body.discountedAmount * 100; // Use the discounted amount received from the client-side
-
+    const OrginalFinalPrice = req.body.finalOrginalprice * 100;
+    console.log(originalAmount+" <---originalAmount");
+    console.log(OrginalFinalPrice+" <---OrginalFinalPrice");
+    console.log(req.body.discountedAmount+" <---req.body.discountedAmount");
+    console.log(discountedAmount+" <---discountedAmount");
     // Use the discounted amount if it is available, otherwise use the original amount
-    const amount = discountedAmount || originalAmount;
+    const amount = discountedAmount || originalAmount || OrginalFinalPrice  ;
 
+    console.log(amount+" <---amount");
+    
     const options = {
       amount: amount,
       currency: 'INR',
@@ -59,11 +65,11 @@ const validateCoupon = async (req,res)=>{
     console.log("CouponData >>>>"+CouponData+"<<<< CouponData");
 
     if(CouponData){
-
          if(!CouponData.usedUsers.includes(Userid)){
           console.log("user mumb coupon adichatillaa...");
               if(ProductAmount>= parseInt(CouponData.minimumAmount)){
-                console.log("minimum amount ine kaatilum kooduthal aahn product amount ");
+                console.log("minimum amount ine kaatilum kooduthal aahn product amount  , ellaam ok aahn ");
+
                 res.send({ msg: "1", couponAmount:CouponData.couponAmount})
                  
               }else{

@@ -654,6 +654,7 @@
 				<div class="card-body">
 					<div class="row justify-content-between mb-3">
 						<div > <h4 class=" " style="color: rgb(210, 97, 97); margin-left: 24px;margin-bottom: 18px;margin-top: 10px 	;"> Status of Order <span style="color: rgba(34, 28, 28, 0.658);font-size: 16px;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;"> <%= order.status %> </span></h4> </div>
+						
 						<div class="OrderDetails">	<a href="/productOrderDetails?id=<%= order.orderid %>" class="  flex-c-m stext-103 cl2 size-102 bg0 bor2   p-lr-15 trans-04" style="background-color: transparent;border: 1px rgba(0, 0, 0, 0.489) solid;margin-right: 20px;">
 							 Order Details 
 						</a></div>
@@ -693,25 +694,30 @@
 					  
 						  <div class="row justify-content-between">
 					
-							<div class="flex-sm-col text-right col smallscreen"> <p class="mb-1" style="margin-right: 10px; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; color: rgba(32, 29, 29, 0.694); font-size: 15px;"><b>Total</b></p> </div>
-							<div class="flex-sm-col col-auto"> <p class="mb-1 responsivePrice">&#8377;<%= product.price %></p> </div>
+							<div class="flex-sm-col text-right col smallscreen"><p class="mb-1" style="margin-right: 10px; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; color: rgba(32, 29, 29, 0.694); font-size: 15px;"> <b>Discount</b></p> </div>
+							<div class="flex-sm-col col-auto"><p class="mb-1 responsivePrice">− &#8377;<%= order.discoundAmount %>.00</p></div>
+						
 						  </div>
 					  
 						  <div class="row justify-content-between">
-							<div class="flex-sm-col text-right col smallscreen"><p class="mb-1" style="margin-right: 10px; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; color: rgba(32, 29, 29, 0.694); font-size: 15px;"> <b>Discount</b></p> </div>
-							<div class="flex-sm-col col-auto"><p class="mb-1 responsivePrice">&#8377;<%= order.discoundAmount %>.00</p></div>
+							
+							<div class="flex-sm-col text-right col smallscreen"><p class="mb-1" style="margin-right: 10px; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; color: rgba(32, 29, 29, 0.694); font-size: 15px;"><b>Delivery Charges</b></p></div>
+							<div class="flex-sm-col col-auto"><p class="mb-1 responsivePrice">Free</p></div>
 						  </div>
 					 
 					  
 						  <div class="row justify-content-between">
-							<div class="flex-sm-col text-right col smallscreen"><p class="mb-1" style="margin-right: 10px; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; color: rgba(32, 29, 29, 0.694); font-size: 15px;"><b>Delivery Charges</b></p></div>
-							<div class="flex-sm-col col-auto"><p class="mb-1 responsivePrice">Free</p></div>
+							<div class="flex-sm-col text-right col smallscreen"> <p class="mb-1" style="margin-right: 10px; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; color: rgba(32, 29, 29, 0.694); font-size: 15px;"><b>Total</b></p> </div>
+							<div class="flex-sm-col col-auto"> <p class="mb-1 responsivePrice" style="font-weight: 600; color: rgb(197, 81, 81);font-size: 17px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">&#8377;<%= order.grandTotal %></p> </div>
+
+
+							
 						  </div>
 						  
 					  
 						  <div class="row invoice" >
 							<div class="col-md-6 mb-3 addresslarge">
-							  <p class="mb-1">Invoice Number: 788152</p>
+							  <p class="mb-1">Number Of Products: <%= order.product.length %></p>
 							  <p class="mb-1">Payment Method: <%= order.payment_method %></p>
 							   
 							</div>

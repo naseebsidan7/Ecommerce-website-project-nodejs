@@ -360,9 +360,9 @@
 									<h6>x <%= product.quantity %></h6>
 								</td>
 								<td>
-									<% order.product.forEach(function(product) { %>
-									<p> ₹ <%= product.total %>.00</p>
-									<% }) %>
+								 
+									<h5 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;font-size: 16px;color: #1613258e;font-weight: 600;">  ₹ <%= order.grandTotal %>.00</h5>
+ 
 								</td>
 							</tr>
 							<% }) %>
@@ -378,9 +378,9 @@
 								</td>
 						 
 								<td>
-									
-									<p> ₹ <%= order.grandTotal %>.00</p>
-									
+									<% order.product.forEach(function(product) { %>
+									<p> ₹ <%= product.total %>.00 </p>
+									<% }) %>
 
 								</td>
 							 
@@ -419,9 +419,9 @@
 
 								 
 								<td>
-									<% order.product.forEach(function(product) { %>
-									<p style="color: rgb(24, 17, 17); font-size: 15px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">  ₹ <%= product.total %>.00</p>
-									<% }) %>
+									
+									<p style="color: rgb(24, 17, 17); font-size: 15px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"> ₹ <%= order.grandTotal %>.00</p>
+									
 								</td>
 								 
 							</tr>

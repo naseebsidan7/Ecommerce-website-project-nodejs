@@ -46,7 +46,19 @@
 		flex: 0 0 58.333333%;
 		max-width: 33.333%;
 		}
-		  }
+	  }
+
+		@media (max-width: 768px) {
+
+			.cancel-button{
+			margin-top: 20px;
+		    } 
+			.product-image-section{
+				margin-left: 40px;
+		    }
+		}
+
+		
 	</style>
 </head>
 
@@ -342,8 +354,8 @@
 								<% } %>
 							  
 								<li>Shipping: <span style=" margin-left: 71px; color: rgb(239, 64, 64);">₹ 0</span></li>
-								<li>Discount: <span style=" margin-left: 71px;  color: rgb(239, 64, 64);"> <%= orderDetails.discoundAmount %> </span></li>
-								<li><strong>Grand Total: <span style="margin-left: 45px;"> ₹ <%= orderProductTotal %> </span></strong></li>
+								<li>Discount: <span style=" margin-left: 55px;  color: rgb(239, 64, 64);">− ₹ <%= orderDetails.discoundAmount %> </span></li>
+								<li><strong>Grand Total: <span style="margin-left: 45px;"> ₹ <%= orderDetails.grandTotal %> </span></strong></li>
 								<br>
 							  </ul>
 							  
@@ -373,10 +385,10 @@
 							</div>
 							
 							<% if (orderDetails.status !== "Delivered" && orderDetails.status !== "Cancelled"   ) { %>
-								<div class="flex-w flex-sb">
+								<div class="flex-w flex-sb cancel-button">
 								  <!-- Button to trigger the modal -->
 								  <a href="" data-toggle="modal" data-target="#cancelProductModal" style="margin-left: auto; border: rgba(0, 0, 0, 0.587) 1px solid; border-radius: 50px;">
-									<div class="flex-c-m stext-101 cl2 size-115 p-lr-15 trans-04 pointer">
+									<div class="flex-c-m stext-101 cl2 size-115 p-lr-15 trans-04 pointer ">
 									  Cancel Product
 									</div>
 								  </a>
@@ -402,7 +414,7 @@
 				
 				<div class="col-md-6 col-lg-7 p-b-30">
 					<div class="p-l-25 p-r-30 p-lr-0-lg">
-						<div class="wrap-slick3 flex-sb flex-w">
+						<div class="wrap-slick3 flex-sb flex-w product-image-section">
 							 
 					 
 							<h6>Order ID: <%= orderDetails.orderid %> </h6>

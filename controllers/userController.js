@@ -716,7 +716,8 @@ const productDetails = async (req, res) => {
     const ProductData = await Products.findOne({ _id: id });
     const findbrand = ProductData.brand;
 
-    const allProductsData = await Products.find({ brand: findbrand });
+    const allProductsData = await Products.find({
+      $and:[ {brand: findbrand},{is_delete:false}] });
 
     const userId = req.session.user_id;
     console.log("edaaa user id" + userId);
@@ -1494,16 +1495,17 @@ const checkoutOrder = async (req,res)=>{
     }, 0);
 
  
-    const couponAppliedamount = req.body.couponAppliedamount;
+    const couponAppliedamount = req.body.couponAppliedamount ;
   
-   const numericCouponAmount = parseFloat(couponAppliedamount.replace(/[^\d.-]/g, ''));
+    const numericCouponAmount = parseFloat(couponAppliedamount.replace(/[^\d.-]/g, '')) || 0;
  
     console.log("Numeric Value:", numericCouponAmount);
 
   
     const grandTotal = productTotal-numericCouponAmount  ; // Add the delivery charge (90) to the product total
 
-  console.log("{grandTotal-------------->"+grandTotal+"<--------------grandTotal}");
+    console.log("{grandTotal-------------->"+grandTotal+"<--------------grandTotal}");
+
     OrderDetails.discoundAmount=numericCouponAmount;
     OrderDetails.grandTotal = grandTotal;
     await OrderDetails.save();

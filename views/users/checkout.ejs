@@ -437,7 +437,7 @@
 									
 									<li style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Total <span id="finalTotalAmount">₹ <%= finalAmount %>.00</span></li>
 									<!-- Add this hidden input field after the "Total" line -->
-                                    <li style="display: none;"><input type="hidden" id="discountedAmountInput" name="discountedAmount" value=""></li>
+                                    <li style="display: none;"><input type="hidden" id="finalAmount-After-Discount" name="discountedAmount" value=""></li>
 									<input type="text" hidden id="couponAppliedamount" name="couponAppliedamount" value="">
 
 								  </ul>
@@ -692,126 +692,71 @@
 	<script src="/public/checkout/js/main.js"></script>
 	<script src="/public/homeTemp/js/main.js"></script>
 
-<!-- Your other HTML code -->
-
-	<script>
-		// Access the finalAmount value from the server-side directly
-		
-
-		// Rest of your JavaScript code here
-		// Function to handle coupon validation and update the final amount
-		function handleCouponValidation() {
-			var couponCode = $('#couponInput').val();
-			var subtotal = parseFloat($('#subTotalAmount').text().replace('₹', '').trim());
-
-		
-		// Make an AJAX call to the coupon validation route
-		$.ajax({
-			url: "/validateCoupon",
-			type: "post",
-			data: { coupon: couponCode, subtotal: subtotal }, // Pass the subtotal to the server
-			success: function (res) {
-			if (res.msg==="1" ) {
-				
-				var couponAmount = res.couponAmount;
-				console.log(couponAmount+"couponAmount");	
-				var discountedAmount = subtotal - couponAmount;
-	
-				// Update the displayed values
-				$("#finalTotalAmount").text("₹" + discountedAmount.toFixed(2));
-				$("#couponAmount").text("-₹" + couponAmount.toFixed(2));
-				$("#discountedAmountInput").val(discountedAmount.toFixed(2));
-	
-				Swal.fire({
-				icon: 'success',
-				title: 'Coupon applied successfully',
-				text: 'Discounted amount: ₹' + discountedAmount.toFixed(2)
-				});
-			} else {
-				// Reset the displayed values if the coupon is invalid
-				$("#finalTotalAmount").text("₹ " + subtotal.toFixed(2)); // Use the original subtotal
-				$("#couponAmount").text("₹ 0");
-	
-				Swal.fire({
-				icon: 'error',
-				title: 'Coupon validation error',
-				html: '<span style="color: #FF0000;">' + res.message + '</span>'
-				});
-
-			}
-			},
-			error: function (error) {
-			console.log(error.responseText);
-			// Reset the displayed values in case of an error
-			$("#finalTotalAmount").text("₹" + subtotal.toFixed(2)); // Use the original subtotal
-			$("#discountAmount").text("₹ 0");
-	
-			Swal.fire({
-				icon: 'error',
-				title: 'Coupon validation error',
-				text: 'Something went wrong during coupon validation' 
-			});
-			}
-		});
-		}
-	</script>
-	
-  <!-- Rest of your HTML code -->
+ 
   
-
-    <script>
+  <script>
 	function handleFormSubmit() {
 	  var paymentMethod = $('input[name="payment"]:checked').val();
-		if (paymentMethod === 'cod') {
-                 
-			 // For Cash on Delivery (COD) payment method, we need to update the form with the discounted amount
-			  var discountedAmount = $("#discountedAmountInput").val();
-			  var couponAmountElement = document.getElementById("couponAmount");
-			  
-			  var couponAmountValue = couponAmountElement.textContent;
-			// For Cash on Delivery (COD) payment method, we need to update the displayed final amount with the discounted amount
-			$("#finalTotalAmount").text("₹ " + discountedAmount); // Update the displayed final amount in the <span> element
-			// Update the finalAmount input field in the form with the discounted amount
-			$("input[name='finalAmount']").val(discountedAmount);
+	  
+	  if (paymentMethod === 'cod' || paymentMethod === 'Wallet') {
+		// Handle Cash on Delivery (COD) and Wallet payment methods
+		
+		// Update the form with the discounted amount
+		var discountedAmount = $("#finalAmount-After-Discount").val();
+		console.log(discountedAmount+"<==discountedAmount");
 
-			$("input[name='couponAppliedamount']").val(couponAmountValue);
+		if(discountedAmount){
+ 
+		// Update the displayed final amount
+		$("#finalTotalAmount").text("₹ " + discountedAmount+".00");
+		// Update the finalAmount input field in the form
+		$("input[name='finalAmount']").val(discountedAmount);
+  
+		// Update the couponAppliedamount input field in the form
+		var couponAmountElement = parseFloat($('#couponAmount').text().replace('₹', '').trim());
+		 
+		console.log(couponAmountElement+"<==couponAmountElement");
+	 
 
-			return true; // Allow form submission for Cash on Delivery (cod) payment method
+		$("input[name='couponAppliedamount']").val(couponAmountElement);
+	 
+		return true; // Allow form submission
 
-	} else if (paymentMethod === 'Wallet') {
+	}else{
+		return true;
+	}
 
-		 // For Cash on Delivery (COD) payment method, we need to update the form with the discounted amount
-		 var discountedAmount = $("#discountedAmountInput").val();
-			  var couponAmountElement = document.getElementById("couponAmount");
-			  
-			  var couponAmountValue = couponAmountElement.textContent;
-			// For Cash on Delivery (COD) payment method, we need to update the displayed final amount with the discounted amount
-			$("#finalTotalAmount").text("₹ " + discountedAmount); // Update the displayed final amount in the <span> element
-			// Update the finalAmount input field in the form with the discounted amount
-			$("input[name='finalAmount']").val(discountedAmount);
-
-			$("input[name='couponAppliedamount']").val(couponAmountValue);
-
-			return true; // Allow form submission for Cash on Delivery (cod) payment method 
 
 	} else if (paymentMethod === 'Razorpay') {
 		// Handle Razorpay payment method
 		var formData = $('#orderForm').serialize();
-		var discountedAmount = $("#discountedAmountInput").val();
-		var couponAmountElement = document.getElementById("couponAmount");
-			  var couponAmountValue = couponAmountElement.textContent;
-			// For Cash on Delivery (COD) payment method, we need to update the displayed final amount with the discounted amount
-			$("#finalTotalAmount").text("₹ " + discountedAmount); // Update the displayed final amount in the <span> element
-			// Update the finalAmount input field in the form with the discounted amount
-			$("input[name='finalAmount']").val(discountedAmount);
 
-			$("input[name='couponAppliedamount']").val(couponAmountValue);
-			
+		var discountedAmount = $("#finalAmount-After-Discount").val();
+		var finalAmount = $('input[name="finalAmount"]').val();
+	    var finalAmountAfterDiscount = parseFloat($('#finalAmount-After-Discount').text().replace('₹', '').trim());
+
+		console.log(discountedAmount+"discountedAmount");
+		console.log(finalAmount+"finalAmount");
+		console.log(finalAmountAfterDiscount+"finalAmountAfterDiscount");
+
+		if(discountedAmount){ 
+
+		var couponAmountElement = parseFloat($('#couponAmount').text().replace('₹', '').trim());
+
+		$("#finalTotalAmount").text("₹ " + discountedAmount+".00"); // Update the displayed final amount in the <span> element
+		// Update the finalAmount input field in the form with the discounted amount
+		$("input[name='finalAmount']").val(discountedAmount);
+		$("input[name='couponAppliedamount']").val(couponAmountElement);
+
+	 
+		}
+
         formData += "&amount=" + discountedAmount;
+	    
 		$.ajax({
 		  url: "/checkoutOnline", 
 		  type: "post",																					
-		  data: formData,
+		  data: {formData:formData,finalOrginalprice:finalAmount},
 		  success: function (res) {
 			if (res.success) {
 			  var options = {
@@ -866,7 +811,66 @@
 		return false; // Prevent form submission for other payment methods
 	  }
 	}
-    </script>
+  
+	function handleCouponValidation() {
+			var couponCode = $('#couponInput').val();
+		 
+			var subtotal = parseFloat($('#subTotalAmount').text().replace('₹', '').trim());
+
+		
+		// Make an AJAX call to the coupon validation route
+		$.ajax({
+			url: "/validateCoupon",
+			type: "post",
+			data: { coupon: couponCode, subtotal: subtotal }, // Pass the subtotal to the server
+			success: function (res) {
+			if (res.msg==="1" ) {
+				
+				var couponAmount = res.couponAmount;
+				console.log(couponAmount+"couponAmount");	
+				var discountedAmount = subtotal - couponAmount;
+	
+				// Update the displayed values
+				$("input[name='finalAmount']").val(discountedAmount);
+				$("#finalTotalAmount").text("₹ " + discountedAmount.toFixed(2));
+				$("#couponAmount").text(couponAmount.toFixed(2));
+				$("#finalAmount-After-Discount").val(discountedAmount);
+	
+				Swal.fire({
+				icon: 'success',
+				title: 'Coupon applied successfully',
+				text: 'Discounted amount: ₹' + discountedAmount.toFixed(2)
+				});
+			} else {
+				// Reset the displayed values if the coupon is invalid
+				$("#finalTotalAmount").text("₹ " + subtotal.toFixed(2)); // Use the original subtotal
+				$("#couponAmount").text("₹ 0");
+	
+				Swal.fire({
+				icon: 'error',
+				title: 'Coupon validation error',
+				html: '<span style="color: #FF0000;">' + res.message + '</span>'
+				});
+
+			}
+			},
+			error: function (error) {
+			console.log(error.responseText);
+			// Reset the displayed values in case of an error
+			$("#finalTotalAmount").text("₹ " + subtotal.toFixed(2)); // Use the original subtotal
+			$("#discountAmount").text("₹ 0");
+	
+			Swal.fire({
+				icon: 'error',
+				title: 'Coupon validation error',
+				text: 'Something went wrong during coupon validation' 
+			});
+			}
+		});
+		}
+  </script>
+  
+ 
   
 	<script>
 		document.getElementById('couponLink').addEventListener('click', function(event) {
