@@ -561,25 +561,25 @@
               <div class="col-md-4 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Second Graph</h4>
+                    <h4 class="card-title">Monthly Sales </h4>
                     <canvas id="second-graph" class="transaction-chart"></canvas>
                     <!-- Rest of your content -->
                     <div class="bg-gray-dark d-flex d-md-block d-xl-flex flex-row py-3 px-4 px-md-3 px-xl-4 rounded mt-3">
                       <div class="text-md-center text-xl-left">
-                        <h6 class="mb-1">Transfer to Razorpay</h6>
+                        <h6 class="mb-1">Total Monthly Sales</h6>
                         <p class="text-muted mb-0"><%=currentDate %>, <%= currentTime %></p>
                       </div>
                       <div class="align-self-center flex-grow text-right text-md-center text-xl-right py-md-2 py-xl-0">
-                        <h6 class="font-weight-bold mb-0">₹ <%= totalAmountRazor %></h6>
+                        <h6 class="font-weight-bold mb-0">₹ <%= totalAmountCurrentMonth %></h6>
                       </div>
                     </div>
                     <div class="bg-gray-dark d-flex d-md-block d-xl-flex flex-row py-3 px-4 px-md-3 px-xl-4 rounded mt-3">
                       <div class="text-md-center text-xl-left">
-                        <h6 class="mb-1">Transfer to Cash</h6>
+                        <h6 class="mb-1">Today's Sales</h6>
                         <p class="text-muted mb-0"><%=currentDate %>, <%= currentTime %></p>
                       </div>
                       <div class="align-self-center flex-grow text-right text-md-center text-xl-right py-md-2 py-xl-0">
-                        <h6 class="font-weight-bold mb-0">₹ <%= totalAmountCOD %></h6>
+                        <h6 class="font-weight-bold mb-0">₹ <%= totalAmountToday %></h6>
                       </div>
                     </div>
                   </div>
@@ -591,12 +591,12 @@
     <div class="col-md-4 grid-margin stretch-card">
       <div class="card">
         <div class="card-body">
-          <h4 class="card-title">Second Graph</h4>
+          <h4 class="card-title">Sales of Brands</h4>
           <canvas id="circle-graph" class="transaction-chart"></canvas>
           <!-- Rest of your content -->
           <div class="bg-gray-dark d-flex d-md-block d-xl-flex flex-row py-3 px-4 px-md-3 px-xl-4 rounded mt-3">
             <div class="text-md-center text-xl-left">
-              <h6 class="mb-1">Transfer to Razorpay</h6>
+              <h6 class="mb-1">Sales of Nike </h6>
               <p class="text-muted mb-0"><%=currentDate %>, <%= currentTime %></p>
             </div>
             <div class="align-self-center flex-grow text-right text-md-center text-xl-right py-md-2 py-xl-0">
@@ -605,7 +605,7 @@
           </div>
           <div class="bg-gray-dark d-flex d-md-block d-xl-flex flex-row py-3 px-4 px-md-3 px-xl-4 rounded mt-3">
             <div class="text-md-center text-xl-left">
-              <h6 class="mb-1">Transfer to Cash</h6>
+              <h6 class="mb-1">Sales of Adidas</h6>
               <p class="text-muted mb-0"><%=currentDate %>, <%= currentTime %></p>
             </div>
             <div class="align-self-center flex-grow text-right text-md-center text-xl-right py-md-2 py-xl-0">
@@ -739,8 +739,8 @@
     <script>
       // Second Graph Data
       var secondChartData = {
-        labels: ['Label 1', 'Label 2', 'Label 3'],
-        data: [30, 45, 25] // Customize the data values
+        labels: ['Label 1', 'Label 2', 'Label 3','Label 4','Label 5'],
+        data: [20, 20, 20, 20, 20] // Customize the data values
       };
 
       var secondGraphCanvas = $("#second-graph").get(0).getContext("2d");
@@ -750,7 +750,7 @@
           labels: secondChartData.labels,
           datasets: [{
             data: secondChartData.data,
-            backgroundColor: ['#00d25b', '#ffab00', '#111111'], // Customize colors
+            backgroundColor: ['#00d25b', '#ffab00', '#111111','#717fe0','#f74877'], // Customize colors
           }],
         },
         // Other chart options...
@@ -762,8 +762,8 @@
     <script>
       // Circle Graph Data
       var circleChartData = {
-        labels: ['Label A', 'Label B', 'Label C'],
-        data: [40, 30, 30] // Customize the data values
+        labels: ['Sales of Nike', 'Sales of Adidas'],
+        data: [40, 50] // Customize the data values
       };
 
       var circleGraphCanvas = $("#circle-graph").get(0).getContext("2d");
@@ -773,7 +773,7 @@
           labels: circleChartData.labels,
           datasets: [{
             data: circleChartData.data,
-            backgroundColor: ['#ffab00', '#111111', '#00d25b'], // Customize colors
+            backgroundColor: ['#ffab00', '#00d25b'], // Customize colors
             borderWidth: 0,
           }],
         },
