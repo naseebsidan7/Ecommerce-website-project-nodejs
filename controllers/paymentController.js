@@ -1,5 +1,6 @@
 const Razorpay = require('razorpay');
-const Coupon = require('../models/coupon_model')
+const Coupon = require('../models/coupon_model');
+const User = require('../models/User_Model');
 
 const razorpayInstance = new Razorpay({
   key_secret:"UxzVN00OfOi4d8mTflMSn9Zl",
@@ -51,6 +52,58 @@ const OnlinePaymentOrder = async (req, res) => {
   }
 };
 
+const walletPayment = async (req, res) => {
+  try {
+      const finalPrice = req.body.finalOrginalprice;
+      const discountedAmount = req.body.discountedAmount;
+      const userId = req.body.userId;
+       
+      const Amount = discountedAmount || finalPrice ;
+
+      console.log(finalPrice + " < -- -- Price ");
+      console.log(discountedAmount + " < -- -- discountedAmount ");
+      console.log(Amount + " < -- -- Amount ");
+      
+       
+      const user = await User.findOne({ _id: userId });
+
+      const walletAmount = user.wallet;
+
+      if(Amount <= walletAmount){
+
+        const walletUpdation = await User.findOneAndUpdate(
+          { _id: userId },
+          {
+            $inc: {
+              wallet: -Amount
+            }
+          },
+          { new: true }
+        );
+        console.log(walletUpdation+"walletUpdation");
+
+        res.json({ success: true, message: 'Payment successful' });
+
+      }else{
+        console.log("Amount is Suffeicent For Payment ");
+        res.json({ success: false, message: 'Amount is Suffeicent For Payment ' });
+      }
+      
+      
+       
+
+  
+
+     
+
+  } catch (error) {
+      console.log(error.message);
+       
+  }
+}
+
+ 
+
 
 const validateCoupon = async (req,res)=>{
   try {
@@ -95,5 +148,6 @@ const validateCoupon = async (req,res)=>{
 
 module.exports = {
   OnlinePaymentOrder,
-  validateCoupon
+  validateCoupon,
+  walletPayment
 };

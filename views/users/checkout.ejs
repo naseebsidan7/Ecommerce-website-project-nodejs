@@ -308,14 +308,18 @@
 										<input type="text" name="name" value="<%= userData.name %>"
 											style="font-size: 18px; color: rgba(55, 84, 153, 0.664);font-family:  Verdana, Geneva, Tahoma, sans-serif;  border: 1px solid rgba(0, 0, 0, 0.288);"
 											required>
+										<input type="text" hidden name="userId" value="<%= userData._id %>">
 									</div>
+									
 								</div>
+								
 								<div class="col-lg-6">
 									<div class="checkout__input">
 										<p>State<span>*</span></p>
 										<input type="text" name="state"
 											style="font-size: 18px; color: rgba(55, 84, 153, 0.664);font-family: Verdana, Geneva, Tahoma, sans-serif; border: 1px solid rgba(0, 0, 0, 0.288);"
 											value="<%= address.state %>" required>
+											
 									</div>
 								</div>
 							</div>
@@ -406,7 +410,7 @@
 								<div class="checkout__order__products" style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Product <span>Total</span></div>
 								<ul class="checkout__total__products">
 									<% for (let i=0; i < cartProducts.length; i++) { %>
-
+										
 										<input type="text" hidden name="ProductName"
 											style="font-size: 18px; color: rgba(55, 84, 153, 0.664);font-family:  Verdana, Geneva, Tahoma, sans-serif;  border: 1px solid rgba(0, 0, 0, 0.288);"
 											value="<%= cartProducts[i].name %> ">
@@ -697,8 +701,8 @@
   <script>
 	function handleFormSubmit() {
 	  var paymentMethod = $('input[name="payment"]:checked').val();
-	  
-	  if (paymentMethod === 'cod' || paymentMethod === 'Wallet') {
+	 
+	  if (paymentMethod === 'cod'   ) {
 		// Handle Cash on Delivery (COD) and Wallet payment methods
 		
 		// Update the form with the discounted amount
@@ -726,7 +730,62 @@
 		return true;
 	}
 
+ } else if (paymentMethod === 'Wallet') {
+	  
+	    var userId = $('input[name="userId"]').val();
+	    console.log(userId+" <-- user id ");
+		var formData = $('#orderForm').serialize();
 
+		var discountedAmount = $("#finalAmount-After-Discount").val();
+		var finalAmount = $('input[name="finalAmount"]').val();
+	   
+		console.log(discountedAmount+"discountedAmount");
+		console.log(finalAmount+"finalAmount");
+
+	 
+
+		if(discountedAmount){ 
+
+		var couponAmountElement = parseFloat($('#couponAmount').text().replace('₹', '').trim());
+
+		$("#finalTotalAmount").text("₹ " + discountedAmount+".00"); // Update the displayed final amount in the <span> element
+		// Update the finalAmount input field in the form with the discounted amount
+		$("input[name='finalAmount']").val(discountedAmount);
+		$("input[name='couponAppliedamount']").val(couponAmountElement);
+
+		}
+		 
+		$.ajax({
+          url: "/walletPayment", 
+		  type: "post",																					
+		  data: {finalOrginalprice:finalAmount ,userId:userId},
+		  success: function (res) {
+			if (res.success) {
+				
+				Swal.fire({
+					icon: 'success',
+					title: 'Payment success',
+					showConfirmButton: false,
+					timer: 1500
+				  }).then(function() {
+					// Submit the form after successful payment
+					document.getElementById('orderForm').submit();
+				  });
+
+			} else {
+			  Swal.fire({
+				icon: 'error',
+				title: 'Error',
+				text: res.message
+			  });
+			}
+		  }
+
+		});
+     return false;
+ 
+
+	
 	} else if (paymentMethod === 'Razorpay') {
 		// Handle Razorpay payment method
 		var formData = $('#orderForm').serialize();
@@ -806,6 +865,7 @@
 			}
 		  }
 		});
+		
 		return false; // Prevent form submission
 	  } else {
 		return false; // Prevent form submission for other payment methods

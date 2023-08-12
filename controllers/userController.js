@@ -1437,10 +1437,7 @@ const showConfirmationPage = async (req,res)=>{
   try {
 
     const orderId = req.query.orderId
-    console.log("..........order id........."+ orderId);
     const order = await Order.findOne({_id: orderId}).populate('product.productid')
-   
-    console.log("......."+order+ "......order ");
 
     res.render('users/confirmation',{ order: order })
     
@@ -1486,6 +1483,8 @@ const checkoutOrder = async (req,res)=>{
           mobile:address.mobile,
           state:address.state
       });
+
+  
   
       await OrderDetails.save()
     
@@ -1515,8 +1514,7 @@ const checkoutOrder = async (req,res)=>{
       console.log("cart item is deleted.........")
     }
 
-    console.log(OrderDetails+"OrderDetails.............");
-    
+     
 
     res.redirect('/confirmation?orderId=' + OrderDetails._id);
 
@@ -1738,7 +1736,7 @@ const cancelProduct = async (req, res) => {
     );
     console.log("Order is Cancelled Successfully");
 
-    if (PaymentMethod === "Razorpay") {
+    if (PaymentMethod === "Razorpay" || PaymentMethod === "Wallet" ) {
       const walletUpdation = await User.findOneAndUpdate(
         { _id: userId },
         {

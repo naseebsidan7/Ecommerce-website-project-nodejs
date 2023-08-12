@@ -83,6 +83,7 @@ router.get('/deleteCartProduct',auth.is_login,userController.deleteCartProduct)
 router.get('/checkout',auth.is_login,userController.showCheckout)
 router.post('/checkoutOrder',userController.checkoutOrder)
 router.post('/checkoutOnline',paymentController.OnlinePaymentOrder)
+router.post('/walletPayment',paymentController.walletPayment)
 
 router.get('/confirmation',auth.is_login,userController.showConfirmationPage)
 

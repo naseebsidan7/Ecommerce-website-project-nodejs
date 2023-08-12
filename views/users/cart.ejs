@@ -321,9 +321,11 @@
 
 												<input class="mtext-104 cl3 txt-center num-product" name="num-product1"
 													value="<%= cartProducts[i].quantity %>">
+
 												<div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
 													<i class="fs-16 zmdi zmdi-plus"></i>
 												</div>
+
 												<input type="text" hidden name="productId"
 													value="<%= cartProducts[i]._id %>">
 											</div>
@@ -673,9 +675,11 @@
 			var inputElement = $(this).prev('.num-product');
 			var quantity = parseInt(inputElement.val());
 
+			if (quantity < 10) {
 			inputElement.val(quantity + 1);
 			updatePrice(inputElement);
 			updateDatabase(inputElement);
+		   }
 		});
 
 		function updatePrice(inputElement) {
