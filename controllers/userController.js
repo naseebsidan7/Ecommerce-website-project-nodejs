@@ -45,7 +45,7 @@ const insertUser= async(req,res)=>{
         if (!strongPasswordRegex.test(req.body.password)) {
           return res.render("users/signup", {
             message:
-              "Your Password must contain at Least 8 characters, including Letters, Numbers",
+              "Your Password must contain at Least 8 characters  including numbers , both lower and uppercase letters  ",
           });
         }
 
